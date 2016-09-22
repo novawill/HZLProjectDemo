@@ -14,8 +14,14 @@
 #define ButtonY 22
 #define ButtonTag 100
 #define FixMargin 20
-
-
+HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
+{
+    HZLFrame rect;
+    rect.originX = x;
+    rect.originY = y;
+    rect.SizeHeight = height;
+    return rect;
+}
 @interface HZLSegment()
 
 @property (nonatomic, strong) NSMutableArray *titleLengthArray;
@@ -23,9 +29,6 @@
 @property (nonatomic, strong) id target;
 
 @property (nonatomic, assign) SEL action;
-
-
-
 
 @end
 @implementation HZLSegment{
@@ -149,8 +152,6 @@
         
         [btn addTarget:self action:@selector(onClickedButton:) forControlEvents:UIControlEventTouchUpInside];
         
-       
-        
         if (i == 0) {
             
             [btn setFrame:CGRectMake(_buttonMargin, ButtonY, [_titleLengthArray[i] doubleValue], self.bounds.size.height - ButtonY)];
@@ -162,14 +163,7 @@
             CGFloat originX = [originXArray[i -1] doubleValue] + [_titleLengthArray[i-1] doubleValue] + _buttonMargin;
             [originXArray addObject:[NSNumber numberWithDouble:originX]];
             [btn setFrame:CGRectMake(originX, ButtonY, [_titleLengthArray[i] doubleValue], self.bounds.size.height - ButtonY)];
-            
-            
         }
-
-        
-        
-
-        
         self.autoresizesSubviews = YES;
         [self addSubview:btn];
 
@@ -185,10 +179,7 @@
     button.selected = YES;
     button.userInteractionEnabled = NO;
     
-    
     _selectedIndex = button.tag - ButtonTag;
-    
- 
     
     [UIView animateWithDuration:0.5 animations:^{
        
@@ -241,4 +232,6 @@
         [self.titleLengthArray addObject:[NSNumber numberWithDouble:titleSize.width]];
     }
 }
+
+
 @end

@@ -8,7 +8,8 @@
 
 #import "TrendViewController.h"
 #import "HZLSegment.h"
-HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height);
+
+#if 0 //因为HZLSegment.h文件中定义函数，会导致重定义符号的链接器错误，所以将定义写在这里，或者放在HZLSegment.m中
 HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
 {
     HZLFrame rect;
@@ -17,6 +18,7 @@ HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
     rect.SizeHeight = height;
     return rect;
 }
+#endif
 @interface TrendViewController ()
 
 @property (nonatomic, strong) UITableView *trendTableView;
@@ -49,8 +51,8 @@ HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
   
     _trendScrollView.bounces = NO;
     _trendScrollView.backgroundColor = [UIColor redColor];
-    [_trendScrollView setContentOffset:CGPointMake(0, 0)];
-    _trendScrollView.contentSize = CGSizeMake(seg.bounds.size.width, 0);
+    _trendScrollView.bounds = CGRectMake(0, 0, CGRectGetWidth(_trendScrollView.bounds), CGRectGetHeight(_trendScrollView.bounds));
+    _trendScrollView.contentSize = CGSizeMake(seg.bounds.size.width, -5);
     [_trendScrollView addSubview:seg];
     
     

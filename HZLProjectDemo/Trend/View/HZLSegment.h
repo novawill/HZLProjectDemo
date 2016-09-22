@@ -10,7 +10,7 @@
 /**
  *  @author 黄梓伦, 16-09-22 17:09:24
  *
- *  直接导入"HZLFrame.h" 会出现CGHZLFrameMake符号重定义的链接器错误，所以将CGHZLFrameMake函数声明和定义放在实现函数的文件中
+ *  直接导入"HZLFrame.h" 会出现CGHZLFrameMake符号重定义的链接器错误，所以将CGHZLFrameMake函数声明和定义放在实现函数的文件中或者将实现放在.m文件中
  */
 #if 0
 #import "HZLFrame.h"
@@ -22,6 +22,9 @@ typedef struct ZLFrame{
     CGFloat SizeHeight;
     
 }HZLFrame;
+HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height);
+
+
 @interface HZLSegment : UIView
 
 @property (nonatomic, strong) NSArray *items;

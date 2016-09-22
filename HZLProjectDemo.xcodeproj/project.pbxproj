@@ -356,6 +356,7 @@
 				TargetAttributes = {
 					26C8CE0D1D92A86B008A3CD9 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = A5H9FFHS4U;
 					};
 				};
 			};
@@ -563,6 +564,7 @@
 			baseConfigurationReference = 3CC10C386C8AC672D268900A /* Pods-HZLProjectDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/HZLProjectDemo/HeaderFile/HZLPch.pch";
 				INFOPLIST_FILE = HZLProjectDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -576,6 +578,7 @@
 			baseConfigurationReference = 1F77062DCDC8809FE50472CE /* Pods-HZLProjectDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/HZLProjectDemo/HeaderFile/HZLPch.pch";
 				INFOPLIST_FILE = HZLProjectDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
