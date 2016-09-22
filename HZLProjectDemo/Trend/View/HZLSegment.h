@@ -31,8 +31,15 @@ HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height);
 
 @property (nonatomic, assign) NSInteger selectedIndex;
 
+@property (nonatomic, assign) CGFloat fontSize;
+
+@property (nonatomic, strong) UIColor *selectedColor;
+
+@property (nonatomic, strong) UIColor *titleColor;
 //根据文字长度自适应宽度
 - (instancetype)initWithFlexibleWidthFrame:(HZLFrame)frame items:(NSArray *)items;
+
+- (instancetype)initWithFlexibleWidthFrame:(HZLFrame)frame items:(NSArray *)items fontSize:(CGFloat)fontSize;
 
 - (instancetype)initWithFrame:(CGRect)frame items:(NSArray *)items;
 
