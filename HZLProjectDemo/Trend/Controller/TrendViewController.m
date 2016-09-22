@@ -28,10 +28,7 @@ HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    NSArray *titleArray = @[@"HZL1",@"HZL2",@"HZL3",@"HZL4",@"HZL4",@"HZL4",@"HZL4"];//@[@"推荐 Explore",@"关注 Following",@"视频 Video",@"音乐 Music",@"画册 Gallery",@"往期早茶"];
-//    HZLSegment *seg = [[HZLSegment alloc] initWithFlexibleWidthFrame:CGHZLFrameMake(0, -20, 64) items:titleArray];
-    
-    //[self.view addSubview:seg];
+
     
     [self createTopScrollView];
     [self creatTrendTableView];
@@ -46,8 +43,7 @@ HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
     _trendScrollView = [[UIScrollView alloc] init];
     _trendScrollView.backgroundColor = [UIColor blackColor];
     
-    //NSArray *titleArray = @[@"推荐 Explore",@"关注 Following",@"视频 Video",@"音乐 Music",@"画册 Gallery",@"往期早茶"];
-     NSArray *titleArray = @[@"HZL1 ABCD",@"HZL ABCDGF",@"HZ L2",@"HZL2",@"HZL2",@"HZL4",@"HZL4"];
+    NSArray *titleArray = @[@"推荐 Explore",@"关注 Following",@"视频 Video",@"音乐 Music",@"画册 Gallery",@"往期早茶"];
     HZLSegment *seg = [[HZLSegment alloc] initWithFlexibleWidthFrame:CGHZLFrameMake(0, -20, 64) items:titleArray];
     seg.backgroundColor = [UIColor blackColor];
   
