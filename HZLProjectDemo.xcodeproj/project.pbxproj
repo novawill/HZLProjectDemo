@@ -13,6 +13,13 @@
 		26C8CE1C1D92A86B008A3CD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26C8CE1A1D92A86B008A3CD9 /* Main.storyboard */; };
 		26C8CE1E1D92A86B008A3CD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26C8CE1D1D92A86B008A3CD9 /* Assets.xcassets */; };
 		26C8CE211D92A86B008A3CD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26C8CE1F1D92A86B008A3CD9 /* LaunchScreen.storyboard */; };
+		26C8CE451D92AEBA008A3CD9 /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE441D92AEBA008A3CD9 /* MeViewController.m */; };
+		26C8CE4B1D92AEF6008A3CD9 /* HZLTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE4A1D92AEF6008A3CD9 /* HZLTabBarViewController.m */; };
+		26C8CE4E1D92AF06008A3CD9 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE4D1D92AF06008A3CD9 /* BaseViewController.m */; };
+		26C8CE511D92AF1D008A3CD9 /* RemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE501D92AF1D008A3CD9 /* RemindViewController.m */; };
+		26C8CE541D92AF2B008A3CD9 /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE531D92AF2B008A3CD9 /* DiscoverViewController.m */; };
+		26C8CE571D92AF36008A3CD9 /* TrendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE561D92AF36008A3CD9 /* TrendViewController.m */; };
+		26E86E281D92FCAE0041F91D /* HZLSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E86E271D92FCAE0041F91D /* HZLSegment.m */; };
 		F62FBD8B1709EBEFC470703D /* libPods-HZLProjectDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFA2381D08A7287B766C93F8 /* libPods-HZLProjectDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +35,21 @@
 		26C8CE1D1D92A86B008A3CD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		26C8CE201D92A86B008A3CD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		26C8CE221D92A86B008A3CD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		26C8CE431D92AEBA008A3CD9 /* MeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
+		26C8CE441D92AEBA008A3CD9 /* MeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
+		26C8CE491D92AEF6008A3CD9 /* HZLTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZLTabBarViewController.h; sourceTree = "<group>"; };
+		26C8CE4A1D92AEF6008A3CD9 /* HZLTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZLTabBarViewController.m; sourceTree = "<group>"; };
+		26C8CE4C1D92AF06008A3CD9 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		26C8CE4D1D92AF06008A3CD9 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		26C8CE4F1D92AF1D008A3CD9 /* RemindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindViewController.h; sourceTree = "<group>"; };
+		26C8CE501D92AF1D008A3CD9 /* RemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindViewController.m; sourceTree = "<group>"; };
+		26C8CE521D92AF2B008A3CD9 /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
+		26C8CE531D92AF2B008A3CD9 /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
+		26C8CE551D92AF36008A3CD9 /* TrendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrendViewController.h; sourceTree = "<group>"; };
+		26C8CE561D92AF36008A3CD9 /* TrendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrendViewController.m; sourceTree = "<group>"; };
+		26E86E261D92FCAE0041F91D /* HZLSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZLSegment.h; sourceTree = "<group>"; };
+		26E86E271D92FCAE0041F91D /* HZLSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZLSegment.m; sourceTree = "<group>"; };
+		26E86E4C1D9395990041F91D /* API.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
 		3CC10C386C8AC672D268900A /* Pods-HZLProjectDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HZLProjectDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HZLProjectDemo/Pods-HZLProjectDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		AFA2381D08A7287B766C93F8 /* libPods-HZLProjectDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HZLProjectDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -65,6 +87,11 @@
 		26C8CE101D92A86B008A3CD9 /* HZLProjectDemo */ = {
 			isa = PBXGroup;
 			children = (
+				26C8CE2C1D92ACC1008A3CD9 /* BaseContent */,
+				26C8CE2B1D92AC2F008A3CD9 /* Me */,
+				26C8CE2A1D92AC26008A3CD9 /* Remind */,
+				26C8CE291D92AC1D008A3CD9 /* Discover */,
+				26C8CE281D92AC06008A3CD9 /* Trend */,
 				26C8CE141D92A86B008A3CD9 /* AppDelegate.h */,
 				26C8CE151D92A86B008A3CD9 /* AppDelegate.m */,
 				26C8CE171D92A86B008A3CD9 /* ViewController.h */,
@@ -81,9 +108,187 @@
 		26C8CE111D92A86B008A3CD9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				26C8CE2D1D92ACED008A3CD9 /* HeaderFile */,
 				26C8CE121D92A86B008A3CD9 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		26C8CE281D92AC06008A3CD9 /* Trend */ = {
+			isa = PBXGroup;
+			children = (
+				26C8CE421D92AE48008A3CD9 /* Controller */,
+				26C8CE411D92AE3D008A3CD9 /* Model */,
+				26C8CE401D92AE36008A3CD9 /* View */,
+			);
+			path = Trend;
+			sourceTree = "<group>";
+		};
+		26C8CE291D92AC1D008A3CD9 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				26C8CE3F1D92AE2D008A3CD9 /* Model */,
+				26C8CE3E1D92AE24008A3CD9 /* Controller */,
+				26C8CE3D1D92AE1C008A3CD9 /* View */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
+		26C8CE2A1D92AC26008A3CD9 /* Remind */ = {
+			isa = PBXGroup;
+			children = (
+				26C8CE3C1D92AE12008A3CD9 /* Model */,
+				26C8CE3B1D92AE0A008A3CD9 /* Controller */,
+				26C8CE3A1D92ADFE008A3CD9 /* View */,
+			);
+			path = Remind;
+			sourceTree = "<group>";
+		};
+		26C8CE2B1D92AC2F008A3CD9 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				26C8CE391D92ADF5008A3CD9 /* Model */,
+				26C8CE381D92ADED008A3CD9 /* Controller */,
+				26C8CE371D92ADE5008A3CD9 /* View */,
+			);
+			path = Me;
+			sourceTree = "<group>";
+		};
+		26C8CE2C1D92ACC1008A3CD9 /* BaseContent */ = {
+			isa = PBXGroup;
+			children = (
+				26C8CE301D92AD10008A3CD9 /* Model */,
+				26C8CE2F1D92AD08008A3CD9 /* View */,
+				26C8CE2E1D92ACFF008A3CD9 /* Controller */,
+			);
+			path = BaseContent;
+			sourceTree = "<group>";
+		};
+		26C8CE2D1D92ACED008A3CD9 /* HeaderFile */ = {
+			isa = PBXGroup;
+			children = (
+				26E86E4C1D9395990041F91D /* API.h */,
+			);
+			path = HeaderFile;
+			sourceTree = "<group>";
+		};
+		26C8CE2E1D92ACFF008A3CD9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				26C8CE491D92AEF6008A3CD9 /* HZLTabBarViewController.h */,
+				26C8CE4A1D92AEF6008A3CD9 /* HZLTabBarViewController.m */,
+				26C8CE4C1D92AF06008A3CD9 /* BaseViewController.h */,
+				26C8CE4D1D92AF06008A3CD9 /* BaseViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		26C8CE2F1D92AD08008A3CD9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		26C8CE301D92AD10008A3CD9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		26C8CE371D92ADE5008A3CD9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		26C8CE381D92ADED008A3CD9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				26C8CE431D92AEBA008A3CD9 /* MeViewController.h */,
+				26C8CE441D92AEBA008A3CD9 /* MeViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		26C8CE391D92ADF5008A3CD9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		26C8CE3A1D92ADFE008A3CD9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		26C8CE3B1D92AE0A008A3CD9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				26C8CE4F1D92AF1D008A3CD9 /* RemindViewController.h */,
+				26C8CE501D92AF1D008A3CD9 /* RemindViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		26C8CE3C1D92AE12008A3CD9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		26C8CE3D1D92AE1C008A3CD9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		26C8CE3E1D92AE24008A3CD9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				26C8CE521D92AF2B008A3CD9 /* DiscoverViewController.h */,
+				26C8CE531D92AF2B008A3CD9 /* DiscoverViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		26C8CE3F1D92AE2D008A3CD9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		26C8CE401D92AE36008A3CD9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				26E86E261D92FCAE0041F91D /* HZLSegment.h */,
+				26E86E271D92FCAE0041F91D /* HZLSegment.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		26C8CE411D92AE3D008A3CD9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		26C8CE421D92AE48008A3CD9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				26C8CE551D92AF36008A3CD9 /* TrendViewController.h */,
+				26C8CE561D92AF36008A3CD9 /* TrendViewController.m */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		CB548B34FD3AE783252F5751 /* Frameworks */ = {
@@ -224,9 +429,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26E86E281D92FCAE0041F91D /* HZLSegment.m in Sources */,
+				26C8CE451D92AEBA008A3CD9 /* MeViewController.m in Sources */,
+				26C8CE541D92AF2B008A3CD9 /* DiscoverViewController.m in Sources */,
+				26C8CE4E1D92AF06008A3CD9 /* BaseViewController.m in Sources */,
+				26C8CE571D92AF36008A3CD9 /* TrendViewController.m in Sources */,
 				26C8CE191D92A86B008A3CD9 /* ViewController.m in Sources */,
+				26C8CE511D92AF1D008A3CD9 /* RemindViewController.m in Sources */,
 				26C8CE161D92A86B008A3CD9 /* AppDelegate.m in Sources */,
 				26C8CE131D92A86B008A3CD9 /* main.m in Sources */,
+				26C8CE4B1D92AEF6008A3CD9 /* HZLTabBarViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
