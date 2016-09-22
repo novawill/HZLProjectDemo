@@ -27,9 +27,12 @@ HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
 
 @property (nonatomic, strong) NSMutableArray *titleLengthArray;
 
+@property (nonatomic, strong) NSMutableArray *btnArray;
+
 @property (nonatomic, strong) id target;
 
 @property (nonatomic, assign) SEL action;
+
 
 
 
@@ -45,6 +48,15 @@ HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
     BOOL _isFlexibleWidth;
     BOOL _isFirstLayoutSubView;
     
+}
+
+- (NSMutableArray *)btnArray
+{
+    if (!_btnArray) {
+        
+        _btnArray = [[NSMutableArray alloc] init];
+    }
+    return _btnArray;
 }
 
 - (NSMutableArray *)titleLengthArray
@@ -152,7 +164,7 @@ HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
 - (void)creatButton
 {
     NSMutableArray *originXArray = [[NSMutableArray alloc] init];
-    for (int i = 0;i < _items.count;i++) {
+    for (NSUInteger i = 0;i < _items.count;i++) {
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         
@@ -185,8 +197,10 @@ HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
             
         }
         
-        self.autoresizesSubviews = YES;
+        [btn.titleLabel sizeToFit];
         [self addSubview:btn];
+        [_btnArray addObject:btn];
+        
         
     }
 }
@@ -250,11 +264,39 @@ HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
 - (void)addUpTitleLength
 {
     _totalWidth = 0;
-    for (int i = 0;i < _items.count;i++) {
+    [self.titleLengthArray removeAllObjects];
+    for (NSUInteger i = 0;i < _items.count;i++) {
         CGSize titleSize ;
         titleSize = [_items[i] sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:_fontSize]}];
         _totalWidth += titleSize.width;
         [self.titleLengthArray addObject:[NSNumber numberWithDouble:titleSize.width]];
+        
+        
+    }
+}
+- (void)newConstrains
+{
+    NSMutableArray *originXArray = [[NSMutableArray alloc] init];
+    
+    for (NSUInteger i = 0;i < _btnArray.count;i++) {
+        
+        UIButton *btn = _btnArray[i];
+        [btn setTitle:_items[i] forState:UIControlStateNormal];
+        if (i == 0) {
+            
+            [btn setFrame:CGRectMake(FixMargin, ButtonY, [_titleLengthArray[i] doubleValue], self.bounds.size.height - ButtonY)];
+            btn.selected = YES;
+            btn.userInteractionEnabled = NO;
+            [originXArray addObject:[NSNumber numberWithDouble:FixMargin]];
+        }else
+        {
+            CGFloat originX = [originXArray[i -1] doubleValue] + [_titleLengthArray[i-1] doubleValue] + FixMargin;
+            [originXArray addObject:[NSNumber numberWithDouble:originX]];
+            [btn setFrame:CGRectMake(originX, ButtonY, [_titleLengthArray[i] doubleValue], self.bounds.size.height - ButtonY)];
+            
+            
+        }
+        
     }
 }
 - (void)setFontSize:(CGFloat)fontSize
@@ -263,7 +305,7 @@ HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
     _fontSize = fontSize;
     [self addUpTitleLength];
     [self setNewFrame];
-    
+    [self newConstrains];
     
     
 }
