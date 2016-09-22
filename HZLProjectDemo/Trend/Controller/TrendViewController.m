@@ -8,6 +8,15 @@
 
 #import "TrendViewController.h"
 #import "HZLSegment.h"
+HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height);
+HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
+{
+    HZLFrame rect;
+    rect.originX = x;
+    rect.originY = y;
+    rect.SizeHeight = height;
+    return rect;
+}
 @interface TrendViewController ()
 
 @property (nonatomic, strong) UITableView *trendTableView;
@@ -19,24 +28,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-   
-    HZLFrame frame;
-//    frame.originX = 0;
-//    frame.originY = 0;
-//    frame.SizeHeight = 64;
-    frame = CGHZLFrameMake(0, 0, 64);
+//    NSArray *titleArray = @[@"HZL1",@"HZL2",@"HZL3",@"HZL4",@"HZL4",@"HZL4",@"HZL4"];//@[@"推荐 Explore",@"关注 Following",@"视频 Video",@"音乐 Music",@"画册 Gallery",@"往期早茶"];
+//    HZLSegment *seg = [[HZLSegment alloc] initWithFlexibleWidthFrame:CGHZLFrameMake(0, -20, 64) items:titleArray];
     
-    HZLSegment *seg = [[HZLSegment alloc] initWithHZLFrame:frame items:@[@"HZL1",@"HZL2"]];
+    //[self.view addSubview:seg];
     
-    seg.backgroundColor = [UIColor blackColor];
-//    
-    [self.view addSubview:seg];
-    
-   
-//    
-//    [self createTopScrollView];
-//    [self creatTrendTableView];
-//    [self setUpContrains];
+    [self createTopScrollView];
+    [self creatTrendTableView];
+    [self setUpContrains];
     
     self.navigationController.navigationBarHidden = YES;
     
@@ -46,8 +45,19 @@
 {
     _trendScrollView = [[UIScrollView alloc] init];
     _trendScrollView.backgroundColor = [UIColor blackColor];
-   // HZLSegment *segment = [[HZLSegment alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(_trendScrollView.bounds), CGRectGetHeight(_trendScrollView.bounds)) items:<#(NSArray *)#>];
-  //  segment
+    
+    //NSArray *titleArray = @[@"推荐 Explore",@"关注 Following",@"视频 Video",@"音乐 Music",@"画册 Gallery",@"往期早茶"];
+     NSArray *titleArray = @[@"HZL1 ABCD",@"HZL ABCDGF",@"HZ L2",@"HZL2",@"HZL2",@"HZL4",@"HZL4"];
+    HZLSegment *seg = [[HZLSegment alloc] initWithFlexibleWidthFrame:CGHZLFrameMake(0, -20, 64) items:titleArray];
+    seg.backgroundColor = [UIColor blackColor];
+  
+    _trendScrollView.bounces = NO;
+    _trendScrollView.backgroundColor = [UIColor redColor];
+    [_trendScrollView setContentOffset:CGPointMake(0, 0)];
+    _trendScrollView.contentSize = CGSizeMake(seg.bounds.size.width, 0);
+    [_trendScrollView addSubview:seg];
+    
+    
     [self.view addSubview:_trendScrollView];
    
     

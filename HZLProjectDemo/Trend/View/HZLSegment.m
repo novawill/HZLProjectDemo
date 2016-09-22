@@ -7,12 +7,14 @@
 //
 
 #import "HZLSegment.h"
+
 #define ButtonTag 100
 #define SelectedColor [UIColor colorWithRed:0.4 green:0.3 blue:0.7 alpha:1]
 #define ButtonTitleFont 15
 #define ButtonY 22
 #define ButtonTag 100
 #define FixMargin 20
+
 
 @interface HZLSegment()
 
@@ -32,7 +34,8 @@
     CGFloat _totalWidth;
     CGFloat _buttonMargin;
     NSInteger _selectedIndex;
-    
+    BOOL _isFlexibleWidth;
+    BOOL _isFirstLayoutSubView;
     
 }
 
@@ -46,7 +49,7 @@
     
 }
 
-- (instancetype)initWithHZLFrame:(HZLFrame)frame items:(NSArray *)items
+- (instancetype)initWithFlexibleWidthFrame:(HZLFrame)frame items:(NSArray *)items
 {
     CGRect newFrame = CGRectMake(frame.originX, frame.originY, 20, frame.SizeHeight);
     
@@ -54,11 +57,27 @@
         
         
         _items = items;
-#if 1
+        _isFlexibleWidth = YES;
+        /**
+         *  @author 黄梓伦, 16-09-22 17:09:10
+         *
+         *  根据items的各个按钮标题长度自适应HZLSegment的宽度
+         */
          [self addUpTitleLength];
          [self setNewFrame];
-#endif
+        _isFirstLayoutSubView = YES;
         
+    }
+    return self;
+}
+- (instancetype)initWithFrame:(CGRect)frame items:(NSArray *)items
+{
+    if (self = [super initWithFrame:frame]) {
+        
+        
+        _items = items;
+        _isFlexibleWidth = NO;
+        _isFirstLayoutSubView = YES;
     }
     return self;
 }
@@ -74,25 +93,20 @@
 
 - (void)layoutSubviews
 {
-    //[self addUpTitleLength];
+    if (_isFirstLayoutSubView) {
+        if (!_isFlexibleWidth) {
+            
+            [self addUpTitleLength];
+            [self calculateMargin];
+        }
+        
+        
+        [self creatButton];
+        [self creatSlider];
 
-   // [self calculateMargin];
+    }
+}
 
-    [self creatSlider];
-    [self creatButton];
-    
-   
-    
-    
-}
-- (void)drawRect:(CGRect)rect
-{
-    
-    
-    
-    
-    
-}
 - (void)setNewFrame
 {
     
@@ -107,15 +121,16 @@
 
 - (void)creatSlider
 {
+    UIButton *btn = (UIButton *)[self viewWithTag:ButtonTag + _selectedIndex];
+    _slider = [[UIView alloc] initWithFrame:CGRectMake(btn.frame.origin.x, self.bounds.size.height - 4,[_titleLengthArray[_selectedIndex] floatValue], 4)];
     
+    _slider.backgroundColor = SelectedColor;
     
-    
-    
-    
-    
+    [self addSubview:_slider];
 }
 - (void)creatButton
 {
+    NSMutableArray *originXArray = [[NSMutableArray alloc] init];
     for (int i = 0;i < _items.count;i++) {
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -133,15 +148,21 @@
         btn.tag = ButtonTag + i;
         
         [btn addTarget:self action:@selector(onClickedButton:) forControlEvents:UIControlEventTouchUpInside];
-
+        
+       
+        
         if (i == 0) {
             
-            [btn setFrame:CGRectMake(_buttonMargin, ButtonY, [_titleLengthArray[i] floatValue], self.bounds.size.height - ButtonY)];
+            [btn setFrame:CGRectMake(_buttonMargin, ButtonY, [_titleLengthArray[i] doubleValue], self.bounds.size.height - ButtonY)];
             btn.selected = YES;
             btn.userInteractionEnabled = NO;
+            [originXArray addObject:[NSNumber numberWithDouble:_buttonMargin]];
         }else
         {
-            [btn setFrame:CGRectMake(_buttonMargin + i * (_buttonMargin + [_titleLengthArray[i -1 ] floatValue]), ButtonY, [_titleLengthArray[i] floatValue], self.bounds.size.height - ButtonY)];
+            CGFloat originX = [originXArray[i -1] doubleValue] + [_titleLengthArray[i-1] doubleValue] + _buttonMargin;
+            [originXArray addObject:[NSNumber numberWithDouble:originX]];
+            [btn setFrame:CGRectMake(originX, ButtonY, [_titleLengthArray[i] doubleValue], self.bounds.size.height - ButtonY)];
+            
             
         }
 
@@ -156,6 +177,7 @@
 }
 - (void)onClickedButton:(UIButton *)button
 {
+    _isFirstLayoutSubView = NO;
     UIButton *currentBtn = (UIButton *)[self viewWithTag:ButtonTag + _selectedIndex];
     currentBtn.selected = NO;
     currentBtn.userInteractionEnabled = YES;
@@ -163,14 +185,27 @@
     button.selected = YES;
     button.userInteractionEnabled = NO;
     
+    
     _selectedIndex = button.tag - ButtonTag;
+    
+ 
+    
+    [UIView animateWithDuration:0.5 animations:^{
+       
+    
+        _slider.frame = CGRectMake(_slider.frame.origin.x, _slider.frame.origin.y, [_titleLengthArray[_selectedIndex] doubleValue], _slider.frame.size.height);
+
+        _slider.center = CGPointMake(button.center.x, _slider.center.y);
+        
+    }];
     
     if ([self.target respondsToSelector:self.action]) {
         
+
+       
+    [self.target performSelector:self.action withObject:self];
         
-       [self.target performSelector:self.action withObject:self];
-        
-        
+
     };
     
     
@@ -182,29 +217,28 @@
     self.target = target;
     
     self.action = action;
-    
-    
-    
 }
 
 
 - (void)calculateMargin
 {
+    __block CGFloat count;
     
-    _buttonMargin = (self.bounds.size.width - _totalWidth) / (_items.count + 1);
+    [_items enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+     
+        ++count;
+    }];
+    _buttonMargin = (self.bounds.size.width - _totalWidth) / (count + 1);
     
 }
 - (void)addUpTitleLength
 {
     _totalWidth = 0;
     for (int i = 0;i < _items.count;i++) {
-        
-        CGSize titleSize = [_items[i] sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:ButtonTitleFont]}];
-        
+        CGSize titleSize ;
+        titleSize = [_items[i] sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:ButtonTitleFont]}];
         _totalWidth += titleSize.width;
-        
-        [self.titleLengthArray addObject:[NSNumber numberWithFloat:titleSize.width]];
-        
+        [self.titleLengthArray addObject:[NSNumber numberWithDouble:titleSize.width]];
     }
 }
 @end

@@ -52,6 +52,7 @@
 		26E86E4C1D9395990041F91D /* API.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
 		26E86E4D1D9397160041F91D /* HZLPch.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HZLPch.pch; sourceTree = "<group>"; };
 		26E86E4E1D93975C0041F91D /* ThirdPartyLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThirdPartyLibrary.h; sourceTree = "<group>"; };
+		26E86E501D93D87C0041F91D /* HZLFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HZLFrame.h; sourceTree = "<group>"; };
 		3CC10C386C8AC672D268900A /* Pods-HZLProjectDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HZLProjectDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HZLProjectDemo/Pods-HZLProjectDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		AFA2381D08A7287B766C93F8 /* libPods-HZLProjectDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HZLProjectDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -89,6 +90,7 @@
 		26C8CE101D92A86B008A3CD9 /* HZLProjectDemo */ = {
 			isa = PBXGroup;
 			children = (
+				26E86E4F1D93D85F0041F91D /* Other */,
 				26C8CE2C1D92ACC1008A3CD9 /* BaseContent */,
 				26C8CE2B1D92AC2F008A3CD9 /* Me */,
 				26C8CE2A1D92AC26008A3CD9 /* Remind */,
@@ -293,6 +295,14 @@
 				26C8CE561D92AF36008A3CD9 /* TrendViewController.m */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		26E86E4F1D93D85F0041F91D /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				26E86E501D93D87C0041F91D /* HZLFrame.h */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 		CB548B34FD3AE783252F5751 /* Frameworks */ = {
