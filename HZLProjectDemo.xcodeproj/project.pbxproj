@@ -50,6 +50,8 @@
 		26E86E261D92FCAE0041F91D /* HZLSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZLSegment.h; sourceTree = "<group>"; };
 		26E86E271D92FCAE0041F91D /* HZLSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZLSegment.m; sourceTree = "<group>"; };
 		26E86E4C1D9395990041F91D /* API.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
+		26E86E4D1D9397160041F91D /* HZLPch.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HZLPch.pch; sourceTree = "<group>"; };
+		26E86E4E1D93975C0041F91D /* ThirdPartyLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThirdPartyLibrary.h; sourceTree = "<group>"; };
 		3CC10C386C8AC672D268900A /* Pods-HZLProjectDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HZLProjectDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HZLProjectDemo/Pods-HZLProjectDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		AFA2381D08A7287B766C93F8 /* libPods-HZLProjectDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HZLProjectDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -168,6 +170,8 @@
 			isa = PBXGroup;
 			children = (
 				26E86E4C1D9395990041F91D /* API.h */,
+				26E86E4D1D9397160041F91D /* HZLPch.pch */,
+				26E86E4E1D93975C0041F91D /* ThirdPartyLibrary.h */,
 			);
 			path = HeaderFile;
 			sourceTree = "<group>";
@@ -549,6 +553,7 @@
 			baseConfigurationReference = 3CC10C386C8AC672D268900A /* Pods-HZLProjectDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/HZLProjectDemo/HeaderFile/HZLPch.pch";
 				INFOPLIST_FILE = HZLProjectDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HZL.HZLProjectDemo;
@@ -561,6 +566,7 @@
 			baseConfigurationReference = 1F77062DCDC8809FE50472CE /* Pods-HZLProjectDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/HZLProjectDemo/HeaderFile/HZLPch.pch";
 				INFOPLIST_FILE = HZLProjectDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HZL.HZLProjectDemo;

@@ -12,6 +12,8 @@
 #define ButtonTitleFont 15
 #define ButtonY 22
 #define ButtonTag 100
+#define FixMargin 20
+
 @interface HZLSegment()
 
 @property (nonatomic, strong) NSMutableArray *titleLengthArray;
@@ -33,6 +35,7 @@
     
     
 }
+
 - (NSMutableArray *)titleLengthArray
 {
     if (!_titleLengthArray) {
@@ -43,14 +46,18 @@
     
 }
 
-- (instancetype)initWithFrame:(CGRect)frame items:(NSArray *)items
+- (instancetype)initWithHZLFrame:(HZLFrame)frame items:(NSArray *)items
 {
+    CGRect newFrame = CGRectMake(frame.originX, frame.originY, 20, frame.SizeHeight);
     
-    if (self = [super initWithFrame:frame]) {
+    if (self = [super initWithFrame:newFrame]) {
         
         
         _items = items;
-       
+#if 1
+         [self addUpTitleLength];
+         [self setNewFrame];
+#endif
         
     }
     return self;
@@ -67,15 +74,37 @@
 
 - (void)layoutSubviews
 {
-    [self addUpTitleLength];
-    [self calculateMargin];
+    //[self addUpTitleLength];
+
+   // [self calculateMargin];
+
     [self creatSlider];
     [self creatButton];
+    
+   
+    
+    
+}
+- (void)drawRect:(CGRect)rect
+{
+    
     
     
     
     
 }
+- (void)setNewFrame
+{
+    
+    _buttonMargin = FixMargin;
+    CGFloat newWidth = FixMargin * (_items.count +1) + _totalWidth;
+    CGRect rect = CGRectMake(self.frame.origin.x, self.frame.origin.y, newWidth, self.frame.size.height);
+    
+    self.frame = rect;
+    
+}
+
+
 - (void)creatSlider
 {
     
@@ -104,7 +133,7 @@
         btn.tag = ButtonTag + i;
         
         [btn addTarget:self action:@selector(onClickedButton:) forControlEvents:UIControlEventTouchUpInside];
-        
+
         if (i == 0) {
             
             [btn setFrame:CGRectMake(_buttonMargin, ButtonY, [_titleLengthArray[i] floatValue], self.bounds.size.height - ButtonY)];
@@ -115,11 +144,14 @@
             [btn setFrame:CGRectMake(_buttonMargin + i * (_buttonMargin + [_titleLengthArray[i -1 ] floatValue]), ButtonY, [_titleLengthArray[i] floatValue], self.bounds.size.height - ButtonY)];
             
         }
+
+        
+        
+
         
         self.autoresizesSubviews = YES;
         [self addSubview:btn];
-       
-    
+
     }
 }
 - (void)onClickedButton:(UIButton *)button
@@ -155,6 +187,7 @@
     
 }
 
+
 - (void)calculateMargin
 {
     
@@ -170,7 +203,7 @@
         
         _totalWidth += titleSize.width;
         
-        [self.titleLengthArray addObject:[NSNumber numberWithFloat:_totalWidth]];
+        [self.titleLengthArray addObject:[NSNumber numberWithFloat:titleSize.width]];
         
     }
 }

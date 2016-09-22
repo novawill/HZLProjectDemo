@@ -1,0 +1,25 @@
+//
+//  HZLPch.pch
+//  HZLProjectDemo
+//
+//  Created by 黄梓伦 on 9/22/16.
+//  Copyright © 2016 黄梓伦. All rights reserved.
+//
+
+#ifndef HZLPch_pch
+#define HZLPch_pch
+
+#import "API.h"
+#import "ThirdPartyLibrary.h"
+
+
+//Screen Width & Height
+
+#define ScreenH [UIScreen mainScreen].bounds.size.height
+
+#define ScreenW [UIScreen mainScreen].bounds.size.width
+
+
+
+
+#endif /* HZLPch_pch */
