@@ -8,20 +8,10 @@
 
 #import "TrendViewController.h"
 #import "HZLScrollView.h"
+#import "HZLScrollView2.h"
+@interface TrendViewController ()<UIScrollViewDelegate>
 
-#if 0 //因为HZLSegment.h文件中定义函数，会导致重定义符号的链接器错误，所以将定义写在这里，或者放在HZLSegment.m中
-HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
-{
-    HZLFrame rect;
-    rect.originX = x;
-    rect.originY = y;
-    rect.SizeHeight = height;
-    return rect;
-}
-#endif
-@interface TrendViewController ()
-
-@property (nonatomic, strong) UITableView *trendTableView;
+@property (nonatomic, strong) HZLScrollView2 *trendTableViews;
 @property (nonatomic, strong) HZLScrollView *trendScrollView;
 @end
 
@@ -29,14 +19,21 @@ HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+           
+        [self createTopScrollView];
+        [self creatTrendTableViews];
+        [self setUpContrains];
+    /**
+     *  @author 黄梓伦, 16-09-24 00:09:03
+     *
+     *  因为要异步执行约束，约束还未完成，就执行下面的set方法，因而_trendScrollView的bounds未定，所以下面的方法使得_trendScrollView里的segment的布局会产生偏差。解决的方法是不能再这里执行，可以放在scollView的协议方法中，因为那时约束已经建好。2.或者不要使用约束。3.或者在HZLScrollView实现中将HZLSegment的高固定，在HZLScrollView的setSelectedIndex方法中将HZLScrollView的宽度替代为一固定值。4.将该方法放在viewdidAppera中
+     */
+#if 0
+    _trendScrollView.selectedIndex = 1;
+#endif
     
-
-    
-    [self createTopScrollView];
-    [self creatTrendTableView];
-    [self setUpContrains];
-    
-    self.navigationController.navigationBarHidden = YES;
+   
+       self.navigationController.navigationBarHidden = YES;
     
 }
 
@@ -46,7 +43,7 @@ HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
     _trendScrollView = [[HZLScrollView alloc] initWithFrame:CGRectMake(0, 0, 0, 64) items:titleArray];
     _trendScrollView.backgroundColor = [UIColor blackColor];
     
-
+   
     [self.view addSubview:_trendScrollView];
    
     
@@ -61,36 +58,72 @@ HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
         make.left.equalTo(weakSelf.view);
         make.right.equalTo(weakSelf.view);
         make.height.equalTo(@64);
-        make.bottom.equalTo(_trendTableView.mas_top);
+        make.bottom.equalTo(_trendTableViews.mas_top);
         
     }];
     
-    [_trendTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_trendTableViews mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.left.equalTo(weakSelf.view);
         make.right.equalTo(weakSelf.view);
         make.bottom.equalTo(weakSelf.view);
         
     }];
-    
-
-
-    
-    
-    
 }
-- (void)creatTrendTableView
+- (void)viewDidAppear:(BOOL)animated
+{
+    [_trendScrollView addTarget:self action:@selector(changeView)];
+}
+- (void)changeView
 {
     
-    _trendTableView = [[UITableView alloc] init];
-    _trendTableView.backgroundColor = [UIColor blueColor];
-    
-   [self.view addSubview:_trendTableView];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        _trendTableViews.selectedIndex = _trendScrollView.selectedIndex;
+        
+    });
 
+
+}
+- (void)creatTrendTableViews
+{
+    
+    UIView *exploreView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 20)];
+    exploreView.backgroundColor = [UIColor redColor];
+    
+    UIView *followingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 20)];
+    followingView.backgroundColor = [UIColor blueColor];
+    
+    UIView *videoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 20)];
+    videoView.backgroundColor = [UIColor orangeColor];
+    
+    UIView *musicView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 20)];
+    musicView.backgroundColor = [UIColor grayColor];
+    
+    UIView *galleryView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 20)];
+    galleryView.backgroundColor = [UIColor whiteColor];
+    
+    UIView *moringTeaView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 20)];
+    moringTeaView.backgroundColor = [UIColor greenColor];
+    
+    NSArray *array = @[exploreView,followingView,videoView,musicView,galleryView,moringTeaView];
     
     
-    
-    
+   _trendTableViews = [[HZLScrollView2 alloc] initWithFrame:CGRectMake(0, 64, 100, 50) items:array];
+    _trendTableViews.delegate = self;
+    _trendTableViews.backgroundColor = [UIColor orangeColor];
+    [self.view addSubview:_trendTableViews];
+   
+}
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat index = floor(scrollView.contentOffset.x / scrollView.bounds.size.width);
+    if (index < 0) {
+        
+        index = 0;
+    }
+    _trendScrollView.selectedIndex2 = index;
+   
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

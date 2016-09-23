@@ -20,6 +20,7 @@
 
 @property (nonatomic, strong) UIColor *titleColor;
 
+@property (nonatomic, assign) NSInteger selectedIndex2;
 
 - (instancetype)initWithFrame:(CGRect)frame items:(NSArray *)items;
 

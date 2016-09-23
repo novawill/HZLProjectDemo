@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		263197501D955571009DF111 /* HZLScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2631974D1D955571009DF111 /* HZLScrollView.m */; };
-		263197511D955571009DF111 /* HZLSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 2631974F1D955571009DF111 /* HZLSegment.m */; };
+		263197561D955E7D009DF111 /* HZLScrollView2.m in Sources */ = {isa = PBXBuildFile; fileRef = 263197531D955E7D009DF111 /* HZLScrollView2.m */; };
+		263197571D955E7D009DF111 /* HZLSegment2.m in Sources */ = {isa = PBXBuildFile; fileRef = 263197551D955E7D009DF111 /* HZLSegment2.m */; };
+		2631975D1D956228009DF111 /* HZLFrame2.m in Sources */ = {isa = PBXBuildFile; fileRef = 2631975C1D956228009DF111 /* HZLFrame2.m */; };
+		263197621D957C83009DF111 /* HZLScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2631975F1D957C83009DF111 /* HZLScrollView.m */; };
+		263197631D957C83009DF111 /* HZLSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 263197611D957C83009DF111 /* HZLSegment.m */; };
+		263197651D95830F009DF111 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 263197641D95830F009DF111 /* Reveal.framework */; };
 		26C8CE131D92A86B008A3CD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE121D92A86B008A3CD9 /* main.m */; };
 		26C8CE161D92A86B008A3CD9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE151D92A86B008A3CD9 /* AppDelegate.m */; };
 		26C8CE191D92A86B008A3CD9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE181D92A86B008A3CD9 /* ViewController.m */; };
@@ -26,10 +30,17 @@
 
 /* Begin PBXFileReference section */
 		1F77062DCDC8809FE50472CE /* Pods-HZLProjectDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HZLProjectDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-HZLProjectDemo/Pods-HZLProjectDemo.release.xcconfig"; sourceTree = "<group>"; };
-		2631974C1D955571009DF111 /* HZLScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZLScrollView.h; sourceTree = "<group>"; };
-		2631974D1D955571009DF111 /* HZLScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZLScrollView.m; sourceTree = "<group>"; };
-		2631974E1D955571009DF111 /* HZLSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZLSegment.h; sourceTree = "<group>"; };
-		2631974F1D955571009DF111 /* HZLSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZLSegment.m; sourceTree = "<group>"; };
+		263197521D955E7D009DF111 /* HZLScrollView2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZLScrollView2.h; sourceTree = "<group>"; };
+		263197531D955E7D009DF111 /* HZLScrollView2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZLScrollView2.m; sourceTree = "<group>"; };
+		263197541D955E7D009DF111 /* HZLSegment2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZLSegment2.h; sourceTree = "<group>"; };
+		263197551D955E7D009DF111 /* HZLSegment2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZLSegment2.m; sourceTree = "<group>"; };
+		2631975B1D956228009DF111 /* HZLFrame2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZLFrame2.h; sourceTree = "<group>"; };
+		2631975C1D956228009DF111 /* HZLFrame2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZLFrame2.m; sourceTree = "<group>"; };
+		2631975E1D957C83009DF111 /* HZLScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZLScrollView.h; sourceTree = "<group>"; };
+		2631975F1D957C83009DF111 /* HZLScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZLScrollView.m; sourceTree = "<group>"; };
+		263197601D957C83009DF111 /* HZLSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZLSegment.h; sourceTree = "<group>"; };
+		263197611D957C83009DF111 /* HZLSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZLSegment.m; sourceTree = "<group>"; };
+		263197641D95830F009DF111 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		26C8CE0E1D92A86B008A3CD9 /* HZLProjectDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HZLProjectDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C8CE121D92A86B008A3CD9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		26C8CE141D92A86B008A3CD9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -55,7 +66,6 @@
 		26E86E4C1D9395990041F91D /* API.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
 		26E86E4D1D9397160041F91D /* HZLPch.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HZLPch.pch; sourceTree = "<group>"; };
 		26E86E4E1D93975C0041F91D /* ThirdPartyLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThirdPartyLibrary.h; sourceTree = "<group>"; };
-		26E86E501D93D87C0041F91D /* HZLFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HZLFrame.h; sourceTree = "<group>"; };
 		3CC10C386C8AC672D268900A /* Pods-HZLProjectDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HZLProjectDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HZLProjectDemo/Pods-HZLProjectDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		AFA2381D08A7287B766C93F8 /* libPods-HZLProjectDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HZLProjectDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -66,6 +76,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F62FBD8B1709EBEFC470703D /* libPods-HZLProjectDemo.a in Frameworks */,
+				263197651D95830F009DF111 /* Reveal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,10 +289,14 @@
 		26C8CE401D92AE36008A3CD9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2631974C1D955571009DF111 /* HZLScrollView.h */,
-				2631974D1D955571009DF111 /* HZLScrollView.m */,
-				2631974E1D955571009DF111 /* HZLSegment.h */,
-				2631974F1D955571009DF111 /* HZLSegment.m */,
+				2631975E1D957C83009DF111 /* HZLScrollView.h */,
+				2631975F1D957C83009DF111 /* HZLScrollView.m */,
+				263197601D957C83009DF111 /* HZLSegment.h */,
+				263197611D957C83009DF111 /* HZLSegment.m */,
+				263197521D955E7D009DF111 /* HZLScrollView2.h */,
+				263197531D955E7D009DF111 /* HZLScrollView2.m */,
+				263197541D955E7D009DF111 /* HZLSegment2.h */,
+				263197551D955E7D009DF111 /* HZLSegment2.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -305,7 +320,9 @@
 		26E86E4F1D93D85F0041F91D /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				26E86E501D93D87C0041F91D /* HZLFrame.h */,
+				263197641D95830F009DF111 /* Reveal.framework */,
+				2631975B1D956228009DF111 /* HZLFrame2.h */,
+				2631975C1D956228009DF111 /* HZLFrame2.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -450,14 +467,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				26C8CE451D92AEBA008A3CD9 /* MeViewController.m in Sources */,
+				263197571D955E7D009DF111 /* HZLSegment2.m in Sources */,
 				26C8CE541D92AF2B008A3CD9 /* DiscoverViewController.m in Sources */,
-				263197511D955571009DF111 /* HZLSegment.m in Sources */,
 				26C8CE4E1D92AF06008A3CD9 /* BaseViewController.m in Sources */,
 				26C8CE571D92AF36008A3CD9 /* TrendViewController.m in Sources */,
 				26C8CE191D92A86B008A3CD9 /* ViewController.m in Sources */,
 				26C8CE511D92AF1D008A3CD9 /* RemindViewController.m in Sources */,
-				263197501D955571009DF111 /* HZLScrollView.m in Sources */,
+				2631975D1D956228009DF111 /* HZLFrame2.m in Sources */,
+				263197621D957C83009DF111 /* HZLScrollView.m in Sources */,
 				26C8CE161D92A86B008A3CD9 /* AppDelegate.m in Sources */,
+				263197631D957C83009DF111 /* HZLSegment.m in Sources */,
+				263197561D955E7D009DF111 /* HZLScrollView2.m in Sources */,
 				26C8CE131D92A86B008A3CD9 /* main.m in Sources */,
 				26C8CE4B1D92AEF6008A3CD9 /* HZLTabBarViewController.m in Sources */,
 			);
@@ -571,9 +591,62 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HZLProjectDemo/Other",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/HZLProjectDemo/HeaderFile/HZLPch.pch";
 				INFOPLIST_FILE = HZLProjectDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"AVOSCloud\"",
+					"-l\"FMDB\"",
+					"-l\"KVNProgress\"",
+					"-l\"MBProgressHUD\"",
+					"-l\"MJRefresh\"",
+					"-l\"Masonry\"",
+					"-l\"SDWebImage\"",
+					"-l\"SVProgressHUD\"",
+					"-l\"YYModel\"",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"pop\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GLKit\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-ObjC",
+					"-lz",
+					"-framework",
+					Reveal,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.HZL.HZLProjectDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -585,9 +658,62 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HZLProjectDemo/Other",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/HZLProjectDemo/HeaderFile/HZLPch.pch";
 				INFOPLIST_FILE = HZLProjectDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"AVOSCloud\"",
+					"-l\"FMDB\"",
+					"-l\"KVNProgress\"",
+					"-l\"MBProgressHUD\"",
+					"-l\"MJRefresh\"",
+					"-l\"Masonry\"",
+					"-l\"SDWebImage\"",
+					"-l\"SVProgressHUD\"",
+					"-l\"YYModel\"",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"pop\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GLKit\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-ObjC",
+					"-lz",
+					"-framework",
+					Reveal,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.HZL.HZLProjectDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

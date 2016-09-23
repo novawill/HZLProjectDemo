@@ -45,7 +45,7 @@
 {
     
     
-    _seg = [[HZLSegment alloc] initWithFlexibleWidthFrame:CGHZLFrameMake(self.bounds.origin.x, self.bounds.origin.y, CGRectGetHeight(self.bounds)) items:_items];
+    _seg = [[HZLSegment alloc] initWithFlexibleWidthFrame:CGHZLFrameMake(self.bounds.origin.x, -20, CGRectGetHeight(self.bounds)) items:_items];
     [_seg addTarget:self withAction:@selector(onclicked)];
     [self addSubview:_seg];
     self.contentSize = CGSizeMake(CGRectGetWidth(_seg.frame), -5);
@@ -90,16 +90,83 @@
 }
 - (void)setSelectedIndex:(NSInteger)selectedIndex
 {
+    
+    
     [self layoutSubviews];
+    if (selectedIndex > _items.count - 1) {
+        
+        NSException *exception = [[NSException alloc] initWithName:@"数组越界" reason:@"selectedIndex大于items数组个数" userInfo:nil];
+        @throw exception;
+    }
     _selectedIndex = selectedIndex;
     _seg.selectedIndex = selectedIndex;
     
 }
-- (void)onclicked
+- (void)setSelectedIndex2:(NSInteger)selectedIndex2
 {
     
+    [self layoutSubviews];
+    if (selectedIndex2 > _items.count - 1) {
+        
+        NSException *exception = [[NSException alloc] initWithName:@"数组越界" reason:@"selectedIndex大于items数组个数" userInfo:nil];
+        @throw exception;
+    }
+    _selectedIndex = selectedIndex2;
+    _seg.selectedIndex2 = selectedIndex2;
+    [self updateCenter];
     
     
+}
+- (void)updateCenter
+{
+    _selectedIndex2 = _seg.selectedIndex2;
+    
+    CGFloat onClickedXToRight = self.contentSize.width - _seg.currentXOffset;
+    
+    
+    CGFloat halfWidth = self.frame.size.width / 2;
+    
+    if ((_seg.currentXOffset >= halfWidth) && (onClickedXToRight >= halfWidth)) {
+        
+        
+        CGFloat onClickedToLeft = _seg.currentXOffset - self.contentOffset.x;
+        CGFloat neededOffset = halfWidth - onClickedToLeft;
+        CGFloat currentOffsetY = self.contentOffset.y;
+        CGFloat currentOffsetX = self.contentOffset.x;
+        currentOffsetX -= neededOffset;
+        __weak typeof(self) weakSelf = self;
+        [UIView animateWithDuration:0.5 animations:^{
+            
+            [weakSelf setContentOffset:CGPointMake(currentOffsetX, currentOffsetY)];
+        }];
+        
+        
+    }else if (_seg.currentXOffset < halfWidth){
+        
+        
+        __weak typeof(self) weakSelf = self;
+        CGFloat currentOffsetY = self.contentOffset.y;
+        [UIView animateWithDuration:0.5 animations:^{
+            
+            [weakSelf setContentOffset:CGPointMake(0, currentOffsetY)];
+        }];
+    }else
+    {
+        
+        __weak typeof(self) weakSelf = self;
+        CGFloat currentOffsetX = self.contentOffset.x;
+        CGFloat currentOffsetY = self.contentOffset.y;
+        currentOffsetX = self.contentSize.width - self.frame.size.width;
+        [UIView animateWithDuration:0.5 animations:^{
+            
+            [weakSelf setContentOffset:CGPointMake(currentOffsetX, currentOffsetY)];
+        }];
+        
+        
+    }
+}
+- (void)onclicked
+{
     _selectedIndex = _seg.selectedIndex;
     
     CGFloat onClickedXToRight = self.contentSize.width - _seg.currentXOffset;

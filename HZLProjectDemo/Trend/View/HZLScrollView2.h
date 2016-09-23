@@ -1,0 +1,29 @@
+//
+//  HZLScrollView2.h
+//  TestScrollTitileBar
+//
+//  Created by 黄梓伦 on 9/23/16.
+//  Copyright © 2016 黄梓伦. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface HZLScrollView2 : UIScrollView
+
+@property (nonatomic, strong) NSArray *items;
+
+@property (nonatomic, assign) NSInteger selectedIndex;
+
+@property (nonatomic, assign) CGFloat fontSize;
+
+@property (nonatomic, strong) UIColor *selectedColor;
+
+@property (nonatomic, strong) UIColor *titleColor;
+
+
+
+- (instancetype)initWithFrame:(CGRect)frame items:(NSArray *)items;
+
+- (void)addTarget:(id)target action:(SEL)action;
+
+@end

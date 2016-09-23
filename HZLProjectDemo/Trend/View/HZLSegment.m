@@ -10,17 +10,8 @@
 
 #define ButtonTag 100
 #define DefaultColor [UIColor colorWithRed:0.4 green:0.3 blue:0.7 alpha:1]
-#define ButtonY 22
 #define ButtonTag 100
 #define FixMargin 20
-HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
-{
-    HZLFrame rect;
-    rect.originX = x;
-    rect.originY = y;
-    rect.SizeHeight = height;
-    return rect;
-}
 
 
 @interface HZLSegment()
@@ -45,6 +36,7 @@ HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
     CGFloat _totalWidth;
     CGFloat _buttonMargin;
     NSInteger _selectedIndex;
+    CGFloat _buttonY;
     BOOL _isFlexibleWidth;
     BOOL _isFirstLayoutSubView;
     
@@ -81,6 +73,7 @@ HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
         _fontSize = fontSize;
         _selectedColor = DefaultColor;
         _titleColor = [UIColor grayColor];
+        _buttonY = 22;
         /**
          *  @author 黄梓伦, 16-09-22 17:09:10
          *
@@ -101,6 +94,7 @@ HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
         
         _items = items;
         _fontSize = 15;
+        _buttonY = 22;
         _selectedColor = DefaultColor;
         _titleColor = [UIColor grayColor];
         _isFlexibleWidth = NO;
@@ -142,13 +136,10 @@ HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
 
 - (void)setNewFrame
 {
-    
     _buttonMargin = FixMargin;
     CGFloat newWidth = FixMargin * (_items.count +1) + _totalWidth;
     CGRect rect = CGRectMake(self.frame.origin.x, self.frame.origin.y, newWidth, self.frame.size.height);
-    
     self.frame = rect;
-    
 }
 
 
@@ -184,7 +175,7 @@ HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
         
         if (i == 0) {
             
-            [btn setFrame:CGRectMake(FixMargin, ButtonY, [_titleLengthArray[i] doubleValue], self.bounds.size.height - ButtonY)];
+            [btn setFrame:CGRectMake(FixMargin, _buttonY, [_titleLengthArray[i] doubleValue], self.bounds.size.height - _buttonY)];
             btn.selected = YES;
             btn.userInteractionEnabled = NO;
             [originXArray addObject:[NSNumber numberWithDouble:FixMargin]];
@@ -192,21 +183,24 @@ HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
         {
             CGFloat originX = [originXArray[i -1] doubleValue] + [_titleLengthArray[i-1] doubleValue] + FixMargin;
             [originXArray addObject:[NSNumber numberWithDouble:originX]];
-            [btn setFrame:CGRectMake(originX, ButtonY, [_titleLengthArray[i] doubleValue], self.bounds.size.height - ButtonY)];
-            
-            
+            [btn setFrame:CGRectMake(originX, _buttonY, [_titleLengthArray[i] doubleValue], self.bounds.size.height - _buttonY)];
         }
-        
-        [btn.titleLabel sizeToFit];
+       
         [self addSubview:btn];
         [self.btnArray addObject:btn];
-        
+        _isFirstLayoutSubView = NO;
         
     }
 }
 - (void)setSelectedIndex:(NSInteger)selectedIndex
 {
     [self layoutSubviews];
+    if (selectedIndex > _items.count -1) {
+        
+        NSException *exception = [[NSException alloc] initWithName:@"数组越界" reason:@"selectedIndex大于items数组个数" userInfo:nil];
+        @throw exception;
+    }
+    
     UIButton *currentBtn = _btnArray[_selectedIndex];
     currentBtn.selected = NO;
     currentBtn.userInteractionEnabled = YES;
@@ -215,6 +209,51 @@ HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
     [self onClickedButton:choosedBtn];
     _selectedIndex = selectedIndex;
 
+}
+- (void)setSelectedIndex2:(NSInteger)selectedIndex2
+{
+    
+    [self layoutSubviews];
+    if (selectedIndex2 > _items.count -1) {
+        
+        NSException *exception = [[NSException alloc] initWithName:@"数组越界" reason:@"selectedIndex2大于items数组个数" userInfo:nil];
+        @throw exception;
+    }
+    
+    UIButton *currentBtn = _btnArray[_selectedIndex2];
+    currentBtn.selected = NO;
+    currentBtn.userInteractionEnabled = YES;
+    UIButton *choosedBtn = _btnArray[selectedIndex2];
+    
+    [self onClickedButton2:choosedBtn];
+    _selectedIndex = selectedIndex2;
+    
+}
+- (void)onClickedButton2:(UIButton *)button
+{
+    _isFirstLayoutSubView = NO;
+    UIButton *currentBtn = (UIButton *)[self viewWithTag:ButtonTag + _selectedIndex2];
+    currentBtn.selected = NO;
+    currentBtn.userInteractionEnabled = YES;
+    
+    button.selected = YES;
+    button.userInteractionEnabled = NO;
+    
+    _selectedIndex2 = button.tag - ButtonTag;
+    
+    self.currentXOffset = button.center.x;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        
+        
+        _slider.frame = CGRectMake(_slider.frame.origin.x, _slider.frame.origin.y, [_titleLengthArray[_selectedIndex] doubleValue], _slider.frame.size.height);
+        
+        _slider.center = CGPointMake(button.center.x, _slider.center.y);
+        
+    }];
+
+    
+    
 }
 - (void)onClickedButton:(UIButton *)button
 {
@@ -225,8 +264,6 @@ HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
     
     button.selected = YES;
     button.userInteractionEnabled = NO;
-    
-    
     
     _selectedIndex = button.tag - ButtonTag;
     

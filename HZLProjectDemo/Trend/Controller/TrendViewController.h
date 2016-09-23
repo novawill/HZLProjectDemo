@@ -10,4 +10,8 @@
 
 @interface TrendViewController : UIViewController
 
+@property (nonatomic, strong) NSArray *viewArrays;
+
+@property (nonatomic, strong) NSArray *titleArrays;
+
 @end
