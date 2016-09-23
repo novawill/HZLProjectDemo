@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		263197501D955571009DF111 /* HZLScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2631974D1D955571009DF111 /* HZLScrollView.m */; };
+		263197511D955571009DF111 /* HZLSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 2631974F1D955571009DF111 /* HZLSegment.m */; };
 		26C8CE131D92A86B008A3CD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE121D92A86B008A3CD9 /* main.m */; };
 		26C8CE161D92A86B008A3CD9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE151D92A86B008A3CD9 /* AppDelegate.m */; };
 		26C8CE191D92A86B008A3CD9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE181D92A86B008A3CD9 /* ViewController.m */; };
@@ -19,12 +21,15 @@
 		26C8CE511D92AF1D008A3CD9 /* RemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE501D92AF1D008A3CD9 /* RemindViewController.m */; };
 		26C8CE541D92AF2B008A3CD9 /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE531D92AF2B008A3CD9 /* DiscoverViewController.m */; };
 		26C8CE571D92AF36008A3CD9 /* TrendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE561D92AF36008A3CD9 /* TrendViewController.m */; };
-		26E86E281D92FCAE0041F91D /* HZLSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E86E271D92FCAE0041F91D /* HZLSegment.m */; };
 		F62FBD8B1709EBEFC470703D /* libPods-HZLProjectDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFA2381D08A7287B766C93F8 /* libPods-HZLProjectDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1F77062DCDC8809FE50472CE /* Pods-HZLProjectDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HZLProjectDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-HZLProjectDemo/Pods-HZLProjectDemo.release.xcconfig"; sourceTree = "<group>"; };
+		2631974C1D955571009DF111 /* HZLScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZLScrollView.h; sourceTree = "<group>"; };
+		2631974D1D955571009DF111 /* HZLScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZLScrollView.m; sourceTree = "<group>"; };
+		2631974E1D955571009DF111 /* HZLSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZLSegment.h; sourceTree = "<group>"; };
+		2631974F1D955571009DF111 /* HZLSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZLSegment.m; sourceTree = "<group>"; };
 		26C8CE0E1D92A86B008A3CD9 /* HZLProjectDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HZLProjectDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C8CE121D92A86B008A3CD9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		26C8CE141D92A86B008A3CD9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -47,8 +52,6 @@
 		26C8CE531D92AF2B008A3CD9 /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
 		26C8CE551D92AF36008A3CD9 /* TrendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrendViewController.h; sourceTree = "<group>"; };
 		26C8CE561D92AF36008A3CD9 /* TrendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrendViewController.m; sourceTree = "<group>"; };
-		26E86E261D92FCAE0041F91D /* HZLSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZLSegment.h; sourceTree = "<group>"; };
-		26E86E271D92FCAE0041F91D /* HZLSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZLSegment.m; sourceTree = "<group>"; };
 		26E86E4C1D9395990041F91D /* API.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
 		26E86E4D1D9397160041F91D /* HZLPch.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HZLPch.pch; sourceTree = "<group>"; };
 		26E86E4E1D93975C0041F91D /* ThirdPartyLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThirdPartyLibrary.h; sourceTree = "<group>"; };
@@ -275,8 +278,10 @@
 		26C8CE401D92AE36008A3CD9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				26E86E261D92FCAE0041F91D /* HZLSegment.h */,
-				26E86E271D92FCAE0041F91D /* HZLSegment.m */,
+				2631974C1D955571009DF111 /* HZLScrollView.h */,
+				2631974D1D955571009DF111 /* HZLScrollView.m */,
+				2631974E1D955571009DF111 /* HZLSegment.h */,
+				2631974F1D955571009DF111 /* HZLSegment.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -444,13 +449,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26E86E281D92FCAE0041F91D /* HZLSegment.m in Sources */,
 				26C8CE451D92AEBA008A3CD9 /* MeViewController.m in Sources */,
 				26C8CE541D92AF2B008A3CD9 /* DiscoverViewController.m in Sources */,
+				263197511D955571009DF111 /* HZLSegment.m in Sources */,
 				26C8CE4E1D92AF06008A3CD9 /* BaseViewController.m in Sources */,
 				26C8CE571D92AF36008A3CD9 /* TrendViewController.m in Sources */,
 				26C8CE191D92A86B008A3CD9 /* ViewController.m in Sources */,
 				26C8CE511D92AF1D008A3CD9 /* RemindViewController.m in Sources */,
+				263197501D955571009DF111 /* HZLScrollView.m in Sources */,
 				26C8CE161D92A86B008A3CD9 /* AppDelegate.m in Sources */,
 				26C8CE131D92A86B008A3CD9 /* main.m in Sources */,
 				26C8CE4B1D92AEF6008A3CD9 /* HZLTabBarViewController.m in Sources */,

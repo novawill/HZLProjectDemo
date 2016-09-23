@@ -7,7 +7,7 @@
 //
 
 #import "TrendViewController.h"
-#import "HZLSegment.h"
+#import "HZLScrollView.h"
 
 #if 0 //因为HZLSegment.h文件中定义函数，会导致重定义符号的链接器错误，所以将定义写在这里，或者放在HZLSegment.m中
 HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
@@ -22,7 +22,7 @@ HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
 @interface TrendViewController ()
 
 @property (nonatomic, strong) UITableView *trendTableView;
-@property (nonatomic, strong) UIScrollView *trendScrollView;
+@property (nonatomic, strong) HZLScrollView *trendScrollView;
 @end
 
 @implementation TrendViewController
@@ -42,20 +42,11 @@ HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
 
 - (void)createTopScrollView
 {
-    _trendScrollView = [[UIScrollView alloc] init];
+     NSArray *titleArray = @[@"推荐 Explore",@"关注 Following",@"视频 Video",@"音乐 Music",@"画册 Gallery",@"往期早茶"];
+    _trendScrollView = [[HZLScrollView alloc] initWithFrame:CGRectMake(0, 0, 0, 64) items:titleArray];
     _trendScrollView.backgroundColor = [UIColor blackColor];
     
-    NSArray *titleArray = @[@"推荐 Explore",@"关注 Following",@"视频 Video",@"音乐 Music",@"画册 Gallery",@"往期早茶"];
-    HZLSegment *seg = [[HZLSegment alloc] initWithFlexibleWidthFrame:HZLFrameMake(0, -20, 64) items:titleArray];
-    seg.backgroundColor = [UIColor blackColor];
-  
-    _trendScrollView.bounces = NO;
-    _trendScrollView.backgroundColor = [UIColor redColor];
-    _trendScrollView.bounds = CGRectMake(0, 0, CGRectGetWidth(_trendScrollView.bounds), CGRectGetHeight(_trendScrollView.bounds));
-    _trendScrollView.contentSize = CGSizeMake(seg.bounds.size.width, -5);
-    [_trendScrollView addSubview:seg];
-    
-    
+
     [self.view addSubview:_trendScrollView];
    
     

@@ -199,10 +199,22 @@ HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
         
         [btn.titleLabel sizeToFit];
         [self addSubview:btn];
-        [_btnArray addObject:btn];
+        [self.btnArray addObject:btn];
         
         
     }
+}
+- (void)setSelectedIndex:(NSInteger)selectedIndex
+{
+    [self layoutSubviews];
+    UIButton *currentBtn = _btnArray[_selectedIndex];
+    currentBtn.selected = NO;
+    currentBtn.userInteractionEnabled = YES;
+    UIButton *choosedBtn = _btnArray[selectedIndex];
+    
+    [self onClickedButton:choosedBtn];
+    _selectedIndex = selectedIndex;
+
 }
 - (void)onClickedButton:(UIButton *)button
 {
@@ -215,9 +227,10 @@ HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
     button.userInteractionEnabled = NO;
     
     
+    
     _selectedIndex = button.tag - ButtonTag;
     
-    
+    self.currentXOffset = button.center.x;
     
     [UIView animateWithDuration:0.5 animations:^{
         
@@ -274,38 +287,14 @@ HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height)
         
     }
 }
-- (void)newConstrains
-{
-    NSMutableArray *originXArray = [[NSMutableArray alloc] init];
-    
-    for (NSUInteger i = 0;i < _btnArray.count;i++) {
-        
-        UIButton *btn = _btnArray[i];
-        [btn setTitle:_items[i] forState:UIControlStateNormal];
-        if (i == 0) {
-            
-            [btn setFrame:CGRectMake(FixMargin, ButtonY, [_titleLengthArray[i] doubleValue], self.bounds.size.height - ButtonY)];
-            btn.selected = YES;
-            btn.userInteractionEnabled = NO;
-            [originXArray addObject:[NSNumber numberWithDouble:FixMargin]];
-        }else
-        {
-            CGFloat originX = [originXArray[i -1] doubleValue] + [_titleLengthArray[i-1] doubleValue] + FixMargin;
-            [originXArray addObject:[NSNumber numberWithDouble:originX]];
-            [btn setFrame:CGRectMake(originX, ButtonY, [_titleLengthArray[i] doubleValue], self.bounds.size.height - ButtonY)];
-            
-            
-        }
-        
-    }
-}
+
 - (void)setFontSize:(CGFloat)fontSize
 {
     
     _fontSize = fontSize;
     [self addUpTitleLength];
     [self setNewFrame];
-    [self newConstrains];
+   
     
     
 }
