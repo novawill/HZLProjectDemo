@@ -24,8 +24,12 @@
 
 @property (nonatomic, assign) NSInteger selectedIndex3;
 
+@property (nonatomic, assign) CGFloat sliderOffset;
+
 - (instancetype)initWithFrame:(CGRect)frame items:(NSArray *)items;
 
 - (void)addTarget:(id)target action:(SEL)action;
+
+- (void)changeSelectedIndex:(NSInteger)selectedIndex sliderOffset:(CGFloat)sliderOffset;
 
 @end

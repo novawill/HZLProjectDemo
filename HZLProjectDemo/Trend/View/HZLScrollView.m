@@ -129,6 +129,14 @@
     _selectedIndex3 = selectedIndex3;
     _seg.selectedIndex3 = selectedIndex3;
 }
+- (void)changeSelectedIndex:(NSInteger)selectedIndex sliderOffset:(CGFloat)sliderOffset
+{
+    _seg.sliderOffset = sliderOffset;
+    self.selectedIndex3 = selectedIndex;
+    
+    
+    
+}
 
 - (void)updateCenter
 {

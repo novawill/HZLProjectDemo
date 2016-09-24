@@ -242,73 +242,40 @@
     currentBtn.selected = NO;
     currentBtn.userInteractionEnabled = YES;
     UIButton *choosedBtn = _btnArray[selectedIndex3];
-    
-   
-        
-        [self moveSliderRightBySelectedIndex:choosedBtn];
-      _selectedIndex3 = selectedIndex3;
+    [self moveSliderRightBySelectedIndex:choosedBtn];
+    _selectedIndex3 = selectedIndex3;
 
 
 }
-- (void)moveSliderLeftBySelectedIndex:(UIButton *)button{
-    
-    
-    
-    
-    
-}
+
 
 - (void)moveSliderRightBySelectedIndex:(UIButton *)button
 {
     _isFirstLayoutSubView = NO;
-    UIButton *currentBtn = (UIButton *)[self viewWithTag:ButtonTag + _selectedIndex2];
+    UIButton *currentBtn = (UIButton *)[self viewWithTag:ButtonTag + _selectedIndex3];
    
-    
-    _selectedIndex2 = button.tag - ButtonTag;
-    
-    self.currentXOffset = button.center.x;
 
-        if (_slider.center.x < button.center.x) {
-            
-            __block CGFloat a = _slider.center.x;
-            while (a < button.center.x) {
-                
-                [UIView animateWithDuration:0.1 animations:^{
-                    
-                    _slider.center = CGPointMake(a, _slider.center.y);
-                    a++;
-                }];
-            }
-        }else{
-            
-            __block CGFloat a = _slider.center.x;
-            while (a < button.center.x) {
-                
-                [UIView animateWithDuration:0.1 animations:^{
-                    
-                    _slider.center = CGPointMake(a, _slider.center.y);
-                    a--;
-                }];
-            
-        }
-        [UIView animateWithDuration:0.1 animations:^{
-            
-            _slider.frame = CGRectMake(_slider.frame.origin.x, _slider.frame.origin.y, [_titleLengthArray[_selectedIndex] doubleValue], _slider.frame.size.height);
-            
-            _slider.center = CGPointMake(button.center.x, _slider.center.y);
-            
-        }];
+    [UIView animateWithDuration:0.1 animations:^{
+        
+       
+        _slider.frame = CGRectMake(self.sliderOffset + _buttonMargin, _slider.frame.origin.y, [_titleLengthArray[_selectedIndex] doubleValue], _slider.frame.size.height);
+        
+    }];
+    
+
+    CGFloat sliderRightX = _slider.frame.origin.x + _slider.frame.size.width;
+    
+    if (_slider.frame.origin.x < button.center.x || sliderRightX > button.center.x) {
+        
         currentBtn.selected = NO;
         currentBtn.userInteractionEnabled = YES;
         
         button.selected = YES;
         button.userInteractionEnabled = NO;
-        
-  
-   
+
+    }
     
-
-
+    
 }
 - (void)onClickedButton2:(UIButton *)button
 {

@@ -140,7 +140,10 @@
             index = floorValue;
         }
     
-    _trendScrollView.selectedIndex3 = index;
+    CGFloat scrollViewOffset = scrollView.contentOffset.x;
+    CGFloat ratio = scrollViewOffset / scrollView.contentSize.width;
+    CGFloat sliderOffset = _trendScrollView.contentSize.width * ratio;
+    [_trendScrollView changeSelectedIndex:index sliderOffset:sliderOffset];
 
     
 }
