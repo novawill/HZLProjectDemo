@@ -11,6 +11,7 @@
 #import "RemindViewController.h"
 #import "DiscoverViewController.h"
 #import "TrendViewController.h"
+#import "BaseViewController.h"
 @interface HZLTabBarViewController ()
 
 @end

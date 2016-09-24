@@ -13,6 +13,10 @@
 		263197621D957C83009DF111 /* HZLScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2631975F1D957C83009DF111 /* HZLScrollView.m */; };
 		263197631D957C83009DF111 /* HZLSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 263197611D957C83009DF111 /* HZLSegment.m */; };
 		263197651D95830F009DF111 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 263197641D95830F009DF111 /* Reveal.framework */; };
+		263197691D95ADF0009DF111 /* NetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 263197681D95ADF0009DF111 /* NetManager.m */; };
+		2631976D1D95B632009DF111 /* AlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2631976B1D95B632009DF111 /* AlbumCell.m */; };
+		2631976E1D95B632009DF111 /* AlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2631976C1D95B632009DF111 /* AlbumCell.xib */; };
+		263197711D95B681009DF111 /* fullPicButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 263197701D95B681009DF111 /* fullPicButton.m */; };
 		26C8CE131D92A86B008A3CD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE121D92A86B008A3CD9 /* main.m */; };
 		26C8CE161D92A86B008A3CD9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE151D92A86B008A3CD9 /* AppDelegate.m */; };
 		26C8CE191D92A86B008A3CD9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE181D92A86B008A3CD9 /* ViewController.m */; };
@@ -41,6 +45,13 @@
 		263197601D957C83009DF111 /* HZLSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZLSegment.h; sourceTree = "<group>"; };
 		263197611D957C83009DF111 /* HZLSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZLSegment.m; sourceTree = "<group>"; };
 		263197641D95830F009DF111 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
+		263197671D95ADF0009DF111 /* NetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetManager.h; sourceTree = "<group>"; };
+		263197681D95ADF0009DF111 /* NetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetManager.m; sourceTree = "<group>"; };
+		2631976A1D95B632009DF111 /* AlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumCell.h; sourceTree = "<group>"; };
+		2631976B1D95B632009DF111 /* AlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumCell.m; sourceTree = "<group>"; };
+		2631976C1D95B632009DF111 /* AlbumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumCell.xib; sourceTree = "<group>"; };
+		2631976F1D95B681009DF111 /* fullPicButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fullPicButton.h; sourceTree = "<group>"; };
+		263197701D95B681009DF111 /* fullPicButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fullPicButton.m; sourceTree = "<group>"; };
 		26C8CE0E1D92A86B008A3CD9 /* HZLProjectDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HZLProjectDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C8CE121D92A86B008A3CD9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		26C8CE141D92A86B008A3CD9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -83,6 +94,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		263197661D95ADE1009DF111 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				263197671D95ADF0009DF111 /* NetManager.h */,
+				263197681D95ADF0009DF111 /* NetManager.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		26C8CE051D92A86B008A3CD9 = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +195,9 @@
 		26C8CE2C1D92ACC1008A3CD9 /* BaseContent */ = {
 			isa = PBXGroup;
 			children = (
+				2631976F1D95B681009DF111 /* fullPicButton.h */,
+				263197701D95B681009DF111 /* fullPicButton.m */,
+				263197661D95ADE1009DF111 /* Manager */,
 				26C8CE301D92AD10008A3CD9 /* Model */,
 				26C8CE2F1D92AD08008A3CD9 /* View */,
 				26C8CE2E1D92ACFF008A3CD9 /* Controller */,
@@ -206,6 +229,9 @@
 		26C8CE2F1D92AD08008A3CD9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2631976A1D95B632009DF111 /* AlbumCell.h */,
+				2631976B1D95B632009DF111 /* AlbumCell.m */,
+				2631976C1D95B632009DF111 /* AlbumCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -408,6 +434,7 @@
 				26C8CE211D92A86B008A3CD9 /* LaunchScreen.storyboard in Resources */,
 				26C8CE1E1D92A86B008A3CD9 /* Assets.xcassets in Resources */,
 				26C8CE1C1D92A86B008A3CD9 /* Main.storyboard in Resources */,
+				2631976E1D95B632009DF111 /* AlbumCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,11 +494,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				26C8CE451D92AEBA008A3CD9 /* MeViewController.m in Sources */,
+				263197691D95ADF0009DF111 /* NetManager.m in Sources */,
 				263197571D955E7D009DF111 /* HZLSegment2.m in Sources */,
 				26C8CE541D92AF2B008A3CD9 /* DiscoverViewController.m in Sources */,
 				26C8CE4E1D92AF06008A3CD9 /* BaseViewController.m in Sources */,
 				26C8CE571D92AF36008A3CD9 /* TrendViewController.m in Sources */,
 				26C8CE191D92A86B008A3CD9 /* ViewController.m in Sources */,
+				263197711D95B681009DF111 /* fullPicButton.m in Sources */,
+				2631976D1D95B632009DF111 /* AlbumCell.m in Sources */,
 				26C8CE511D92AF1D008A3CD9 /* RemindViewController.m in Sources */,
 				2631975D1D956228009DF111 /* HZLFrame2.m in Sources */,
 				263197621D957C83009DF111 /* HZLScrollView.m in Sources */,

@@ -9,6 +9,7 @@
 #import "TrendViewController.h"
 #import "HZLScrollView.h"
 #import "HZLScrollView2.h"
+#import "BaseViewController.h"
 @interface TrendViewController ()<UIScrollViewDelegate>
 
 @property (nonatomic, strong) HZLScrollView2 *trendTableViews;
@@ -32,7 +33,7 @@
     _trendScrollView.selectedIndex = 1;
 #endif
     
-   
+        [_trendScrollView addTarget:self action:@selector(changeView)];
        self.navigationController.navigationBarHidden = YES;
     
 }
@@ -72,7 +73,8 @@
 }
 - (void)viewDidAppear:(BOOL)animated
 {
-    [_trendScrollView addTarget:self action:@selector(changeView)];
+    [super viewDidAppear:animated];
+    
 }
 - (void)changeView
 {
@@ -82,11 +84,11 @@
         _trendTableViews.selectedIndex = _trendScrollView.selectedIndex;
         
     });
-
-
 }
 - (void)creatTrendTableViews
 {
+    
+    BaseViewController *vc = [[BaseViewController alloc] init];
     
     UIView *exploreView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 20)];
     exploreView.backgroundColor = [UIColor redColor];
@@ -106,7 +108,7 @@
     UIView *moringTeaView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 20)];
     moringTeaView.backgroundColor = [UIColor greenColor];
     
-    NSArray *array = @[exploreView,followingView,videoView,musicView,galleryView,moringTeaView];
+    NSArray *array = @[vc.view,followingView,videoView,musicView,galleryView,moringTeaView];
     
     
    _trendTableViews = [[HZLScrollView2 alloc] initWithFrame:CGRectMake(0, 64, 100, 50) items:array];
@@ -117,17 +119,68 @@
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    CGFloat index = floor(scrollView.contentOffset.x / scrollView.bounds.size.width);
-    if (index < 0) {
+    
+    CGFloat origin = scrollView.contentOffset.x / scrollView.bounds.size.width;
+    
+    if (origin < 0) {
         
-        index = 0;
+        origin = 0;
     }
-    _trendScrollView.selectedIndex2 = index;
-   
+    CGFloat floorValue = floor(origin);
+    
+        CGFloat tempValue = origin - floorValue;
+    
+        CGFloat index;
+    
+        if (tempValue > 0.5) {
+    
+            index = floorValue + 1;
+        }else
+        {
+            index = floorValue;
+        }
+    
+    _trendScrollView.selectedIndex3 = index;
+
+    
 }
+
+ -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    CGFloat origin = scrollView.contentOffset.x / scrollView.bounds.size.width;
+    
+    if (origin < 0) {
+        
+        origin = 0;
+    }
+    CGFloat floorValue = floor(origin);
+    //
+    //    CGFloat tempValue = origin - floorValue;
+    //
+    //    CGFloat index;
+    //
+    //    if (tempValue > 0.5) {
+    //
+    //        index = floorValue + 1;
+    //    }else
+    //    {
+    //        index = floorValue;
+    //    }
+    //
+    
+    _trendScrollView.selectedIndex2 = floorValue;
+    
+    
+    
+}
+
+
 - (void)didReceiveMemoryWarning {
+    
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+   
+
+
 }
 
 /*

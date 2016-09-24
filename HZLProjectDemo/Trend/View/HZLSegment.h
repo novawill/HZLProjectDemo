@@ -24,6 +24,8 @@
 @property (nonatomic, strong) UIColor *titleColor;
 
 @property (nonatomic, assign) CGFloat currentXOffset;
+
+@property (nonatomic, assign) NSInteger selectedIndex3;
 //根据文字长度自适应宽度
 - (instancetype)initWithFlexibleWidthFrame:(HZLFrame)frame items:(NSArray *)items;
 

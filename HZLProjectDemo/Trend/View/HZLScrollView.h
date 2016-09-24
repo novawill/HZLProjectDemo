@@ -22,6 +22,8 @@
 
 @property (nonatomic, assign) NSInteger selectedIndex2;
 
+@property (nonatomic, assign) NSInteger selectedIndex3;
+
 - (instancetype)initWithFrame:(CGRect)frame items:(NSArray *)items;
 
 - (void)addTarget:(id)target action:(SEL)action;

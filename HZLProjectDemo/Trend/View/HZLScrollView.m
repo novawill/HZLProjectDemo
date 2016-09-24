@@ -117,6 +117,19 @@
     
     
 }
+- (void)setSelectedIndex3:(NSInteger)selectedIndex3
+{
+    
+    [self layoutSubviews];
+    if (selectedIndex3 > _items.count - 1) {
+        
+        NSException *exception = [[NSException alloc] initWithName:@"数组越界" reason:@"selectedIndex大于items数组个数" userInfo:nil];
+        @throw exception;
+    }
+    _selectedIndex3 = selectedIndex3;
+    _seg.selectedIndex3 = selectedIndex3;
+}
+
 - (void)updateCenter
 {
     _selectedIndex2 = _seg.selectedIndex2;
@@ -138,11 +151,9 @@
         [UIView animateWithDuration:0.5 animations:^{
             
             [weakSelf setContentOffset:CGPointMake(currentOffsetX, currentOffsetY)];
+            
         }];
-        
-        
     }else if (_seg.currentXOffset < halfWidth){
-        
         
         __weak typeof(self) weakSelf = self;
         CGFloat currentOffsetY = self.contentOffset.y;
@@ -152,7 +163,6 @@
         }];
     }else
     {
-        
         __weak typeof(self) weakSelf = self;
         CGFloat currentOffsetX = self.contentOffset.x;
         CGFloat currentOffsetY = self.contentOffset.y;
@@ -161,8 +171,6 @@
             
             [weakSelf setContentOffset:CGPointMake(currentOffsetX, currentOffsetY)];
         }];
-        
-        
     }
 }
 - (void)onclicked

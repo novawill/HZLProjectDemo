@@ -29,6 +29,7 @@
         
         _items = items;
         isFirstLayoutSubview = YES;
+        self.autoresizesSubviews = NO;
     }
     
     return self;
