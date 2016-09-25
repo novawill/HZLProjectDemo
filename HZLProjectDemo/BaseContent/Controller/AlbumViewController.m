@@ -155,9 +155,11 @@
     if (start == 0) {
         
         url = albumAPI;
+        
     }else
     {
         url = [albumAPI stringByAppendingString:[NSString stringWithFormat:@"&start=%ld",start]];
+        
     }
   
     

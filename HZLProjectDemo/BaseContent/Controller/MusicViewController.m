@@ -31,14 +31,22 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
 {
     UIImageView *imageView;//ImageView for rotation in rightBarbuttonItem when the music is playing
     CGFloat imageviewAngle;
-   // BOOL isPlay; //Whether the music is playing
+    BOOL _isPlay; //Whether the music is playing
+    UIButton *_rightMusicBtn;
+    NSTimer *_timer;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.start = 0;
     [self createView];
+    _timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(imageRotation) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+    [_timer setFireDate:[NSDate  distantFuture]];
+    
     //[self playerMusic];
+    [self setRightBarButtonItem];
+    _rightMusicBtn.hidden = YES;
     self.navigationItem.rightBarButtonItem = nil;
     
 }
@@ -80,42 +88,41 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
 
 - (void)setRightBarButtonItem
 {
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    _rightMusicBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     
     __weak typeof(self) weakSelf = self;
-    imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"btn-player-no-bg"]];
+    imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"btn-player"]];
     imageView.autoresizingMask = UIViewAutoresizingNone;
     imageView.contentMode = UIViewContentModeScaleToFill;
     imageView.bounds=CGRectMake(0, 0, 40, 40);
     
-    [button addSubview:imageView];
+    [_rightMusicBtn addSubview:imageView];
     
-    [self.view addSubview:button];
-    [button mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.view addSubview:_rightMusicBtn];
+    [_rightMusicBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.top.equalTo(weakSelf.view.mas_top).offset(10);
-        make.right.equalTo(weakSelf.view.mas_right).offset(10);
+        make.right.equalTo(weakSelf.view.mas_right).offset(-10);
         make.width.equalTo(@40);
         make.height.equalTo(@40);
     }];
     
     
-    [self imageRotation];
+   
 
 }
 - (void)imageRotation
 {
-    //imageviewAngle += 50;
-    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionRepeat animations:^{
-        
-        imageView.transform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(180));
-        
-    } completion:^(BOOL finished) {
-        
-        [self imageRotation];
-        
-    }];
+    
+        imageviewAngle += 10;
+        if (imageviewAngle > 360) {
+            
+            imageviewAngle = 0;
+        }
+        imageView.transform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(imageviewAngle));
 
+    
+   
 }
 
 #pragma mark - LazyLoad for _musicArray
@@ -136,9 +143,14 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
 {
     if (isPlay) {
         
-        [self setRightBarButtonItem];
-    }else
-        self.navigationItem.rightBarButtonItem = nil;
+        [_timer setFireDate:[NSDate distantPast]];
+        _rightMusicBtn.hidden = NO;
+    }else{
+        
+        
+        [_timer setFireDate:[NSDate distantFuture]];
+        _rightMusicBtn.hidden = YES;
+    }
 }
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event

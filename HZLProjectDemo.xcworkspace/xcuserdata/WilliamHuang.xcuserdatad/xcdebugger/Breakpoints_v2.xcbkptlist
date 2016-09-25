@@ -16,16 +16,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HZLProjectDemo/BaseContent/Controller/MusicViewController.m"
+            timestampString = "496504002.732356"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "-playerMusicIsPlay:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HZLProjectDemo/BaseContent/Manager/HZLNetManager.m"
-            timestampString = "496484646.451445"
+            filePath = "HZLProjectDemo/BaseContent/Controller/MusicViewController.m"
+            timestampString = "496504002.732356"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "-initPrivate"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "-playerMusicIsPlay:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
