@@ -9,7 +9,8 @@
 #import "TrendViewController.h"
 #import "HZLScrollView.h"
 #import "HZLScrollView2.h"
-#import "BaseViewController.h"
+#import "AlbumViewController.h"
+#import "MusicViewController.h"
 @interface TrendViewController ()<UIScrollViewDelegate>
 
 @property (nonatomic, strong) HZLScrollView2 *trendTableViews;
@@ -88,7 +89,15 @@
 - (void)creatTrendTableViews
 {
     
-    BaseViewController *vc = [[BaseViewController alloc] init];
+    AlbumViewController *gallery = [[AlbumViewController alloc] init];
+    /**
+     *  @author 黄梓伦, 16-09-25 04:09:31
+     *
+     *  必须将vc作为self的子视图控制器，否则只是将一份初始化的vc.view加到_trendTableView上，而此时这个加进去的vc.view的控制器就变成了TrendViewController.而无法实现BaseViewController中的viewdidload方法。
+     */
+    [self addChildViewController:gallery];
+     AlbumViewController *vc = [[AlbumViewController alloc] init];
+    [self addChildViewController:vc];
     
     UIView *exploreView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 20)];
     exploreView.backgroundColor = [UIColor redColor];
@@ -99,21 +108,18 @@
     UIView *videoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 20)];
     videoView.backgroundColor = [UIColor orangeColor];
     
-    UIView *musicView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 20)];
-    musicView.backgroundColor = [UIColor grayColor];
-    
-    UIView *galleryView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 20)];
-    galleryView.backgroundColor = [UIColor whiteColor];
+    MusicViewController *music = [[MusicViewController alloc] init];
+    [self addChildViewController:music];
     
     UIView *moringTeaView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 20)];
     moringTeaView.backgroundColor = [UIColor greenColor];
     
-    NSArray *array = @[vc.view,followingView,videoView,musicView,galleryView,moringTeaView];
+    NSArray *array = @[vc.view,followingView,videoView,music.view,gallery.view,moringTeaView];
     
     
    _trendTableViews = [[HZLScrollView2 alloc] initWithFrame:CGRectMake(0, 64, 100, 50) items:array];
     _trendTableViews.delegate = self;
-    _trendTableViews.backgroundColor = [UIColor orangeColor];
+    _trendTableViews.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_trendTableViews];
    
 }
@@ -157,24 +163,7 @@
         origin = 0;
     }
     CGFloat floorValue = floor(origin);
-    //
-    //    CGFloat tempValue = origin - floorValue;
-    //
-    //    CGFloat index;
-    //
-    //    if (tempValue > 0.5) {
-    //
-    //        index = floorValue + 1;
-    //    }else
-    //    {
-    //        index = floorValue;
-    //    }
-    //
-    
     _trendScrollView.selectedIndex2 = floorValue;
-    
-    
-    
 }
 
 

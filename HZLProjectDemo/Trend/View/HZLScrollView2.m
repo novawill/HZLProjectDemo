@@ -175,8 +175,9 @@
     }else
     {
         __weak typeof(self) weakSelf = self;
-        CGFloat currentOffsetX = self.contentOffset.x;
-        CGFloat currentOffsetY = self.contentOffset.y;
+        CGFloat currentOffsetX = 0;
+        CGFloat currentOffsetY = 0;
+        currentOffsetY = self.contentOffset.y;
         currentOffsetX = self.contentSize.width - self.frame.size.width;
         [UIView animateWithDuration:0.5 animations:^{
             

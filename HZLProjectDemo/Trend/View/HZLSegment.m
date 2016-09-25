@@ -258,9 +258,16 @@
     [UIView animateWithDuration:0.1 animations:^{
         
        
-        _slider.frame = CGRectMake(self.sliderOffset + _buttonMargin, _slider.frame.origin.y, [_titleLengthArray[_selectedIndex] doubleValue], _slider.frame.size.height);
+        _slider.frame = CGRectMake(self.sliderOffset + _buttonMargin, _slider.frame.origin.y, currentBtn.frame.size.width, _slider.frame.size.height);
         
     }];
+    [UIView animateWithDuration:1 animations:^{
+        
+        
+        _slider.frame = CGRectMake(_slider.frame.origin.x, _slider.frame.origin.y, button.frame.size.width, _slider.frame.size.height);
+        
+    }];
+
     
 
     CGFloat sliderRightX = _slider.frame.origin.x + _slider.frame.size.width;
@@ -294,7 +301,7 @@
     [UIView animateWithDuration:0.5 animations:^{
         
         
-        _slider.frame = CGRectMake(_slider.frame.origin.x, _slider.frame.origin.y, [_titleLengthArray[_selectedIndex] doubleValue], _slider.frame.size.height);
+        _slider.frame = CGRectMake(_slider.frame.origin.x, _slider.frame.origin.y, [_titleLengthArray[_selectedIndex2] doubleValue], _slider.frame.size.height);
         
         _slider.center = CGPointMake(button.center.x, _slider.center.y);
         

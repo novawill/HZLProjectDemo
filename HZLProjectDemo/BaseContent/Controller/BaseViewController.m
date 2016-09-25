@@ -1,104 +1,177 @@
 //
 //  BaseViewController.m
-//  HZLProjectDemo
+//  MOMO
 //
-//  Created by 黄梓伦 on 9/21/16.
+//  Created by 黄梓伦 on 5/27/16.
 //  Copyright © 2016 黄梓伦. All rights reserved.
 //
 
 #import "BaseViewController.h"
-#import "AlbumCell.h"
-@interface BaseViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import <Social/Social.h>
+@interface BaseViewController ()
 
-
-
-@property (nonatomic, strong) UIImageView *imageView;
-
-@property (nonatomic, strong) UIView *backView;
 @end
- NSString * const baseCellIdentifier = @"baseCell";
+
 @implementation BaseViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self createTableView];
-    [self makeContrains];
-    self.view.backgroundColor = [UIColor blueColor];
-
+    [self customNavigationItem];
+    [self RESideNavigationItemWithLeftTile:@"Left" RightTitle:@"Right" isShowRight:YES];
    
-
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
     
-    [super viewWillAppear:animated];
-
-    
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 
-
-- (void)createTableView
+#pragma mark - Show navigationItem which can perform RESideMenu methods
+- (void)RESideNavigationItemWithLeftTile:(NSString *)leftTile RightTitle:(NSString *)rightTitle isShowRight:(BOOL)show
 {
     
-   _baseTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
-   _baseTableView.backgroundColor = [UIColor orangeColor];
-    [self.baseTableView registerNib:[UINib nibWithNibName:@"AlbumCell" bundle:nil]
-              forCellReuseIdentifier:baseCellIdentifier];
-    _baseTableView.delegate = self;
-    _baseTableView.dataSource = self;
-    _baseTableView.rowHeight = CGRectGetHeight(self.view.bounds);
-    
-    
-    
-    [self.view addSubview:_baseTableView];
-    
-}
-
-- (void)makeContrains
-{
-    self.baseTableView.translatesAutoresizingMaskIntoConstraints = NO;
-    __weak typeof(self) weakSelf = self;
-    [_baseTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:leftTile
+                                                                             style:UIBarButtonItemStylePlain
+                                                                            target:self
+                                                                            action:@selector(presentLeftMenuViewController:)];
+    //Whether to show the right button
+    if (show) {
         
-        make.edges.equalTo(weakSelf.view);
         
-    }];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:rightTitle
+                                                                                  style:UIBarButtonItemStylePlain
+                                                                                 target:self
+                                                                                action:@selector(presentRightMenuViewController:)];
+    }
+}
+
+#pragma mark - NavigationItem which can perform custom methods
+- (void)customNavigationItemMethodsTitle:(NSString *)title target:(id)target selector:(SEL)action isLeft:(BOOL)isleft
+{
+    if (isleft) {
+        
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:title
+                                                                                style:UIBarButtonItemStylePlain
+                                                                                target:target action:action];
+    }else
+    {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:title
+                                                                                 style:UIBarButtonItemStylePlain
+                                                                                target:target action:action];
+    }
+}
+
+#pragma mark - NavigationItem which can perform custom methods with Image
+
+- (void)customNavigationItemMethodsImage:(UIImage *)image target:(id)target selector:(SEL)action isLeft:(BOOL)isleft
+{
+    
+    if (isleft) {
+        
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:image
+                                                                                 style:UIBarButtonItemStylePlain
+                                                                                target:target
+                                                                                action:action];
+                                                 
+    }else
+    {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:image
+                                                                                  style:UIBarButtonItemStylePlain
+                                                                                 target:target
+                                                                                 action:action];
+    }
     
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+#pragma mark - NavigationItem which can perform RESideMenu methods with Image
+
+- (void)RESideNavigationItemWithLeftImage:(UIImage *)leftImage RightImage:(UIImage *)rightImage isShowRight:(BOOL)show
 {
     
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:leftImage
+                                                                             style:UIBarButtonItemStylePlain
+                                                                            target:self
+                                                                            action:@selector(presentLeftMenuViewController:)];
+                                             
+    //Whether to show the right button
+    if (show) {
+        
+        
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:rightImage
+                                                                                  style:UIBarButtonItemStylePlain
+                                                                                 target:self
+                                                                                 action:@selector(presentRightMenuViewController:)];
+    }
+
+}
+
+#pragma mark - addBackButton
+- (void)addBackButtonWithImage:(UIImage *)image
+{
     
-    return 2;
+    [self customNavigationItemMethodsImage:image target:self selector:@selector(backAction) isLeft:YES];
     
+    
+}
+- (void)backAction
+{
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+#pragma mark - customNavigationItem
+//Overrided By childViewController
+- (void)customNavigationItem{
+    
+    
+    
+    
+    
+}
+#pragma mark - addNavigationTitle
+- (void)addNavigationTitle:(NSString *)title andColor:(UIColor *)color
+{
+    
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
+    titleLabel.textColor = color;
+    titleLabel.font = [UIFont systemFontOfSize:20];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.text = title;
+   //Sets Navigation Title
+    self.navigationItem.titleView = titleLabel;
+}
+
+
+
+#pragma mark - Setting httManager
+- (AFHTTPSessionManager *)httpManager
+{
+    
+    if (!_httpManager) {
+        
+        
+        _httpManager = [AFHTTPSessionManager manager];
+        
+        _httpManager.responseSerializer = [AFJSONResponseSerializer serializer];
+        
+        _httpManager.responseSerializer.acceptableContentTypes = [_httpManager.responseSerializer.acceptableContentTypes setByAddingObject:@"application/json"];
+       
+        _httpManager.requestSerializer = [AFJSONRequestSerializer new];
+        
+        //Add http-authorization to header
+        [_httpManager.requestSerializer setValue:@"e573a54a012811e6beb85254001b74f1" forHTTPHeaderField:@"HTTP-AUTHORIZATION"];
+        
+        
+    }
+    
+    return _httpManager;
     
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    AlbumCell *cell = [tableView dequeueReusableCellWithIdentifier:baseCellIdentifier];
-    
-    return cell;
-}
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
-    NSLog(@"点击了~");
-    
-    
-    
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 /*
 #pragma mark - Navigation

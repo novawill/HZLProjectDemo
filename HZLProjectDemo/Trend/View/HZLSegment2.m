@@ -160,8 +160,6 @@
         
         UIView *view = (UIView *)_items[i];
         
-        view.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-        
         view.tag = ViewTag + i;
         
         if (i == 0) {
@@ -223,14 +221,7 @@
     
 }
 
-- (void)drawRect:(CGRect)rect
-{
-    
-    [self addUpViewTotalLength];
-    [self setNewFrame];
-    
-    
-}
+
 
 
 

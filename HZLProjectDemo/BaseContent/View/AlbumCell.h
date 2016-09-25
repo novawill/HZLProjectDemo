@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "fullPicButton.h"
-//#import "AlbumModel.h"
+#import "BaseModel.h"
 @interface AlbumCell : UITableViewCell
 //Properties
 @property (weak, nonatomic) IBOutlet UIImageView *iconImage;
@@ -21,11 +21,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *descLabel;
 @property (weak, nonatomic) IBOutlet UILabel *likeNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *commentNumberLabel;
-//@property (nonatomic, strong) void (^transModel)(Meows *model);
+@property (nonatomic, strong) void (^transModel)(Meows *model);
 
 
 //Model
-//@property (nonatomic, strong) Meows *model;
+@property (nonatomic, strong) Meows *model;
 
 //Actions
 - (IBAction)shareAction:(fullPicButton *)sender;
@@ -35,5 +35,5 @@
 
 
 //Sets models
-//- (void)setModel:(Meows *)model;
+- (void)setModel:(Meows *)model;
 @end
