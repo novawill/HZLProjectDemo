@@ -40,7 +40,7 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
     [super viewDidLoad];
     self.start = 0;
     [self createView];
-    _timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(imageRotation) userInfo:nil repeats:YES];
+    _timer = [NSTimer scheduledTimerWithTimeInterval:0.005 target:self selector:@selector(imageRotation) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
     [_timer setFireDate:[NSDate  distantFuture]];
     
@@ -114,7 +114,7 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
 - (void)imageRotation
 {
     
-        imageviewAngle += 10;
+        imageviewAngle += 2;
         if (imageviewAngle > 360) {
             
             imageviewAngle = 0;
