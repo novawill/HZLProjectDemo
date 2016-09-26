@@ -11,6 +11,13 @@
 #import <AVFoundation/AVFoundation.h>
 #import "fullPicButton.h"
 #import "CustomProgressView.h"
+@protocol PlayMusic
+
+
+
+@end
+
+
 @interface MusicCell : UITableViewCell
 //Properties
 @property (weak, nonatomic) IBOutlet UILabel *groupName;
@@ -30,10 +37,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *commentNumberLabel;
 @property (nonatomic, copy) NSString *urlString;
 @property (nonatomic, strong) AVPlayer *audioPlayer;
-@property (nonatomic, strong)  void (^playMusic)(BOOL isplaying);
+@property (nonatomic, strong)  void (^playMusic)(BOOL isplaying,NSString *musicUrl);
 @property (nonatomic, strong) void (^transModel)(Meows *model);
 @property (nonatomic, strong) Meows *model;
 @property (weak, nonatomic) IBOutlet UIButton *playBtn;
+@property (nonatomic, assign) BOOL isPlay;
+@property (nonatomic, copy) NSString *musicDurationStr;
+@property (nonatomic, strong) id observer;
 
 
 //Actions
@@ -42,4 +52,5 @@
 - (IBAction)thumbAction:(UIButton *)sender;
 - (IBAction)commentAction:(UIButton *)sender;
 - (void)setModel:(Meows *)model;
+
 @end

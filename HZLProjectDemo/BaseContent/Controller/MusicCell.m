@@ -15,11 +15,10 @@
 @end
 
 @implementation MusicCell
-static BOOL isPlay;
 
 - (void)awakeFromNib {
     
-    isPlay = NO;
+    _isPlay = NO;
     self.progressView.hidden = YES;
     [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDetail)]];
     
@@ -40,7 +39,7 @@ static BOOL isPlay;
     [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:music animated:YES completion:nil];
     
     
-    isPlay = NO;
+    _isPlay = NO;
     self.progressView.hidden = YES;
     [self.playBtn setImage:[UIImage imageNamed:@"btn-musicplay-play"]
                   forState:UIControlStateNormal];
@@ -56,76 +55,35 @@ static BOOL isPlay;
 }
 
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
-{
-    
-    if ((object == self.songItem) && [keyPath isEqualToString:@"status"]) {
-        
-        AVPlayerStatus status = [[change objectForKey:NSKeyValueChangeNewKey] integerValue];
-        
-        switch (status) {
-            case AVPlayerStatusUnknown: {
-                
-                break;
-            }
-            case AVPlayerStatusReadyToPlay: {
-                
-                isPlay = NO;
-                self.progressView.hidden = YES;
-                
-                
-                break;
-            }
-            case AVPlayerStatusFailed: {
-                
-                break;
-            }
-        }
-        
-    }
-    
-    
-    
-    
-    
-    
-}
-
 - (IBAction)playAction:(fullPicButton *)sender {
     
     
-    if (! isPlay) {
+    if (!_isPlay) {
         
-        isPlay = YES;
+        _isPlay = YES;
         self.progressView.hidden = NO;
         [self.playBtn setImage:[UIImage imageNamed:@"btn-musicplay-pause"]
                       forState:UIControlStateNormal];
-        
-        __weak typeof(self) weakSelf = self;
-        __weak CustomProgressView *tProgress = self.progressView;
-        [_audioPlayer addPeriodicTimeObserverForInterval:CMTimeMake(1, 10) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
-            
-            float current = time.value*1.0f/ time.timescale;
-            
-            tProgress.percentage = current / weakSelf.model.music_duration;
-            
-            weakSelf.musicDurationLabel.text = [weakSelf formatTime:current];
-            
-        }];
-        
-        [self.audioPlayer play];
-
-    
-    }else if(isPlay)
+    }else if(_isPlay)
     {
         
-        [self.audioPlayer pause];
-        [self.playBtn setImage:[UIImage imageNamed:@"btn-musicplay-play"]
+         [self.playBtn setImage:[UIImage imageNamed:@"btn-musicplay-play"]
                       forState:UIControlStateNormal];
-
+        _isPlay = NO;
         
     }
-    self.playMusic(isPlay);
+    self.playMusic(_isPlay,self.urlString);
+    __weak typeof(self) weakSelf = self;
+    __weak CustomProgressView *tProgress = self.progressView;
+    self.observer = [_audioPlayer addPeriodicTimeObserverForInterval:CMTimeMake(1, 10) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
+        
+        float current = time.value*1.0f/ time.timescale;
+        
+        tProgress.percentage = current / weakSelf.model.music_duration;
+        
+        weakSelf.musicDurationLabel.text = [weakSelf formatTime:current];
+        
+    }];
 }
 - (IBAction)sharAction:(fullPicButton *)sender {
 }
@@ -188,32 +146,46 @@ static BOOL isPlay;
     NSInteger seconds = musicDurationBySeconds % 60;
     
     
-    NSString *musicDurationStr = [[NSString alloc] initWithFormat:@"%ld:%@",minutes, seconds > 9 ?
+    _musicDurationStr = [[NSString alloc] initWithFormat:@"%ld:%@",minutes, seconds > 9 ?
                                        [NSString stringWithFormat:@"%ld",seconds]:
                                        [NSString stringWithFormat:@"0%ld",seconds]];
     
     
     
-    self.musicDurationLabel.text = musicDurationStr;
+    self.musicDurationLabel.text = _musicDurationStr;
     
     self.songNameLabel.text = _model.song_name;
     
     self.urlString = _model.music_url;
-    
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        [self.songItem removeObserver:self forKeyPath:@"status"];
-        
-        self.songItem = [[AVPlayerItem alloc] initWithURL:[NSURL URLWithString:model.music_url]];
-        
-        [self.songItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
-        
-        self.audioPlayer = [AVPlayer playerWithPlayerItem:self.songItem];
-
-    });
-    
-   
 }
+- (void)setIsPlay:(BOOL)isPlay
+{
+    
+    _isPlay = isPlay;
+       if (_isPlay) {
+        
+        self.progressView.hidden = NO;
+        [self.playBtn setImage:[UIImage imageNamed:@"btn-musicplay-pause"]
+                      forState:UIControlStateNormal];
+
+        
+    }else
+    {
+        [self.playBtn setImage:[UIImage imageNamed:@"btn-musicplay-play"]
+                      forState:UIControlStateNormal];
+        
+        self.progressView.hidden = YES;
+
+    }
+}
+- (void)dealloc
+{
+    [self.audioPlayer removeTimeObserver:self.observer];
+    
+    
+    
+}
+
 
 
 

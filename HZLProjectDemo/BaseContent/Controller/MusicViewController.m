@@ -19,12 +19,12 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
 //Sets an array to populate data requested from the Internet
 @property (nonatomic, strong) NSMutableArray *musicArray;
 @property (nonatomic, assign) NSUInteger start;//Property of Start
-@property (nonatomic, strong)  AVPlayer *audioPlayer;
 @property (nonatomic, strong) MJRefreshGifHeader *gifHeader;
 @property (nonatomic, strong) NSMutableArray *refreshImages;
 @property (nonatomic, strong) NSMutableArray *normalImages;
 @property (nonatomic, strong) AVPlayerItem *songItem;
 @property (nonatomic, strong) AVPlayer *musicPlayer;
+@property (nonatomic, weak)  MusicCell *currrentCell;
 @end
 
 @implementation MusicViewController
@@ -34,6 +34,8 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
     BOOL _isPlay; //Whether the music is playing
     UIButton *_rightMusicBtn;
     NSTimer *_timer;
+    NSString *_musicUrl;
+    
 }
 
 - (void)viewDidLoad {
@@ -44,10 +46,18 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
     [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
     [_timer setFireDate:[NSDate  distantFuture]];
     
+    self.navigationItem.rightBarButtonItem = nil;
+    
+}
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super  viewDidAppear:animated];
     //[self playerMusic];
     [self setRightBarButtonItem];
     _rightMusicBtn.hidden = YES;
-    self.navigationItem.rightBarButtonItem = nil;
+
+    
+    
     
 }
 - (NSMutableArray *)refreshImages
@@ -98,6 +108,8 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
     
     [_rightMusicBtn addSubview:imageView];
     
+    
+    
     [self.view addSubview:_rightMusicBtn];
     [_rightMusicBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -105,6 +117,7 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
         make.right.equalTo(weakSelf.view.mas_right).offset(-10);
         make.width.equalTo(@40);
         make.height.equalTo(@40);
+        
     }];
     
     
@@ -121,8 +134,7 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
         }
         imageView.transform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(imageviewAngle));
 
-    
-   
+
 }
 
 #pragma mark - LazyLoad for _musicArray
@@ -136,21 +148,83 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
     }
     return _musicArray;
 }
-
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+{
+    
+    if ((object == self.songItem) && ([keyPath isEqualToString:@"status"])) {
+        
+        AVPlayerStatus status = [[change objectForKey:NSKeyValueChangeNewKey] integerValue];
+        
+        switch (status) {
+            case AVPlayerStatusUnknown: {
+                
+                break;
+            }
+            case AVPlayerStatusReadyToPlay: {
+                
+                [self.musicPlayer play];
+                
+                break;
+            }
+            case AVPlayerStatusFailed: {
+                
+                break;
+            }
+        }
+    }
+}
 
 #pragma mark - Creating AVPlayer and add it 
-- (void)playerMusicIsPlay:(BOOL)isPlay
+- (void)playerMusicIsPlay:(BOOL)isPlay musicUrl:(NSString *)url
 {
+    _isPlay = isPlay;
     if (isPlay) {
+        if (self.musicPlayer.currentItem) {
+            
+            if ([_musicUrl isEqualToString:url]) {
+                [self.musicPlayer play];
+                [_timer setFireDate:[NSDate distantPast]];
+                _rightMusicBtn.hidden = NO;
+            }else
+            {
+                [self createSongItemisPlay:isPlay songUrl:url];
+            }
+           
+        }else
+        {
+            [self createSongItemisPlay:isPlay songUrl:url];
+        }
         
-        [_timer setFireDate:[NSDate distantPast]];
-        _rightMusicBtn.hidden = NO;
     }else{
         
-        
+        [self.musicPlayer pause];
         [_timer setFireDate:[NSDate distantFuture]];
         _rightMusicBtn.hidden = YES;
     }
+}
+- (void)createSongItemisPlay:(BOOL)isplay songUrl:(NSString *)url
+{
+    
+    _currrentCell.musicDurationLabel.text = _currrentCell.musicDurationStr;
+    [_currrentCell.audioPlayer removeTimeObserver:_currrentCell.observer];
+    _currrentCell.audioPlayer = nil;
+    _currrentCell.isPlay = NO;
+    _currrentCell.progressView = 0;
+    
+    [self.songItem removeObserver:self forKeyPath:@"status"];
+    [self setSongItem:nil];
+    [self setMusicPlayer:nil];
+    self.songItem = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:url]];
+    
+    [self.songItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+    self.musicPlayer = [AVPlayer playerWithPlayerItem:self.songItem];
+    _musicUrl = url;
+    [_timer setFireDate:[NSDate distantPast]];
+    _rightMusicBtn.hidden = NO;
+
+    
+    
+    
 }
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
@@ -224,10 +298,6 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
     //Starts request
   
     [_musicTableView.mj_header beginRefreshing];
-    
-    
-    
-    
 }
 
 
@@ -245,10 +315,25 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
     
     cell.model = model;
     
-       
-    cell.playMusic = ^(BOOL isPlaying){
+   
+    if (![cell.urlString isEqualToString:_musicUrl]) {
+    
+        cell.isPlay = NO;
         
-        [self playerMusicIsPlay:isPlaying];
+    }else
+    {
+        cell.isPlay = _isPlay;
+        cell.audioPlayer = nil;
+    
+    }
+   
+    cell.playMusic = ^(BOOL isPlaying,NSString *url){
+        
+        [self playerMusicIsPlay:isPlaying musicUrl:url];
+       
+        _currrentCell = cell;
+        _currrentCell.audioPlayer = self.musicPlayer;
+
     };
     
     return cell;
@@ -310,7 +395,6 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
             
             if (musicModel.is_last_page) {
                 
-             
                 [weakSelf.musicTableView.mj_footer endRefreshingWithNoMoreData];
                 [KVNProgress showSuccessWithStatus:@"没有更多数据了，亲~"];
                 
