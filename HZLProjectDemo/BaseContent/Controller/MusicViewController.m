@@ -221,10 +221,6 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
     _musicUrl = url;
     [_timer setFireDate:[NSDate distantPast]];
     _rightMusicBtn.hidden = NO;
-
-    
-    
-    
 }
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
@@ -319,12 +315,17 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
     if (![cell.urlString isEqualToString:_musicUrl]) {
     
         cell.isPlay = NO;
+        [cell.audioPlayer removeTimeObserver:cell.observer];
+        cell.audioPlayer = nil;
+
         
     }else
     {
+        cell.audioPlayer = self.musicPlayer;
         cell.isPlay = _isPlay;
-        cell.audioPlayer = nil;
-    
+        
+        
+        
     }
    
     cell.playMusic = ^(BOOL isPlaying,NSString *url){

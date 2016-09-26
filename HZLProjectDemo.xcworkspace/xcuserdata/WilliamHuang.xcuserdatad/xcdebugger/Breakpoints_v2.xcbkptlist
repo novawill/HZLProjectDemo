@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HZLProjectDemo/BaseContent/Controller/MusicViewController.m"
-            timestampString = "496595028.769111"
+            timestampString = "496600735.430481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
             landmarkName = "-playerMusicIsPlay:musicUrl:"
             landmarkType = "5">
          </BreakpointContent>
@@ -51,28 +51,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HZLProjectDemo/BaseContent/Controller/MusicCell.m"
-            timestampString = "496586945.507889"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "-playAction:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "HZLProjectDemo/BaseContent/Controller/MusicViewController.m"
-            timestampString = "496594967.139784"
+            timestampString = "496600735.430481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
             landmarkName = "-playerMusicIsPlay:musicUrl:"
             landmarkType = "5">
          </BreakpointContent>
