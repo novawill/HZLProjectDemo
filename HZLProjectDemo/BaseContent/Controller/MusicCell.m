@@ -16,10 +16,10 @@
 
 @implementation MusicCell
 
+
 - (void)awakeFromNib {
     
-    _isPlay = NO;
-    self.progressView.hidden = YES;
+   
     [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDetail)]];
     
 }
@@ -31,7 +31,6 @@
         
         music.model = model;
         
-        
     };
     self.
     self.transModel(self.model);
@@ -39,11 +38,7 @@
     [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:music animated:YES completion:nil];
     
     
-    _isPlay = NO;
-    self.progressView.hidden = YES;
-    [self.playBtn setImage:[UIImage imageNamed:@"btn-musicplay-play"]
-                  forState:UIControlStateNormal];
-
+  
     
 }
 
@@ -60,21 +55,19 @@
     
     if (!_isPlay) {
         
-        _isPlay = YES;
-        self.progressView.hidden = NO;
-        [self.playBtn setImage:[UIImage imageNamed:@"btn-musicplay-pause"]
-                      forState:UIControlStateNormal];
-    }else if(_isPlay)
+        self.isPlay = YES;
+       
+    }else
     {
+         self.isPlay = NO;
         
          [self.playBtn setImage:[UIImage imageNamed:@"btn-musicplay-play"]
                       forState:UIControlStateNormal];
-        _isPlay = NO;
+        
         
     }
     self.playMusic(_isPlay,self.urlString);
     [self updateProgressAndTime];
-
 
 }
 - (IBAction)sharAction:(fullPicButton *)sender {
@@ -157,6 +150,7 @@
     self.observer = [_audioPlayer addPeriodicTimeObserverForInterval:CMTimeMake(1, 10) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
         
         float current = time.value*1.0f/ time.timescale;
+       
         
         tProgress.percentage = current / weakSelf.model.music_duration;
         
@@ -164,21 +158,43 @@
     
     }];
 }
+- (void)refreshProgressByReAppearWithTime:(CMTime)time
+{
+    __weak typeof(self) weakSelf = self;
+    __weak CustomProgressView *tProgress = self.progressView;
+    dispatch_async(dispatch_get_main_queue(), ^{
+       
+        float current = time.value*1.0f/ time.timescale;
+              tProgress.percentage = current / weakSelf.model.music_duration;
+        
+        weakSelf.musicDurationLabel.text = [weakSelf formatTime:current];
+    });
+}
 - (void)setIsPlay:(BOOL)isPlay
 {
     
     _isPlay = isPlay;
        if (_isPlay) {
         self.progressView.hidden = NO;
-        [self.playBtn setImage:[UIImage imageNamed:@"btn-musicplay-pause"]
-                      forState:UIControlStateNormal];
-           [self updateProgressAndTime];
+           
+            [self.playBtn setImage:[UIImage imageNamed:@"btn-musicplay-pause"]
+                          forState:UIControlStateNormal];
+           
+        [self updateProgressAndTime];
     }else
     {
-        [self.playBtn setImage:[UIImage imageNamed:@"btn-musicplay-play"]
-                      forState:UIControlStateNormal];
         
-        self.progressView.hidden = YES;
+        [self.playBtn setImage:[UIImage imageNamed:@"btn-musicplay-play"]
+                          forState:UIControlStateNormal];
+
+            CMTime time = self.audioPlayer.currentTime;
+        if (time.timescale ) {
+            
+            [self refreshProgressByReAppearWithTime:time];
+        }
+      
+        self.progressView.hidden = NO;
+        [self updateProgressAndTime];
 
     }
 }

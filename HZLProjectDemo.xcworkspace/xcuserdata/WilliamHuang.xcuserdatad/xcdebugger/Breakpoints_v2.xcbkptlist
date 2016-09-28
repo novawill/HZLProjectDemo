@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HZLProjectDemo/BaseContent/Controller/MusicViewController.m"
-            timestampString = "496600735.430481"
+            timestampString = "496737152.905011"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "-playerMusicIsPlay:musicUrl:"
             landmarkType = "5">
          </BreakpointContent>
@@ -36,12 +36,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HZLProjectDemo/BaseContent/Controller/MusicViewController.m"
-            timestampString = "496586945.507889"
+            timestampString = "496737152.905011"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "-setRightBarButtonItem"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "-playerMusicIsPlay:musicUrl:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -52,12 +52,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HZLProjectDemo/BaseContent/Controller/MusicViewController.m"
-            timestampString = "496600735.430481"
+            timestampString = "496737152.905011"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
-            landmarkName = "-playerMusicIsPlay:musicUrl:"
+            startingLineNumber = "332"
+            endingLineNumber = "332"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HZLProjectDemo/BaseContent/Controller/MusicCell.m"
+            timestampString = "496737152.905011"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "-playAction:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HZLProjectDemo/BaseContent/Controller/MusicCell.m"
+            timestampString = "496737152.905011"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "-playAction:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HZLProjectDemo/BaseContent/Controller/MusicViewController.m"
+            timestampString = "496737152.905011"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "308"
+            endingLineNumber = "308"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HZLProjectDemo/BaseContent/Controller/MusicCell.m"
+            timestampString = "496737152.905011"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "-updateProgressAndTime"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

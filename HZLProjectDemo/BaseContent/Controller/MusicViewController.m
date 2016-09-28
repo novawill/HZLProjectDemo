@@ -45,7 +45,9 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
     _timer = [NSTimer scheduledTimerWithTimeInterval:0.005 target:self selector:@selector(imageRotation) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
     [_timer setFireDate:[NSDate  distantFuture]];
-    
+    [self setRightBarButtonItem];
+    _rightMusicBtn.hidden = YES;
+
     self.navigationItem.rightBarButtonItem = nil;
     
 }
@@ -53,9 +55,7 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
 {
     [super  viewDidAppear:animated];
     //[self playerMusic];
-    [self setRightBarButtonItem];
-    _rightMusicBtn.hidden = YES;
-
+    
     
     
     
@@ -119,10 +119,6 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
         make.height.equalTo(@40);
         
     }];
-    
-    
-   
-
 }
 - (void)imageRotation
 {
@@ -208,8 +204,8 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
     _currrentCell.musicDurationLabel.text = _currrentCell.musicDurationStr;
     [_currrentCell.audioPlayer removeTimeObserver:_currrentCell.observer];
     _currrentCell.audioPlayer = nil;
-    _currrentCell.isPlay = NO;
-    _currrentCell.progressView = 0;
+//       _currrentCell.isPlay = NO;
+//    _currrentCell.progressView = 0;
     
     [self.songItem removeObserver:self forKeyPath:@"status"];
     [self setSongItem:nil];
@@ -312,19 +308,20 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
     cell.model = model;
     
    
-    if (![cell.urlString isEqualToString:_musicUrl]) {
+    if (![model.music_url isEqualToString:_musicUrl]) {
     
-        cell.isPlay = NO;
+       
         [cell.audioPlayer removeTimeObserver:cell.observer];
+      
         cell.audioPlayer = nil;
+        cell.progressView.percentage = 0;
+        cell.isPlay = NO;
 
         
     }else
     {
-        cell.audioPlayer = self.musicPlayer;
+        cell.audioPlayer  = self.musicPlayer;
         cell.isPlay = _isPlay;
-        
-        
         
     }
    
@@ -361,9 +358,6 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
     }
     
     //Requests datasource
-    
-    
-    
     [self.httpManager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         MusicModel *musicModel = [MusicModel yy_modelWithJSON:responseObject];
@@ -386,7 +380,7 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
             
             
             //Refreshing TableView
-            [weakSelf.musicTableView reloadData];
+           [weakSelf.musicTableView reloadData];
             
             //Updating footer and header status
             [weakSelf.musicTableView.mj_header endRefreshing];

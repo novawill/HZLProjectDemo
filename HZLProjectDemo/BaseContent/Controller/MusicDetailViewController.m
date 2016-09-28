@@ -203,7 +203,7 @@
             
         }];
 
-    }else if(isPlay)
+    }else 
     {
     
     [self.audioPlayer pause];
