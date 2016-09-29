@@ -118,13 +118,6 @@
                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="odT-EK-syD">
                             <rect key="frame" x="0.0" y="0.0" width="600" height="2050"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1za-NC-WDh">
-                                    <rect key="frame" x="200" y="100" width="200" height="200"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="1za-NC-WDh" secondAttribute="height" id="rDR-H2-Gp0"/>
-                                        <constraint firstAttribute="width" constant="200" id="yPf-WA-hIY"/>
-                                    </constraints>
-                                </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="upz-d7-RcS" customClass="fullPicButton">
                                     <rect key="frame" x="274" y="173" width="53" height="53"/>
                                     <state key="normal" image="btn-musicplay-play"/>
@@ -165,6 +158,13 @@
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1za-NC-WDh">
+                                    <rect key="frame" x="200" y="100" width="200" height="200"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="1za-NC-WDh" secondAttribute="height" id="rDR-H2-Gp0"/>
+                                        <constraint firstAttribute="width" constant="200" id="yPf-WA-hIY"/>
+                                    </constraints>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
