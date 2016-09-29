@@ -7,12 +7,33 @@
 //
 
 #import "AlbumCell.h"
-
+#import "AlbumDetailViewController.h"
 @implementation AlbumCell
 
+- (void)awakeFromNib {
+    
+    
+    [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDetail)]];
+}
 
 
-
+- (void)showDetail
+{
+    AlbumDetailViewController *album = [[AlbumDetailViewController alloc] init];
+    
+    self.transModel = ^(Meows *model){
+        
+        album.model = model;
+        
+    };
+    
+    self.transModel(self.model);
+    
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:album animated:YES completion:nil];
+    
+    
+    
+}
 
 - (IBAction)shareAction:(fullPicButton *)sender {
 }

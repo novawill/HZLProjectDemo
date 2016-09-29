@@ -27,6 +27,12 @@
 		263197981D97A0DD009DF111 /* CustomProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 263197951D97A0DD009DF111 /* CustomProgressView.m */; };
 		263197991D97A0DD009DF111 /* CustomProgressView+BaseConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 263197971D97A0DD009DF111 /* CustomProgressView+BaseConfiguration.m */; };
 		263197A01D97A3F0009DF111 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2631979F1D97A3F0009DF111 /* BaseViewController.m */; };
+		26348B131D9BA02700DC52FC /* AlbumDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26348B111D9BA02700DC52FC /* AlbumDetailViewController.m */; };
+		26348B141D9BA02700DC52FC /* AlbumDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26348B121D9BA02700DC52FC /* AlbumDetailViewController.xib */; };
+		26348B181D9BA0A900DC52FC /* AlbumDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26348B161D9BA0A900DC52FC /* AlbumDetailCell.m */; };
+		26348B191D9BA0A900DC52FC /* AlbumDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26348B171D9BA0A900DC52FC /* AlbumDetailCell.xib */; };
+		26348B1D1D9BA0D200DC52FC /* headerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26348B1B1D9BA0D200DC52FC /* headerView.m */; };
+		26348B1E1D9BA0D200DC52FC /* headerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26348B1C1D9BA0D200DC52FC /* headerView.xib */; };
 		26C8CE131D92A86B008A3CD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE121D92A86B008A3CD9 /* main.m */; };
 		26C8CE161D92A86B008A3CD9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE151D92A86B008A3CD9 /* AppDelegate.m */; };
 		26C8CE191D92A86B008A3CD9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE181D92A86B008A3CD9 /* ViewController.m */; };
@@ -80,6 +86,15 @@
 		263197971D97A0DD009DF111 /* CustomProgressView+BaseConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CustomProgressView+BaseConfiguration.m"; sourceTree = "<group>"; };
 		2631979E1D97A3F0009DF111 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		2631979F1D97A3F0009DF111 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		26348B101D9BA02700DC52FC /* AlbumDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumDetailViewController.h; sourceTree = "<group>"; };
+		26348B111D9BA02700DC52FC /* AlbumDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumDetailViewController.m; sourceTree = "<group>"; };
+		26348B121D9BA02700DC52FC /* AlbumDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumDetailViewController.xib; sourceTree = "<group>"; };
+		26348B151D9BA0A900DC52FC /* AlbumDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumDetailCell.h; sourceTree = "<group>"; };
+		26348B161D9BA0A900DC52FC /* AlbumDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumDetailCell.m; sourceTree = "<group>"; };
+		26348B171D9BA0A900DC52FC /* AlbumDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumDetailCell.xib; sourceTree = "<group>"; };
+		26348B1A1D9BA0D200DC52FC /* headerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = headerView.h; sourceTree = "<group>"; };
+		26348B1B1D9BA0D200DC52FC /* headerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = headerView.m; sourceTree = "<group>"; };
+		26348B1C1D9BA0D200DC52FC /* headerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = headerView.xib; sourceTree = "<group>"; };
 		26C8CE0E1D92A86B008A3CD9 /* HZLProjectDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HZLProjectDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C8CE121D92A86B008A3CD9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		26C8CE141D92A86B008A3CD9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -191,6 +206,9 @@
 			children = (
 				26C8CE4C1D92AF06008A3CD9 /* AlbumViewController.h */,
 				26C8CE4D1D92AF06008A3CD9 /* AlbumViewController.m */,
+				26348B101D9BA02700DC52FC /* AlbumDetailViewController.h */,
+				26348B111D9BA02700DC52FC /* AlbumDetailViewController.m */,
+				26348B121D9BA02700DC52FC /* AlbumDetailViewController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -201,6 +219,12 @@
 				2631976A1D95B632009DF111 /* AlbumCell.h */,
 				2631976B1D95B632009DF111 /* AlbumCell.m */,
 				2631976C1D95B632009DF111 /* AlbumCell.xib */,
+				26348B151D9BA0A900DC52FC /* AlbumDetailCell.h */,
+				26348B161D9BA0A900DC52FC /* AlbumDetailCell.m */,
+				26348B171D9BA0A900DC52FC /* AlbumDetailCell.xib */,
+				26348B1A1D9BA0D200DC52FC /* headerView.h */,
+				26348B1B1D9BA0D200DC52FC /* headerView.m */,
+				26348B1C1D9BA0D200DC52FC /* headerView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -541,10 +565,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26348B191D9BA0A900DC52FC /* AlbumDetailCell.xib in Resources */,
 				2631978B1D97A06B009DF111 /* MusicDetailViewController.xib in Resources */,
 				26C8CE211D92A86B008A3CD9 /* LaunchScreen.storyboard in Resources */,
 				26C8CE1E1D92A86B008A3CD9 /* Assets.xcassets in Resources */,
 				26C8CE1C1D92A86B008A3CD9 /* Main.storyboard in Resources */,
+				26348B1E1D9BA0D200DC52FC /* headerView.xib in Resources */,
+				26348B141D9BA02700DC52FC /* AlbumDetailViewController.xib in Resources */,
 				2631976E1D95B632009DF111 /* AlbumCell.xib in Resources */,
 				263197931D97A0D2009DF111 /* MusicCell.xib in Resources */,
 			);
@@ -620,16 +647,19 @@
 				263197861D97A05B009DF111 /* MusicViewController.m in Sources */,
 				2631978E1D97A088009DF111 /* MusicModel.m in Sources */,
 				263197921D97A0D2009DF111 /* MusicCell.m in Sources */,
+				26348B1D1D9BA0D200DC52FC /* headerView.m in Sources */,
 				263197711D95B681009DF111 /* fullPicButton.m in Sources */,
 				2631976D1D95B632009DF111 /* AlbumCell.m in Sources */,
 				26C8CE511D92AF1D008A3CD9 /* RemindViewController.m in Sources */,
 				2631975D1D956228009DF111 /* HZLFrame2.m in Sources */,
 				263197621D957C83009DF111 /* HZLScrollView.m in Sources */,
+				26348B181D9BA0A900DC52FC /* AlbumDetailCell.m in Sources */,
 				26C8CE161D92A86B008A3CD9 /* AppDelegate.m in Sources */,
 				263197631D957C83009DF111 /* HZLSegment.m in Sources */,
 				263197561D955E7D009DF111 /* HZLScrollView2.m in Sources */,
 				26C8CE131D92A86B008A3CD9 /* main.m in Sources */,
 				26C8CE4B1D92AEF6008A3CD9 /* HZLTabBarViewController.m in Sources */,
+				26348B131D9BA02700DC52FC /* AlbumDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

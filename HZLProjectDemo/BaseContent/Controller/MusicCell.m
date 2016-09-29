@@ -19,7 +19,8 @@
 
 - (void)awakeFromNib {
     
-   
+    self.isPlay = NO;
+    self.progressView.percentage = 0;
     [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDetail)]];
     
 }
@@ -52,22 +53,22 @@
 
 - (IBAction)playAction:(fullPicButton *)sender {
     
-    
-    if (!_isPlay) {
+    _isPlay = !_isPlay;
+    if (_isPlay) {
         
-        self.isPlay = YES;
-       
+        self.progressView.hidden = NO;
+        
+        [self.playBtn setImage:[UIImage imageNamed:@"btn-musicplay-pause"]
+                      forState:UIControlStateNormal];
     }else
     {
          self.isPlay = NO;
         
          [self.playBtn setImage:[UIImage imageNamed:@"btn-musicplay-play"]
                       forState:UIControlStateNormal];
-        
-        
     }
     self.playMusic(_isPlay,self.urlString);
-    [self updateProgressAndTime];
+   // [self updateProgressAndTime];
 
 }
 - (IBAction)sharAction:(fullPicButton *)sender {
@@ -143,21 +144,6 @@
     
     self.urlString = _model.music_url;
 }
-- (void)updateProgressAndTime
-{
-    __weak typeof(self) weakSelf = self;
-    __weak CustomProgressView *tProgress = self.progressView;
-    self.observer = [_audioPlayer addPeriodicTimeObserverForInterval:CMTimeMake(1, 10) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
-        
-        float current = time.value*1.0f/ time.timescale;
-       
-        
-        tProgress.percentage = current / weakSelf.model.music_duration;
-        
-        weakSelf.musicDurationLabel.text = [weakSelf formatTime:current];
-    
-    }];
-}
 - (void)refreshProgressByReAppearWithTime:(CMTime)time
 {
     __weak typeof(self) weakSelf = self;
@@ -169,34 +155,6 @@
         
         weakSelf.musicDurationLabel.text = [weakSelf formatTime:current];
     });
-}
-- (void)setIsPlay:(BOOL)isPlay
-{
-    
-    _isPlay = isPlay;
-       if (_isPlay) {
-        self.progressView.hidden = NO;
-           
-            [self.playBtn setImage:[UIImage imageNamed:@"btn-musicplay-pause"]
-                          forState:UIControlStateNormal];
-           
-        [self updateProgressAndTime];
-    }else
-    {
-        
-        [self.playBtn setImage:[UIImage imageNamed:@"btn-musicplay-play"]
-                          forState:UIControlStateNormal];
-
-            CMTime time = self.audioPlayer.currentTime;
-        if (time.timescale ) {
-            
-            [self refreshProgressByReAppearWithTime:time];
-        }
-      
-        self.progressView.hidden = NO;
-        [self updateProgressAndTime];
-
-    }
 }
 - (void)dealloc
 {

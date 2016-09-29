@@ -52,5 +52,7 @@
 - (IBAction)thumbAction:(UIButton *)sender;
 - (IBAction)commentAction:(UIButton *)sender;
 - (void)setModel:(Meows *)model;
-
+- (void)updateProgressAndTime;
+- (void)refreshProgressByReAppearWithTime:(CMTime)time;
+- (NSString *)formatTime:(float)num;
 @end

@@ -25,6 +25,8 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
 @property (nonatomic, strong) AVPlayerItem *songItem;
 @property (nonatomic, strong) AVPlayer *musicPlayer;
 @property (nonatomic, weak)  MusicCell *currrentCell;
+@property (nonatomic, weak) MusicCell *onClickedCell;
+@property (nonatomic, strong) id observer;
 @end
 
 @implementation MusicViewController
@@ -37,6 +39,34 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
     NSString *_musicUrl;
     
 }
+- (NSString *)formatTime:(float)num{
+    
+    int sec = (int)num % 60;
+    int min = (int)num / 60;
+    if (num < 60) {
+        return [NSString stringWithFormat:@"00:%02.0f",num];
+    }
+    return [NSString stringWithFormat:@"%02d:%02d",min,sec];
+}
+- (void)updateProgressAndTime
+{
+    __weak typeof(self) weakSelf =self;
+    CustomProgressView *tProgress =weakSelf.currrentCell.progressView;
+  
+        self.observer = [self.musicPlayer addPeriodicTimeObserverForInterval:CMTimeMake(1, 10) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
+            
+            float current = time.value*1.0f/ time.timescale;
+            
+            
+            tProgress.percentage = current / _currrentCell.model.music_duration;
+            
+            weakSelf.currrentCell.musicDurationLabel.text = [weakSelf formatTime:current];
+            
+        }];
+    
+    
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -174,49 +204,62 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
 - (void)playerMusicIsPlay:(BOOL)isPlay musicUrl:(NSString *)url
 {
     _isPlay = isPlay;
-    if (isPlay) {
-        if (self.musicPlayer.currentItem) {
+    if (_onClickedCell == _currrentCell) {
+        
+        if ([url isEqualToString:_musicUrl]) {
             
-            if ([_musicUrl isEqualToString:url]) {
+            if (_isPlay) {
+                
                 [self.musicPlayer play];
                 [_timer setFireDate:[NSDate distantPast]];
                 _rightMusicBtn.hidden = NO;
+
+                
             }else
             {
-                [self createSongItemisPlay:isPlay songUrl:url];
+                [self.musicPlayer pause];
+                [_timer setFireDate:[NSDate distantFuture]];
+                _rightMusicBtn.hidden = YES;
+
             }
-           
         }else
         {
+            _currrentCell.isPlay = NO;
+            _currrentCell.progressView.percentage = 0;
+            _currrentCell.musicDurationLabel.text = _currrentCell.musicDurationStr;
             [self createSongItemisPlay:isPlay songUrl:url];
+            [self updateProgressAndTime];
         }
+    }else
+    {
+        _currrentCell.isPlay = NO;
+        _currrentCell.progressView.percentage = 0;
+        _currrentCell.musicDurationLabel.text = _currrentCell.musicDurationStr;
         
-    }else{
+        [self createSongItemisPlay:isPlay songUrl:url];
+        _currrentCell = _onClickedCell;
+        [self updateProgressAndTime];
         
-        [self.musicPlayer pause];
-        [_timer setFireDate:[NSDate distantFuture]];
-        _rightMusicBtn.hidden = YES;
     }
 }
 - (void)createSongItemisPlay:(BOOL)isplay songUrl:(NSString *)url
 {
-    
-    _currrentCell.musicDurationLabel.text = _currrentCell.musicDurationStr;
-    [_currrentCell.audioPlayer removeTimeObserver:_currrentCell.observer];
-    _currrentCell.audioPlayer = nil;
-//       _currrentCell.isPlay = NO;
-//    _currrentCell.progressView = 0;
+    [self.musicPlayer removeTimeObserver:self.observer];
     
     [self.songItem removeObserver:self forKeyPath:@"status"];
-    [self setSongItem:nil];
-    [self setMusicPlayer:nil];
+
     self.songItem = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:url]];
     
     [self.songItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+    
     self.musicPlayer = [AVPlayer playerWithPlayerItem:self.songItem];
-    _musicUrl = url;
+    
+    _musicUrl = [NSString stringWithString:url];;
+    
     [_timer setFireDate:[NSDate distantPast]];
+    
     _rightMusicBtn.hidden = NO;
+    
 }
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
@@ -308,29 +351,52 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
     cell.model = model;
     
    
-    if (![model.music_url isEqualToString:_musicUrl]) {
-    
-       
-        [cell.audioPlayer removeTimeObserver:cell.observer];
+    if ([model.music_url isEqualToString:_musicUrl]) {
+        
+        cell.isPlay = _isPlay;
       
-        cell.audioPlayer = nil;
+        [self updateProgressAndTime];
+        if (_isPlay) {
+            
+            cell.progressView .hidden = NO;
+            
+            [cell.playBtn setImage:[UIImage imageNamed:@"btn-musicplay-pause"]
+                          forState:UIControlStateNormal];
+            
+            
+        }else
+        {
+           
+            cell.progressView .hidden = NO;
+            [cell refreshProgressByReAppearWithTime:self.musicPlayer.currentTime];
+            [cell.playBtn setImage:[UIImage imageNamed:@"btn-musicplay-play"]
+                          forState:UIControlStateNormal];
+        }
+    }else if(cell == _currrentCell)
+    {
+   
+       [self.musicPlayer removeTimeObserver:self.observer];
+        self.observer = nil;
         cell.progressView.percentage = 0;
         cell.isPlay = NO;
+        [cell.playBtn setImage:[UIImage imageNamed:@"btn-musicplay-play"]
+                      forState:UIControlStateNormal];
+        cell.musicDurationLabel.text = cell.musicDurationStr;
 
-        
     }else
     {
-        cell.audioPlayer  = self.musicPlayer;
-        cell.isPlay = _isPlay;
-        
+        cell.progressView.percentage = 0;
+        cell.isPlay = NO;
+        [cell.playBtn setImage:[UIImage imageNamed:@"btn-musicplay-play"]
+                      forState:UIControlStateNormal];
+        cell.musicDurationLabel.text = cell.musicDurationStr;
     }
-   
     cell.playMusic = ^(BOOL isPlaying,NSString *url){
+       
+        
+        _onClickedCell = cell;
         
         [self playerMusicIsPlay:isPlaying musicUrl:url];
-       
-        _currrentCell = cell;
-        _currrentCell.audioPlayer = self.musicPlayer;
 
     };
     
@@ -399,6 +465,8 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
                 [weakSelf.musicTableView.mj_footer resetNoMoreData];
             }
         });
+        
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
        
         [KVNProgress showErrorWithStatus:error.localizedDescription];
