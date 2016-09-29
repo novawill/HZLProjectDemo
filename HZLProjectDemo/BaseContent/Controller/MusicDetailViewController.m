@@ -9,25 +9,21 @@
 #import "MusicDetailViewController.h"
 #import "MusicViewController.h"
 #import <Accelerate/Accelerate.h>
-#import <AVFoundation/AVFoundation.h>
+
 @interface MusicDetailViewController ()<UIScrollViewDelegate>
 
-@property (nonatomic, strong) AVPlayer *audioPlayer;
 
-@property (nonatomic, strong) AVPlayerItem *songItem;
 
 @end
 
 @implementation MusicDetailViewController
-{
-    BOOL isPlay;
-}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    isPlay = NO;
+   
     [self prefersStatusBarHidden];
-    [[UIApplication sharedApplication] setStatusBarHidden:TRUE];
+    [self.view bringSubviewToFront:self.musicPlayBtn];
     [self.iconImage sd_setImageWithURL:[NSURL URLWithString:_model.group.logo_url]
                       placeholderImage:[UIImage imageNamed:@"AppIcon60x60"]];
     self.iconImage.layer.cornerRadius = CGRectGetWidth(self.iconImage.frame)/2.0f;
@@ -57,6 +53,17 @@
     
     //Hides headView at first
     self.headView.alpha = 0;
+    if (_isPlay) {
+        
+        [self.musicPlayBtn setImage:[UIImage imageNamed:@"btn-musicplay-play"] forState:UIControlStateNormal];
+        [self.musicPlayBtnHead setImage:[UIImage imageNamed:@"btn-musicplay-play"] forState:UIControlStateNormal];
+        
+    }else
+    {
+        [self.musicPlayBtn setImage:[UIImage imageNamed:@"btn-musicplay-pause"] forState:UIControlStateNormal];
+        [self.musicPlayBtnHead setImage:[UIImage imageNamed:@"btn-musicplay-pause"] forState:UIControlStateNormal];
+    }
+
 
       //__weak typeof(self) weakSelf = self;
     //Sets self.backImageView by using Gaussian Blur
@@ -99,6 +106,25 @@
 - (BOOL)prefersStatusBarHidden{
     
     return YES;
+}
+- (void)setIsPlay:(BOOL)isPlay
+{
+    
+    _isPlay = isPlay;
+    if (_isPlay) {
+        
+        [self.musicPlayBtn setImage:[UIImage imageNamed:@"btn-musicplay-play"] forState:UIControlStateNormal];
+        [self.musicPlayBtnHead setImage:[UIImage imageNamed:@"btn-musicplay-play"] forState:UIControlStateNormal];
+        
+    }else
+    {
+        [self.musicPlayBtn setImage:[UIImage imageNamed:@"btn-musicplay-pause"] forState:UIControlStateNormal];
+        [self.musicPlayBtnHead setImage:[UIImage imageNamed:@"btn-musicplay-pause"] forState:UIControlStateNormal];
+    }
+
+    
+    
+    
 }
 
 
@@ -175,92 +201,44 @@
 
 - (IBAction)musicPlayAction:(fullPicButton *)sender {
     
-    self.songItem = [[AVPlayerItem alloc]initWithURL:[NSURL URLWithString:_model.music_url]];
-    self.audioPlayer = [[AVPlayer alloc] initWithPlayerItem:self.songItem];
-    
-    
-    
-    if (! isPlay) {
+    _isPlay = !_isPlay;
+    self.changePlayStatus(_isPlay);
+    if (_isPlay) {
         
+        [self.musicPlayBtn setImage:[UIImage imageNamed:@"btn-musicplay-pause"] forState:UIControlStateNormal];
+        [self.musicPlayBtnHead setImage:[UIImage imageNamed:@"btn-musicplay-pause"] forState:UIControlStateNormal];
         
-        [self.audioPlayer play];
-        isPlay = YES;
-       
-        [self.musicPlayBtn setImage:[UIImage imageNamed:@"btn-musicplay-pause"]
-                      forState:UIControlStateNormal];
-        [self.musicPlayBtnHead setImage:[UIImage imageNamed:@"btn-musicplay-pause"]
-                               forState:UIControlStateNormal];
-        
-        __weak typeof(self) weakSelf = self;
-        __weak UIProgressView *tProgress = self.musicProgress;
-        [_audioPlayer addPeriodicTimeObserverForInterval:CMTimeMake(1, 10) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
-            
-            float current = time.value*1.0f/ time.timescale;
-            
-            [tProgress setProgress:current / weakSelf.model.music_duration animated:YES];
-
-            weakSelf.musicDurationLabel.text = [[weakSelf formatTime:current] stringByAppendingString:[NSString stringWithFormat:@"/%@",[weakSelf formatTime:weakSelf.model.music_duration]]];
-            
-        }];
-
-    }else 
+    }else
     {
-    
-    [self.audioPlayer pause];
-    
-        [self.musicPlayBtn setImage:[UIImage imageNamed:@"btn-musicplay-play"]
-                  forState:UIControlStateNormal];
-        [self.musicPlayBtnHead setImage:[UIImage imageNamed:@"btn-musicplay-play"]
-                               forState:UIControlStateNormal];
-        isPlay = NO;
+        [self.musicPlayBtn setImage:[UIImage imageNamed:@"btn-musicplay-play"] forState:UIControlStateNormal];
+        [self.musicPlayBtnHead setImage:[UIImage imageNamed:@"btn-musicplay-play"] forState:UIControlStateNormal];
     }
-
+    
+   
 }
 
 - (IBAction)muiscPlayBtnHeadAction:(fullPicButton *)sender {
-    self.songItem = [[AVPlayerItem alloc]initWithURL:[NSURL URLWithString:_model.music_url]];
-    self.audioPlayer = [[AVPlayer alloc] initWithPlayerItem:self.songItem];
     
     
-    
-    if (! isPlay) {
+    _isPlay = !_isPlay;
+    self.changePlayStatus(_isPlay);
+    if (_isPlay) {
         
+        [self.musicPlayBtn setImage:[UIImage imageNamed:@"btn-musicplay-play"] forState:UIControlStateNormal];
+        [self.musicPlayBtnHead setImage:[UIImage imageNamed:@"btn-musicplay-play"] forState:UIControlStateNormal];
         
-        [self.audioPlayer play];
-        isPlay = YES;
-        
-        [self.musicPlayBtnHead setImage:[UIImage imageNamed:@"btn-musicplay-pause"]
-                           forState:UIControlStateNormal];
-        [self.musicPlayBtn setImage:[UIImage imageNamed:@"btn-musicplay-pause"]
-                           forState:UIControlStateNormal];
-
-        
-        __weak typeof(self) weakSelf = self;
-        __weak UIProgressView *tProgress = self.musicProgress;
-        [_audioPlayer addPeriodicTimeObserverForInterval:CMTimeMake(1, 10) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
-            
-            float current = time.value*1.0f/ time.timescale;
-            
-            [tProgress setProgress:current / weakSelf.model.music_duration animated:YES];
-            
-            weakSelf.musicDurationLabel.text = [[weakSelf formatTime:current] stringByAppendingString:[NSString stringWithFormat:@"/%ld",weakSelf.model.music_duration]];
-            
-        }];
-        
-    }else if(isPlay)
+    }else
     {
-        
-        [self.audioPlayer pause];
-        
-        [self.musicPlayBtnHead setImage:[UIImage imageNamed:@"btn-musicplay-play"]
-                           forState:UIControlStateNormal];
-        [self.musicPlayBtn setImage:[UIImage imageNamed:@"btn-musicplay-play"]
-                           forState:UIControlStateNormal];
-
-        isPlay = NO;
+        [self.musicPlayBtn setImage:[UIImage imageNamed:@"btn-musicplay-pause"] forState:UIControlStateNormal];
+        [self.musicPlayBtnHead setImage:[UIImage imageNamed:@"btn-musicplay-pause"] forState:UIControlStateNormal];
     }
 
+    
+    
+    
+    
 }
+
 //Formats time
 - (NSString *)formatTime:(float)num{
     
@@ -299,10 +277,6 @@
         
         
     }
-    
-    
-    
-    
 }
 
 @end

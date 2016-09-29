@@ -10,7 +10,6 @@
 
 #import "MusicDetailViewController.h"
 @interface MusicCell()
-
 @property (nonatomic, strong) AVPlayerItem *songItem;
 @end
 
@@ -22,25 +21,34 @@
     self.isPlay = NO;
     self.progressView.percentage = 0;
     [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDetail)]];
+    if (!_musicDetailVC) {
+        
+        _musicDetailVC = [[MusicDetailViewController alloc] init];
+    }
     
 }
 - (void)showDetail
 {
-    MusicDetailViewController *music = [[MusicDetailViewController alloc] init];
     
+   
+    __weak typeof(self) weakSelf = self;
     self.transModel = ^(Meows *model){
         
-        music.model = model;
+        weakSelf.musicDetailVC.model = model;
+        weakSelf.musicDetailVC.isPlay = !weakSelf.isPlay;
         
     };
-    self.
+    _musicDetailVC.changePlayStatus = ^(BOOL isPlay)
+    {
+        
+        weakSelf.isPlay = !isPlay;
+        [weakSelf playAction:weakSelf.playBtn];
+        
+    };
+    
     self.transModel(self.model);
     
-    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:music animated:YES completion:nil];
-    
-    
-  
-    
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:self.musicDetailVC animated:YES completion:nil];
 }
 
 
@@ -68,7 +76,7 @@
                       forState:UIControlStateNormal];
     }
     self.playMusic(_isPlay,self.urlString);
-   // [self updateProgressAndTime];
+   
 
 }
 - (IBAction)sharAction:(fullPicButton *)sender {

@@ -9,12 +9,14 @@
 #import "RootViewController.h"
 #import "HZLTabBarViewController.h"
 #import "MusicCell.h"
+#import "MusicDetailViewController.h"
 @interface RootViewController ()
 @property (nonatomic, strong) AVPlayerItem *songItem;
 @property (nonatomic, strong) UIView *playView;
 @property (nonatomic, strong) UIProgressView *progress;
 @property (nonatomic, strong) UILabel *durationLabel;
 @property (nonatomic, strong) UILabel *songNameLabel;
+@property (nonatomic, weak) MusicDetailViewController *musicDetailVC;
 @end
 
 @implementation RootViewController
@@ -72,6 +74,7 @@
         [_durationLabel removeFromSuperview];
         [_songNameLabel removeFromSuperview];
         
+        
     }
     
     _imageView = [[UIImageView alloc] init];
@@ -128,6 +131,21 @@
     NSString *string = [NSString stringWithFormat:@"%@-%@",_currrentCell.model.song_name,_currrentCell.model.artist];
     _songNameLabel.text = string;
     
+//ScrollView
+    UIScrollView *scrollView = [[UIScrollView alloc] init];
+    [self.playView addSubview:scrollView];
+    UILabel *lyricLabel = [[UILabel alloc] init];
+    [scrollView addSubview:lyricLabel];
+    lyricLabel.textColor = [UIColor whiteColor];
+    lyricLabel.numberOfLines = 0;
+    lyricLabel.font = [UIFont systemFontOfSize:15];
+    lyricLabel.text = _currrentCell.model.lyrics;
+    if ([lyricLabel.text isEqualToString:@""]) {
+        
+        lyricLabel.text = @"无歌词";
+        
+    }
+    lyricLabel.textAlignment = NSTextAlignmentCenter;
 //Constrains
    
 
@@ -159,7 +177,23 @@
         
         make.top.equalTo(_durationLabel.mas_bottom).offset(3);
     }];
-
+    [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+       
+        
+        make.top.equalTo(weakImageView.mas_bottom);
+        make.left.equalTo(weakSelf.playView.mas_left);
+        make.right.equalTo(weakSelf.playView.mas_right);
+        make.bottom.equalTo(weakSelf.playView.mas_bottom);
+    }];
+    __weak typeof(UIScrollView *) weakScrollView = scrollView;
+    [lyricLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+       
+        make.top.equalTo(weakScrollView.mas_top).offset(100);
+        make.left.equalTo(weakScrollView.mas_left).offset(50);
+        make.right.equalTo(weakScrollView.mas_right).offset(-50);
+        make.bottom.equalTo(weakScrollView.mas_bottom).offset(-50);
+        make.centerX.mas_equalTo(weakScrollView.mas_centerX);
+    }];
     
 }
 - (void)playViewBtnAction
@@ -284,7 +318,7 @@
 {
     __weak typeof(self) weakSelf =self;
     CustomProgressView *tProgress = weakSelf.currrentCell.progressView;
-;
+
     
     self.observer = [self.musicPlayer addPeriodicTimeObserverForInterval:CMTimeMake(1, 10) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
         
@@ -297,6 +331,8 @@
         [weakSelf.progress setProgress:current / weakSelf.currrentCell.model.music_duration animated:YES];
         
         weakSelf.durationLabel.text = [[weakSelf formatTime:current] stringByAppendingString:[NSString stringWithFormat:@"/%@",[weakSelf formatTime:weakSelf.currrentCell.model.music_duration]]];
+        [weakSelf.musicDetailVC.musicProgress setProgress:current / weakSelf.currrentCell.model.music_duration animated:YES];
+        weakSelf.musicDetailVC.musicDurationLabel.text = [[weakSelf formatTime:current] stringByAppendingString:[NSString stringWithFormat:@"/%@",[weakSelf formatTime:weakSelf.currrentCell.model.music_duration]]];
     }];
     
     
@@ -330,6 +366,7 @@
 #pragma mark - Creating AVPlayer and add it
 - (void)playerMusicIsPlay:(BOOL)isPlay musicUrl:(NSString *)url
 {
+    
     _isPlay = isPlay;
     if (_onClickedCell == _currrentCell) {
         
@@ -372,6 +409,7 @@
         [self updateProgressAndTime];
         
     }
+    _musicDetailVC = _currrentCell.musicDetailVC;
 }
 - (void)createSongItemisPlay:(BOOL)isplay songUrl:(NSString *)url
 {

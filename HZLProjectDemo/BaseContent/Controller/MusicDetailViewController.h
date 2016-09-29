@@ -31,6 +31,9 @@
 @property (weak, nonatomic) IBOutlet fullPicButton *backBtn;
 @property (weak, nonatomic) IBOutlet UILabel *descLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lyricsLabel;
+@property (nonatomic, strong) void (^changePlayStatus)(BOOL isPlay);
+
+@property (nonatomic, assign) BOOL isPlay;
 #pragma mark - Actions
 - (IBAction)backBtnAction:(fullPicButton *)sender;
 - (IBAction)musicPlayAction:(fullPicButton *)sender;

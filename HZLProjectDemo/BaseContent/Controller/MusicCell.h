@@ -11,13 +11,9 @@
 #import <AVFoundation/AVFoundation.h>
 #import "fullPicButton.h"
 #import "CustomProgressView.h"
-@protocol PlayMusic
 
 
-
-@end
-
-
+@class MusicDetailViewController;
 @interface MusicCell : UITableViewCell
 //Properties
 @property (weak, nonatomic) IBOutlet UILabel *groupName;
@@ -44,6 +40,7 @@
 @property (nonatomic, assign) BOOL isPlay;
 @property (nonatomic, copy) NSString *musicDurationStr;
 @property (nonatomic, strong) id observer;
+@property (nonatomic, strong) MusicDetailViewController *musicDetailVC;
 
 
 //Actions
@@ -52,7 +49,6 @@
 - (IBAction)thumbAction:(UIButton *)sender;
 - (IBAction)commentAction:(UIButton *)sender;
 - (void)setModel:(Meows *)model;
-- (void)updateProgressAndTime;
 - (void)refreshProgressByReAppearWithTime:(CMTime)time;
 - (NSString *)formatTime:(float)num;
 @end

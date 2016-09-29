@@ -34,13 +34,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="76v-PS-v1h">
-                    <rect key="frame" x="0.0" y="558" width="600" height="42"/>
+                    <rect key="frame" x="0.0" y="550" width="600" height="50"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="leo-l4-gqa" customClass="fullPicButton">
-                            <rect key="frame" x="10" y="10" width="20" height="22"/>
+                        <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="leo-l4-gqa" customClass="fullPicButton">
+                            <rect key="frame" x="10" y="10" width="25" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="leo-l4-gqa" secondAttribute="height" id="QJs-Lj-G84"/>
-                                <constraint firstAttribute="width" constant="15" id="lf1-bm-3h9"/>
+                                <constraint firstAttribute="width" constant="25" id="lf1-bm-3h9"/>
                             </constraints>
                             <state key="normal" image="browser-back-white"/>
                             <connections>
@@ -52,16 +52,18 @@
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="leo-l4-gqa" secondAttribute="bottom" constant="10" id="1NP-Cg-jeT"/>
                         <constraint firstItem="leo-l4-gqa" firstAttribute="leading" secondItem="76v-PS-v1h" secondAttribute="leading" constant="10" id="7vC-H2-r4G"/>
-                        <constraint firstAttribute="height" constant="42" id="F1D-U8-zU8"/>
+                        <constraint firstItem="leo-l4-gqa" firstAttribute="top" secondItem="76v-PS-v1h" secondAttribute="top" constant="10" id="BPg-Wj-B99"/>
+                        <constraint firstAttribute="height" constant="50" id="F1D-U8-zU8"/>
                         <constraint firstItem="leo-l4-gqa" firstAttribute="top" secondItem="76v-PS-v1h" secondAttribute="top" constant="10" id="IEx-dw-zcs"/>
                         <constraint firstItem="leo-l4-gqa" firstAttribute="leading" secondItem="76v-PS-v1h" secondAttribute="leading" constant="10" id="WM9-rr-kBz"/>
-                        <constraint firstItem="leo-l4-gqa" firstAttribute="top" secondItem="76v-PS-v1h" secondAttribute="top" constant="15" id="eXx-Gh-by0"/>
+                        <constraint firstItem="leo-l4-gqa" firstAttribute="top" secondItem="76v-PS-v1h" secondAttribute="top" constant="10" id="eXx-Gh-by0"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="1NP-Cg-jeT"/>
                             <exclude reference="IEx-dw-zcs"/>
                             <exclude reference="WM9-rr-kBz"/>
+                            <exclude reference="eXx-Gh-by0"/>
                         </mask>
                     </variation>
                 </view>
@@ -106,21 +108,31 @@
                     </variation>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xgt-mk-0NT">
-                    <rect key="frame" x="0.0" y="44" width="600" height="514"/>
+                    <rect key="frame" x="0.0" y="44" width="600" height="506"/>
                 </imageView>
                 <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GwD-pr-cMM">
-                    <rect key="frame" x="0.0" y="44" width="600" height="514"/>
+                    <rect key="frame" x="0.0" y="44" width="600" height="506"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iez-Ft-dur">
-                    <rect key="frame" x="0.0" y="44" width="600" height="514"/>
+                    <rect key="frame" x="0.0" y="44" width="600" height="506"/>
                     <subviews>
                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="odT-EK-syD">
                             <rect key="frame" x="0.0" y="0.0" width="600" height="2050"/>
                             <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1za-NC-WDh">
+                                    <rect key="frame" x="200" y="100" width="200" height="200"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="1za-NC-WDh" secondAttribute="height" id="rDR-H2-Gp0"/>
+                                        <constraint firstAttribute="width" constant="200" id="yPf-WA-hIY"/>
+                                    </constraints>
+                                </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="upz-d7-RcS" customClass="fullPicButton">
                                     <rect key="frame" x="274" y="173" width="53" height="53"/>
-                                    <state key="normal" image="btn-musicplay-play"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="53" id="Gy1-Dj-Po3"/>
+                                        <constraint firstAttribute="width" secondItem="upz-d7-RcS" secondAttribute="height" multiplier="1:1" id="g9e-T5-CpD"/>
+                                    </constraints>
                                     <connections>
                                         <action selector="musicPlayAction:" destination="-1" eventType="touchUpInside" id="NdG-Tu-sby"/>
                                     </connections>
@@ -134,7 +146,7 @@
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wzs-su-xJM">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wzs-su-xJM">
                                     <rect key="frame" x="10" y="384" width="580" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -158,13 +170,6 @@
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1za-NC-WDh">
-                                    <rect key="frame" x="200" y="100" width="200" height="200"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="1za-NC-WDh" secondAttribute="height" id="rDR-H2-Gp0"/>
-                                        <constraint firstAttribute="width" constant="200" id="yPf-WA-hIY"/>
-                                    </constraints>
-                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -218,7 +223,6 @@
                                 <constraint firstAttribute="width" secondItem="zdM-Yf-tUg" secondAttribute="height" id="A4d-VR-63t"/>
                                 <constraint firstAttribute="width" constant="30" id="Qto-YP-SI0"/>
                             </constraints>
-                            <state key="normal" image="btn-musicplay-play"/>
                             <connections>
                                 <action selector="muiscPlayBtnHeadAction:" destination="-1" eventType="touchUpInside" id="zkw-cg-iZB"/>
                             </connections>
@@ -279,6 +283,5 @@
     </objects>
     <resources>
         <image name="browser-back-white" width="10" height="17"/>
-        <image name="btn-musicplay-play" width="53" height="53"/>
     </resources>
 </document>

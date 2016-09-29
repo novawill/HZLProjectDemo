@@ -40,44 +40,14 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
     NSString *_musicUrl;
     
 }
-- (NSString *)formatTime:(float)num{
-    
-    int sec = (int)num % 60;
-    int min = (int)num / 60;
-    if (num < 60) {
-        return [NSString stringWithFormat:@"00:%02.0f",num];
-    }
-    return [NSString stringWithFormat:@"%02d:%02d",min,sec];
-}
-- (void)updateProgressAndTime
-{
-    __weak typeof(self) weakSelf =self;
-    CustomProgressView *tProgress =weakSelf.currrentCell.progressView;
-  
-        self.observer = [self.musicPlayer addPeriodicTimeObserverForInterval:CMTimeMake(1, 10) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
-            
-            float current = time.value*1.0f/ time.timescale;
-            
-            
-            tProgress.percentage = current / _currrentCell.model.music_duration;
-            
-            weakSelf.currrentCell.musicDurationLabel.text = [weakSelf formatTime:current];
-            
-        }];
-    
-    
-}
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.start = 0;
     [self createView];
-    _timer = [NSTimer scheduledTimerWithTimeInterval:0.005 target:self selector:@selector(imageRotation) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
-    [_timer setFireDate:[NSDate  distantFuture]];
-    [self setRightBarButtonItem];
-    _rightMusicBtn.hidden = YES;
+   
+    
+ 
     _rootVC = (RootViewController *)[UIApplication sharedApplication].keyWindow.rootViewController;
     
     self.navigationItem.rightBarButtonItem = nil;
@@ -128,42 +98,7 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
     return _normalImages;
 }
 
-- (void)setRightBarButtonItem
-{
-    _rightMusicBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    __weak typeof(self) weakSelf = self;
-    imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"btn-player"]];
-    imageView.autoresizingMask = UIViewAutoresizingNone;
-    imageView.contentMode = UIViewContentModeScaleToFill;
-    imageView.bounds=CGRectMake(0, 0, 40, 40);
-    
-    [_rightMusicBtn addSubview:imageView];
-    
-    
-    
-    [self.view addSubview:_rightMusicBtn];
-    [_rightMusicBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.top.equalTo(weakSelf.view.mas_top).offset(10);
-        make.right.equalTo(weakSelf.view.mas_right).offset(-10);
-        make.width.equalTo(@40);
-        make.height.equalTo(@40);
-        
-    }];
-}
-- (void)imageRotation
-{
-    
-        imageviewAngle += 2;
-        if (imageviewAngle > 360) {
-            
-            imageviewAngle = 0;
-        }
-        imageView.transform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(imageviewAngle));
 
-
-}
 
 #pragma mark - LazyLoad for _musicArray
 - (NSMutableArray *)musicArray
@@ -176,93 +111,10 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
     }
     return _musicArray;
 }
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
-{
-    
-    if ((object == self.songItem) && ([keyPath isEqualToString:@"status"])) {
-        
-        AVPlayerStatus status = [[change objectForKey:NSKeyValueChangeNewKey] integerValue];
-        
-        switch (status) {
-            case AVPlayerStatusUnknown: {
-                
-                break;
-            }
-            case AVPlayerStatusReadyToPlay: {
-                
-                [self.musicPlayer play];
-                
-                break;
-            }
-            case AVPlayerStatusFailed: {
-                
-                break;
-            }
-        }
-    }
-}
+
 
 #pragma mark - Creating AVPlayer and add it 
-- (void)playerMusicIsPlay:(BOOL)isPlay musicUrl:(NSString *)url
-{
-    _isPlay = isPlay;
-    if (_onClickedCell == _currrentCell) {
-        
-        if ([url isEqualToString:_musicUrl]) {
-            
-            if (_isPlay) {
-                
-                [self.musicPlayer play];
-                [_timer setFireDate:[NSDate distantPast]];
-                _rightMusicBtn.hidden = NO;
 
-                
-            }else
-            {
-                [self.musicPlayer pause];
-                [_timer setFireDate:[NSDate distantFuture]];
-                _rightMusicBtn.hidden = YES;
-
-            }
-        }else
-        {
-            _currrentCell.isPlay = NO;
-            _currrentCell.progressView.percentage = 0;
-            _currrentCell.musicDurationLabel.text = _currrentCell.musicDurationStr;
-            [self createSongItemisPlay:isPlay songUrl:url];
-            [self updateProgressAndTime];
-        }
-    }else
-    {
-        _currrentCell.isPlay = NO;
-        _currrentCell.progressView.percentage = 0;
-        _currrentCell.musicDurationLabel.text = _currrentCell.musicDurationStr;
-        
-        [self createSongItemisPlay:isPlay songUrl:url];
-        _currrentCell = _onClickedCell;
-        [self updateProgressAndTime];
-        
-    }
-}
-- (void)createSongItemisPlay:(BOOL)isplay songUrl:(NSString *)url
-{
-    [self.musicPlayer removeTimeObserver:self.observer];
-    
-    [self.songItem removeObserver:self forKeyPath:@"status"];
-
-    self.songItem = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:url]];
-    
-    [self.songItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
-    
-    self.musicPlayer = [AVPlayer playerWithPlayerItem:self.songItem];
-    
-    _musicUrl = [NSString stringWithString:url];;
-    
-    [_timer setFireDate:[NSDate distantPast]];
-    
-    _rightMusicBtn.hidden = NO;
-    
-}
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
 {
@@ -394,10 +246,11 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
                       forState:UIControlStateNormal];
         cell.musicDurationLabel.text = cell.musicDurationStr;
     }
+    __weak typeof(MusicCell *) weakCell = cell;
     cell.playMusic = ^(BOOL isPlaying,NSString *url){
        
         
-       _rootVC.onClickedCell = cell;
+       _rootVC.onClickedCell = weakCell;
         
         [_rootVC playerMusicIsPlay:isPlaying musicUrl:url];
 
