@@ -10,7 +10,7 @@
 #import "MusicCell.h"
 #import <AVFoundation/AVFoundation.h>
 #import "MusicDetailViewController.h"
-#define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
+#import "RootViewController.h"
 NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
 
 @interface MusicViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -27,6 +27,7 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
 @property (nonatomic, weak)  MusicCell *currrentCell;
 @property (nonatomic, weak) MusicCell *onClickedCell;
 @property (nonatomic, strong) id observer;
+@property (nonatomic, weak) RootViewController *rootVC;
 @end
 
 @implementation MusicViewController
@@ -77,7 +78,8 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
     [_timer setFireDate:[NSDate  distantFuture]];
     [self setRightBarButtonItem];
     _rightMusicBtn.hidden = YES;
-
+    _rootVC = (RootViewController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    
     self.navigationItem.rightBarButtonItem = nil;
     
 }
@@ -351,12 +353,12 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
     cell.model = model;
     
    
-    if ([model.music_url isEqualToString:_musicUrl]) {
+    if ([model.music_url isEqualToString:_rootVC.musicUrl]) {
         
-        cell.isPlay = _isPlay;
+        cell.isPlay = _rootVC.isPlay;
       
-        [self updateProgressAndTime];
-        if (_isPlay) {
+        [_rootVC updateProgressAndTime];
+        if (cell.isPlay) {
             
             cell.progressView .hidden = NO;
             
@@ -368,15 +370,15 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
         {
            
             cell.progressView .hidden = NO;
-            [cell refreshProgressByReAppearWithTime:self.musicPlayer.currentTime];
+            [cell refreshProgressByReAppearWithTime:_rootVC.musicPlayer.currentTime];
             [cell.playBtn setImage:[UIImage imageNamed:@"btn-musicplay-play"]
                           forState:UIControlStateNormal];
         }
-    }else if(cell == _currrentCell)
+    }else if(cell == _rootVC.currrentCell)
     {
    
-       [self.musicPlayer removeTimeObserver:self.observer];
-        self.observer = nil;
+       [_rootVC.musicPlayer removeTimeObserver:_rootVC.observer];
+        _rootVC.observer = nil;
         cell.progressView.percentage = 0;
         cell.isPlay = NO;
         [cell.playBtn setImage:[UIImage imageNamed:@"btn-musicplay-play"]
@@ -384,7 +386,8 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
         cell.musicDurationLabel.text = cell.musicDurationStr;
 
     }else
-    {
+    {   [_rootVC.musicPlayer removeTimeObserver:_rootVC.observer];
+        _rootVC.observer = nil;
         cell.progressView.percentage = 0;
         cell.isPlay = NO;
         [cell.playBtn setImage:[UIImage imageNamed:@"btn-musicplay-play"]
@@ -394,9 +397,9 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
     cell.playMusic = ^(BOOL isPlaying,NSString *url){
        
         
-        _onClickedCell = cell;
+       _rootVC.onClickedCell = cell;
         
-        [self playerMusicIsPlay:isPlaying musicUrl:url];
+        [_rootVC playerMusicIsPlay:isPlaying musicUrl:url];
 
     };
     

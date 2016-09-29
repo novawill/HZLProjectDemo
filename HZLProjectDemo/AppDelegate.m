@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "HZLTabBarViewController.h"
+#import "RootViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -22,8 +22,10 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    HZLTabBarViewController *tabBarVC = [[HZLTabBarViewController alloc] init];
-    self.window.rootViewController = tabBarVC;
+    //HZLTabBarViewController *tabBarVC = [[HZLTabBarViewController alloc] init];
+    RootViewController *rootVC = [[RootViewController alloc] init];
+    
+    self.window.rootViewController = rootVC;
     
     
     return YES;

@@ -19,7 +19,7 @@
 
 #define ScreenW [UIScreen mainScreen].bounds.size.width
 
-
+#define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
 
 
 #endif /* HZLPch_pch */

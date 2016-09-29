@@ -33,6 +33,7 @@
 		26348B191D9BA0A900DC52FC /* AlbumDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26348B171D9BA0A900DC52FC /* AlbumDetailCell.xib */; };
 		26348B1D1D9BA0D200DC52FC /* headerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26348B1B1D9BA0D200DC52FC /* headerView.m */; };
 		26348B1E1D9BA0D200DC52FC /* headerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26348B1C1D9BA0D200DC52FC /* headerView.xib */; };
+		26348B4F1D9D2F0E00DC52FC /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26348B4E1D9D2F0E00DC52FC /* RootViewController.m */; };
 		26C8CE131D92A86B008A3CD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE121D92A86B008A3CD9 /* main.m */; };
 		26C8CE161D92A86B008A3CD9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE151D92A86B008A3CD9 /* AppDelegate.m */; };
 		26C8CE191D92A86B008A3CD9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE181D92A86B008A3CD9 /* ViewController.m */; };
@@ -95,6 +96,8 @@
 		26348B1A1D9BA0D200DC52FC /* headerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = headerView.h; sourceTree = "<group>"; };
 		26348B1B1D9BA0D200DC52FC /* headerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = headerView.m; sourceTree = "<group>"; };
 		26348B1C1D9BA0D200DC52FC /* headerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = headerView.xib; sourceTree = "<group>"; };
+		26348B4D1D9D2F0E00DC52FC /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		26348B4E1D9D2F0E00DC52FC /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		26C8CE0E1D92A86B008A3CD9 /* HZLProjectDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HZLProjectDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C8CE121D92A86B008A3CD9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		26C8CE141D92A86B008A3CD9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -357,6 +360,8 @@
 				26C8CE4A1D92AEF6008A3CD9 /* HZLTabBarViewController.m */,
 				2631979E1D97A3F0009DF111 /* BaseViewController.h */,
 				2631979F1D97A3F0009DF111 /* BaseViewController.m */,
+				26348B4D1D9D2F0E00DC52FC /* RootViewController.h */,
+				26348B4E1D9D2F0E00DC52FC /* RootViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -653,6 +658,7 @@
 				26C8CE511D92AF1D008A3CD9 /* RemindViewController.m in Sources */,
 				2631975D1D956228009DF111 /* HZLFrame2.m in Sources */,
 				263197621D957C83009DF111 /* HZLScrollView.m in Sources */,
+				26348B4F1D9D2F0E00DC52FC /* RootViewController.m in Sources */,
 				26348B181D9BA0A900DC52FC /* AlbumDetailCell.m in Sources */,
 				26C8CE161D92A86B008A3CD9 /* AppDelegate.m in Sources */,
 				263197631D957C83009DF111 /* HZLSegment.m in Sources */,
