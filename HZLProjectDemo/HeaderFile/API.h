@@ -22,5 +22,6 @@
 
 #define checkInAPI @"http://mmmono.com/api/v3/group/100353/content/kind/2/?"
 
+#define discoveryAPI @"http://mmmono.com/api/v3/new_explore/?"
 
 #endif /* API_h */

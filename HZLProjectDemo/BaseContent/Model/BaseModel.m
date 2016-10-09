@@ -9,7 +9,7 @@
 #import "BaseModel.h"
 
 @implementation BaseModel
-+ (NSDictionary<NSString *,id> *)modelContainerPropertyGenericClass
++ (NSDictionary *)modelContainerPropertyGenericClass
 {
     
     return @{@"meows":@"Meows"};

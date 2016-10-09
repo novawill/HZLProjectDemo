@@ -363,6 +363,7 @@
     }
 }
 
+
 #pragma mark - Creating AVPlayer and add it
 - (void)playerMusicIsPlay:(BOOL)isPlay musicUrl:(NSString *)url
 {
@@ -417,6 +418,12 @@
     
     [self.songItem removeObserver:self forKeyPath:@"status"];
     
+    self.musicPlayer = nil;
+    
+    self.songItem = nil;
+    
+    self.observer = nil;
+    
     self.songItem = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:url]];
     
     [self.songItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
@@ -429,11 +436,7 @@
     
     _rightMusicBtn.hidden = NO;
     
-    
-    
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -445,14 +448,6 @@
     
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -34,6 +34,14 @@
 		26348B1D1D9BA0D200DC52FC /* headerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26348B1B1D9BA0D200DC52FC /* headerView.m */; };
 		26348B1E1D9BA0D200DC52FC /* headerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26348B1C1D9BA0D200DC52FC /* headerView.xib */; };
 		26348B4F1D9D2F0E00DC52FC /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26348B4E1D9D2F0E00DC52FC /* RootViewController.m */; };
+		2643BD6D1DA6682700B53A3E /* DiscoverViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2643BD6C1DA6682700B53A3E /* DiscoverViewHeader.m */; };
+		2643BD711DA6686100B53A3E /* DiscoverViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2643BD701DA6686100B53A3E /* DiscoverViewHeader.xib */; };
+		2643BD741DA6810000B53A3E /* PicTitleBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2643BD731DA6810000B53A3E /* PicTitleBtn.m */; };
+		2643BD771DA6CAB400B53A3E /* DiscoverHeaderScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 2643BD761DA6CAB400B53A3E /* DiscoverHeaderScroll.m */; };
+		26A4E02F1DA7A2B50037E544 /* DiscoveryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4E02E1DA7A2B50037E544 /* DiscoveryModel.m */; };
+		26A4E0321DA7FD9C0037E544 /* DiscoveryFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4E0311DA7FD9B0037E544 /* DiscoveryFlowLayout.m */; };
+		26A4E05C1DAA70F20037E544 /* DisccoverCollectionViewCellOne.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4E05A1DAA70F20037E544 /* DisccoverCollectionViewCellOne.m */; };
+		26A4E05D1DAA70F20037E544 /* DisccoverCollectionViewCellOne.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26A4E05B1DAA70F20037E544 /* DisccoverCollectionViewCellOne.xib */; };
 		26C8CE131D92A86B008A3CD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE121D92A86B008A3CD9 /* main.m */; };
 		26C8CE161D92A86B008A3CD9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE151D92A86B008A3CD9 /* AppDelegate.m */; };
 		26C8CE191D92A86B008A3CD9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE181D92A86B008A3CD9 /* ViewController.m */; };
@@ -98,6 +106,20 @@
 		26348B1C1D9BA0D200DC52FC /* headerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = headerView.xib; sourceTree = "<group>"; };
 		26348B4D1D9D2F0E00DC52FC /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		26348B4E1D9D2F0E00DC52FC /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		2643BD6B1DA6682700B53A3E /* DiscoverViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewHeader.h; sourceTree = "<group>"; };
+		2643BD6C1DA6682700B53A3E /* DiscoverViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewHeader.m; sourceTree = "<group>"; };
+		2643BD701DA6686100B53A3E /* DiscoverViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverViewHeader.xib; sourceTree = "<group>"; };
+		2643BD721DA6810000B53A3E /* PicTitleBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicTitleBtn.h; sourceTree = "<group>"; };
+		2643BD731DA6810000B53A3E /* PicTitleBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicTitleBtn.m; sourceTree = "<group>"; };
+		2643BD751DA6CAB400B53A3E /* DiscoverHeaderScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverHeaderScroll.h; sourceTree = "<group>"; };
+		2643BD761DA6CAB400B53A3E /* DiscoverHeaderScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverHeaderScroll.m; sourceTree = "<group>"; };
+		26A4E02D1DA7A2B50037E544 /* DiscoveryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoveryModel.h; sourceTree = "<group>"; };
+		26A4E02E1DA7A2B50037E544 /* DiscoveryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoveryModel.m; sourceTree = "<group>"; };
+		26A4E0301DA7FD9B0037E544 /* DiscoveryFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoveryFlowLayout.h; sourceTree = "<group>"; };
+		26A4E0311DA7FD9B0037E544 /* DiscoveryFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoveryFlowLayout.m; sourceTree = "<group>"; };
+		26A4E0591DAA70F20037E544 /* DisccoverCollectionViewCellOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisccoverCollectionViewCellOne.h; sourceTree = "<group>"; };
+		26A4E05A1DAA70F20037E544 /* DisccoverCollectionViewCellOne.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisccoverCollectionViewCellOne.m; sourceTree = "<group>"; };
+		26A4E05B1DAA70F20037E544 /* DisccoverCollectionViewCellOne.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisccoverCollectionViewCellOne.xib; sourceTree = "<group>"; };
 		26C8CE0E1D92A86B008A3CD9 /* HZLProjectDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HZLProjectDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C8CE121D92A86B008A3CD9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		26C8CE141D92A86B008A3CD9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -431,6 +453,18 @@
 		26C8CE3D1D92AE1C008A3CD9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2643BD6B1DA6682700B53A3E /* DiscoverViewHeader.h */,
+				2643BD6C1DA6682700B53A3E /* DiscoverViewHeader.m */,
+				2643BD701DA6686100B53A3E /* DiscoverViewHeader.xib */,
+				2643BD721DA6810000B53A3E /* PicTitleBtn.h */,
+				2643BD731DA6810000B53A3E /* PicTitleBtn.m */,
+				2643BD751DA6CAB400B53A3E /* DiscoverHeaderScroll.h */,
+				2643BD761DA6CAB400B53A3E /* DiscoverHeaderScroll.m */,
+				26A4E0301DA7FD9B0037E544 /* DiscoveryFlowLayout.h */,
+				26A4E0311DA7FD9B0037E544 /* DiscoveryFlowLayout.m */,
+				26A4E0591DAA70F20037E544 /* DisccoverCollectionViewCellOne.h */,
+				26A4E05A1DAA70F20037E544 /* DisccoverCollectionViewCellOne.m */,
+				26A4E05B1DAA70F20037E544 /* DisccoverCollectionViewCellOne.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -447,6 +481,8 @@
 		26C8CE3F1D92AE2D008A3CD9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				26A4E02D1DA7A2B50037E544 /* DiscoveryModel.h */,
+				26A4E02E1DA7A2B50037E544 /* DiscoveryModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -578,6 +614,8 @@
 				26348B1E1D9BA0D200DC52FC /* headerView.xib in Resources */,
 				26348B141D9BA02700DC52FC /* AlbumDetailViewController.xib in Resources */,
 				2631976E1D95B632009DF111 /* AlbumCell.xib in Resources */,
+				26A4E05D1DAA70F20037E544 /* DisccoverCollectionViewCellOne.xib in Resources */,
+				2643BD711DA6686100B53A3E /* DiscoverViewHeader.xib in Resources */,
 				263197931D97A0D2009DF111 /* MusicCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -643,19 +681,24 @@
 				263197571D955E7D009DF111 /* HZLSegment2.m in Sources */,
 				26C8CE541D92AF2B008A3CD9 /* DiscoverViewController.m in Sources */,
 				2631978A1D97A06B009DF111 /* MusicDetailViewController.m in Sources */,
+				2643BD6D1DA6682700B53A3E /* DiscoverViewHeader.m in Sources */,
 				263197981D97A0DD009DF111 /* CustomProgressView.m in Sources */,
+				2643BD771DA6CAB400B53A3E /* DiscoverHeaderScroll.m in Sources */,
 				26C8CE4E1D92AF06008A3CD9 /* AlbumViewController.m in Sources */,
 				26C8CE571D92AF36008A3CD9 /* TrendViewController.m in Sources */,
 				26C8CE191D92A86B008A3CD9 /* ViewController.m in Sources */,
 				263197991D97A0DD009DF111 /* CustomProgressView+BaseConfiguration.m in Sources */,
 				263197A01D97A3F0009DF111 /* BaseViewController.m in Sources */,
 				263197861D97A05B009DF111 /* MusicViewController.m in Sources */,
+				26A4E02F1DA7A2B50037E544 /* DiscoveryModel.m in Sources */,
+				26A4E0321DA7FD9C0037E544 /* DiscoveryFlowLayout.m in Sources */,
 				2631978E1D97A088009DF111 /* MusicModel.m in Sources */,
 				263197921D97A0D2009DF111 /* MusicCell.m in Sources */,
 				26348B1D1D9BA0D200DC52FC /* headerView.m in Sources */,
 				263197711D95B681009DF111 /* fullPicButton.m in Sources */,
 				2631976D1D95B632009DF111 /* AlbumCell.m in Sources */,
 				26C8CE511D92AF1D008A3CD9 /* RemindViewController.m in Sources */,
+				26A4E05C1DAA70F20037E544 /* DisccoverCollectionViewCellOne.m in Sources */,
 				2631975D1D956228009DF111 /* HZLFrame2.m in Sources */,
 				263197621D957C83009DF111 /* HZLScrollView.m in Sources */,
 				26348B4F1D9D2F0E00DC52FC /* RootViewController.m in Sources */,
@@ -666,6 +709,7 @@
 				26C8CE131D92A86B008A3CD9 /* main.m in Sources */,
 				26C8CE4B1D92AEF6008A3CD9 /* HZLTabBarViewController.m in Sources */,
 				26348B131D9BA02700DC52FC /* AlbumDetailViewController.m in Sources */,
+				2643BD741DA6810000B53A3E /* PicTitleBtn.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

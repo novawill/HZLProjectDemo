@@ -35,15 +35,9 @@
     
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]} forState:UIControlStateSelected];
     
-    
-    
-    
-    
-    
 }
 - (void)setUpChildVC:(UIViewController *)vc name:(NSString *)name image:(NSString *)image selectedImage:(NSString *)selectedImage
 {
-    
     
     vc.tabBarItem.title = name;
     vc.tabBarItem.image = [UIImage imageNamed:image];
@@ -54,6 +48,7 @@
     [self addChildViewController:nav];
     
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
