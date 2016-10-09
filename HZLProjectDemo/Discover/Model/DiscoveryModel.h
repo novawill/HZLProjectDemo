@@ -15,6 +15,8 @@
 
 @property (nonatomic, copy) NSString *start;
 
+@property (nonatomic, assign) BOOL is_last_page;
+
 @property (nonatomic, strong) DiscoveryTop_Banner *top_banner;
 
 @property (nonatomic, strong) NSArray<DiscoveryMod_List *> *mod_list;

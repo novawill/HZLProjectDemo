@@ -17,14 +17,55 @@
 
 @property (nonatomic, strong) NSMutableArray *headerArr;
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) MJRefreshGifHeader *gifHeader;
+@property (nonatomic, copy) NSString *start;
+@property (nonatomic, strong) NSMutableArray *refreshImages;
+
+@property (nonatomic, strong) NSMutableArray *normalImages;
+
+@property (nonatomic, strong) UICollectionView *collectionView;
 @end
 
 @implementation DiscoverViewController
 {
     DiscoveryModel *_model;
     DiscoverViewHeader *_headerView;
-    UICollectionView *_collectionView;
     
+}
+- (NSMutableArray *)refreshImages
+{
+    
+    if (!_refreshImages) {
+        
+        
+        _refreshImages = [[NSMutableArray alloc] init];
+        
+        for (int i = 0; i < 20; i++) {
+            
+            NSString *imageName = [NSString stringWithFormat:@"mono-black-%d",i+1];
+            
+            UIImage *image = [UIImage imageNamed:imageName];
+            
+            [_refreshImages addObject:image];
+        }
+        
+        
+    }
+    return _refreshImages;
+}
+
+- (NSMutableArray *)normalImages
+{
+    
+    if (!_normalImages) {
+        
+        _normalImages = [[NSMutableArray alloc] init];
+        
+        
+        UIImage *image = [UIImage imageNamed:@"mono-black-20"];
+        [_normalImages addObject:image];
+    }
+    return _normalImages;
 }
 - (NSMutableArray *)dataArray
 {
@@ -48,14 +89,44 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
-    self.view.backgroundColor = [UIColor orangeColor];
-   
+    self.view.backgroundColor = [UIColor clearColor];
+    _start = @"";
     self.automaticallyAdjustsScrollViewInsets = NO;
-    [self requestHeader];
+   
     
     [self createUI];
+    [self createRefreshHeader];
     
     
+}
+- (void)createRefreshHeader
+{
+    
+    
+    
+    __weak typeof(self) weakSelf = self;
+    _gifHeader = [MJRefreshGifHeader headerWithRefreshingBlock:^{
+        
+        [weakSelf requestWithStart:weakSelf.start];
+    
+        weakSelf.collectionView.mj_footer.hidden = YES;
+        
+    }];
+    [_gifHeader setImages:self.refreshImages forState:MJRefreshStateRefreshing];
+    [_gifHeader setImages:self.normalImages forState:MJRefreshStateIdle];
+    [_gifHeader setImages:self.normalImages forState:MJRefreshStatePulling];
+    _gifHeader.lastUpdatedTimeLabel.hidden = YES;
+    _gifHeader.stateLabel.hidden = YES;
+    self.collectionView.mj_header = _gifHeader;
+    self.collectionView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+        
+        [weakSelf requestWithStart:weakSelf.start];
+       
+        weakSelf.collectionView.mj_header.hidden = YES;
+        
+    }];
+    
+    [self.collectionView.mj_header beginRefreshing];
     
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -68,6 +139,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0 && indexPath.row == 0) {
+        
         
         DiscoverViewHeader *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL" forIndexPath:indexPath];
         
@@ -119,8 +191,10 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    
-    return 1;
+    if (!_dataArray) {
+        return 1;
+    }
+    return _dataArray.count;
     
 }
 - (void)createUI
@@ -130,7 +204,7 @@
     
     _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 630) collectionViewLayout:flowLayout];
     
-       
+    _collectionView.backgroundColor = [UIColor clearColor];
    [self.view addSubview:_collectionView];
     
         
@@ -151,12 +225,29 @@
     
     
 }
-- (void)requestHeader
+- (void)requestWithStart:(NSString *)start
 {
-    [[HZLNetManager defaultManager] requestDataByGetWithURL:discoveryAPI success:^(id response) {
+    NSString *urlStr;
+    if (![start isEqualToString:@""]) {
+        
+        urlStr = [NSString stringWithFormat:@"%@start=%@",discoveryAPI,start];
+        
+    }else
+    {
+        urlStr = discoveryAPI;
+    }
+    
+    [[HZLNetManager defaultManager] requestDataByGetWithURL:urlStr success:^(id response) {
         
         _model = [DiscoveryModel yy_modelWithJSON:response];
         
+        if ([self.collectionView.mj_footer isHidden]) {
+            
+            [self.dataArray removeAllObjects];
+            self.start = @"";
+            
+        }
+        self.start = _model.start;
         NSMutableArray *tempDataArr = [[NSMutableArray alloc] init];
         NSArray *array = [NSArray arrayWithArray:_model.top_banner.entity_list];
         
@@ -176,16 +267,9 @@
             [tempDataArr addObject:dic];
         }
         [self.dataArray addObject:tempDataArr];
+              
         
-        DiscoveryEntity_List *enlisModel2 = [DiscoveryEntity_List yy_modelWithJSON:model2.entity_list];
-        
-        NSArray *cellArray = [NSArray arrayWithArray:_model.mod_list];
-        
-        
-      
-        
-        
-
+    
         __weak typeof(self) weakSelf = self;
         
         
@@ -204,7 +288,20 @@
            
             [weakSelf.headerArr addObject:array2];
             [_collectionView reloadData];
+            [weakSelf.collectionView.mj_header endRefreshing];
+            [weakSelf.collectionView.mj_footer endRefreshing];
+            weakSelf.collectionView.mj_header.hidden = NO;
+            weakSelf.collectionView.mj_footer.hidden= NO;
+            if (_model.is_last_page) {
+                
+                [weakSelf.collectionView.mj_footer endRefreshingWithNoMoreData];
+                
+           
+                    
+                    [KVNProgress showSuccessWithStatus: @"没有更多数据了"];
+            }
 
+            
         });
         
     } failure:^(NSError *error) {
