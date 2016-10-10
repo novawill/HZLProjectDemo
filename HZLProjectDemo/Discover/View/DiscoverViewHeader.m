@@ -7,12 +7,10 @@
 //
 
 #import "DiscoverViewHeader.h"
+
 @interface DiscoverViewHeader()
-@property (weak, nonatomic) IBOutlet UIButton *videoBtn;
-@property (strong, nonatomic) UIButton *musicBtn;
-@property (weak, nonatomic) IBOutlet UIButton *albumBtn;
-@property (strong, nonatomic) UIButton *posterBtn;
-@property (weak, nonatomic) IBOutlet UIButton *daynoteBtn;
+
+
 
 @end
 @implementation DiscoverViewHeader
@@ -49,4 +47,12 @@
     return view;
 }
 
+
+- (IBAction)onClickMusicBtn:(UIButton *)sender {
+    
+    
+
+    
+    
+}
 @end

@@ -22,11 +22,11 @@
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyc-Fd-fqt">
                         <rect key="frame" x="10" y="10" width="60" height="20.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkf-0f-H3X">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkf-0f-H3X">
                         <rect key="frame" x="10" y="40" width="31" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.1764705882" green="0.61960784310000006" blue="0.6705882353" alpha="1" colorSpace="calibratedRGB"/>
@@ -92,6 +92,7 @@
                 <constraint firstAttribute="trailing" secondItem="pSb-te-VCC" secondAttribute="trailing" id="mi1-pb-QcF"/>
                 <constraint firstAttribute="bottom" secondItem="BSG-Z3-nkr" secondAttribute="bottom" constant="16" id="nvF-nk-scj"/>
                 <constraint firstItem="pSb-te-VCC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="oFP-kT-zul"/>
+                <constraint firstItem="Sje-X3-DV3" firstAttribute="leading" secondItem="dyc-Fd-fqt" secondAttribute="trailing" constant="20" id="qxA-p9-qbB"/>
                 <constraint firstItem="U8i-m1-6WU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="rMY-b6-GpS"/>
                 <constraint firstItem="dyc-Fd-fqt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="rm4-4G-HdR"/>
             </constraints>

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		263078DA1DAB88650065AB60 /* HeaderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 263078D81DAB88650065AB60 /* HeaderCollectionViewCell.m */; };
+		263078DB1DAB88650065AB60 /* HeaderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 263078D91DAB88650065AB60 /* HeaderCollectionViewCell.xib */; };
 		263197561D955E7D009DF111 /* HZLScrollView2.m in Sources */ = {isa = PBXBuildFile; fileRef = 263197531D955E7D009DF111 /* HZLScrollView2.m */; };
 		263197571D955E7D009DF111 /* HZLSegment2.m in Sources */ = {isa = PBXBuildFile; fileRef = 263197551D955E7D009DF111 /* HZLSegment2.m */; };
 		2631975D1D956228009DF111 /* HZLFrame2.m in Sources */ = {isa = PBXBuildFile; fileRef = 2631975C1D956228009DF111 /* HZLFrame2.m */; };
@@ -42,6 +44,8 @@
 		26A4E0321DA7FD9C0037E544 /* DiscoveryFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4E0311DA7FD9B0037E544 /* DiscoveryFlowLayout.m */; };
 		26A4E05C1DAA70F20037E544 /* DisccoverCollectionViewCellOne.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4E05A1DAA70F20037E544 /* DisccoverCollectionViewCellOne.m */; };
 		26A4E05D1DAA70F20037E544 /* DisccoverCollectionViewCellOne.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26A4E05B1DAA70F20037E544 /* DisccoverCollectionViewCellOne.xib */; };
+		26A4E0841DAB6FFE0037E544 /* DiscoverMiddleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A4E0821DAB6FFE0037E544 /* DiscoverMiddleCollectionViewCell.m */; };
+		26A4E0851DAB6FFE0037E544 /* DiscoverMiddleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26A4E0831DAB6FFE0037E544 /* DiscoverMiddleCollectionViewCell.xib */; };
 		26C8CE131D92A86B008A3CD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE121D92A86B008A3CD9 /* main.m */; };
 		26C8CE161D92A86B008A3CD9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE151D92A86B008A3CD9 /* AppDelegate.m */; };
 		26C8CE191D92A86B008A3CD9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE181D92A86B008A3CD9 /* ViewController.m */; };
@@ -59,6 +63,9 @@
 
 /* Begin PBXFileReference section */
 		1F77062DCDC8809FE50472CE /* Pods-HZLProjectDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HZLProjectDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-HZLProjectDemo/Pods-HZLProjectDemo.release.xcconfig"; sourceTree = "<group>"; };
+		263078D71DAB88650065AB60 /* HeaderCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderCollectionViewCell.h; sourceTree = "<group>"; };
+		263078D81DAB88650065AB60 /* HeaderCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderCollectionViewCell.m; sourceTree = "<group>"; };
+		263078D91DAB88650065AB60 /* HeaderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderCollectionViewCell.xib; sourceTree = "<group>"; };
 		263197521D955E7D009DF111 /* HZLScrollView2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZLScrollView2.h; sourceTree = "<group>"; };
 		263197531D955E7D009DF111 /* HZLScrollView2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZLScrollView2.m; sourceTree = "<group>"; };
 		263197541D955E7D009DF111 /* HZLSegment2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZLSegment2.h; sourceTree = "<group>"; };
@@ -120,6 +127,9 @@
 		26A4E0591DAA70F20037E544 /* DisccoverCollectionViewCellOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisccoverCollectionViewCellOne.h; sourceTree = "<group>"; };
 		26A4E05A1DAA70F20037E544 /* DisccoverCollectionViewCellOne.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisccoverCollectionViewCellOne.m; sourceTree = "<group>"; };
 		26A4E05B1DAA70F20037E544 /* DisccoverCollectionViewCellOne.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisccoverCollectionViewCellOne.xib; sourceTree = "<group>"; };
+		26A4E0811DAB6FFE0037E544 /* DiscoverMiddleCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverMiddleCollectionViewCell.h; sourceTree = "<group>"; };
+		26A4E0821DAB6FFE0037E544 /* DiscoverMiddleCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverMiddleCollectionViewCell.m; sourceTree = "<group>"; };
+		26A4E0831DAB6FFE0037E544 /* DiscoverMiddleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverMiddleCollectionViewCell.xib; sourceTree = "<group>"; };
 		26C8CE0E1D92A86B008A3CD9 /* HZLProjectDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HZLProjectDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C8CE121D92A86B008A3CD9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		26C8CE141D92A86B008A3CD9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -462,6 +472,12 @@
 				2643BD761DA6CAB400B53A3E /* DiscoverHeaderScroll.m */,
 				26A4E0301DA7FD9B0037E544 /* DiscoveryFlowLayout.h */,
 				26A4E0311DA7FD9B0037E544 /* DiscoveryFlowLayout.m */,
+				26A4E0811DAB6FFE0037E544 /* DiscoverMiddleCollectionViewCell.h */,
+				263078D71DAB88650065AB60 /* HeaderCollectionViewCell.h */,
+				263078D81DAB88650065AB60 /* HeaderCollectionViewCell.m */,
+				263078D91DAB88650065AB60 /* HeaderCollectionViewCell.xib */,
+				26A4E0821DAB6FFE0037E544 /* DiscoverMiddleCollectionViewCell.m */,
+				26A4E0831DAB6FFE0037E544 /* DiscoverMiddleCollectionViewCell.xib */,
 				26A4E0591DAA70F20037E544 /* DisccoverCollectionViewCellOne.h */,
 				26A4E05A1DAA70F20037E544 /* DisccoverCollectionViewCellOne.m */,
 				26A4E05B1DAA70F20037E544 /* DisccoverCollectionViewCellOne.xib */,
@@ -616,7 +632,9 @@
 				2631976E1D95B632009DF111 /* AlbumCell.xib in Resources */,
 				26A4E05D1DAA70F20037E544 /* DisccoverCollectionViewCellOne.xib in Resources */,
 				2643BD711DA6686100B53A3E /* DiscoverViewHeader.xib in Resources */,
+				26A4E0851DAB6FFE0037E544 /* DiscoverMiddleCollectionViewCell.xib in Resources */,
 				263197931D97A0D2009DF111 /* MusicCell.xib in Resources */,
+				263078DB1DAB88650065AB60 /* HeaderCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,6 +727,8 @@
 				26C8CE131D92A86B008A3CD9 /* main.m in Sources */,
 				26C8CE4B1D92AEF6008A3CD9 /* HZLTabBarViewController.m in Sources */,
 				26348B131D9BA02700DC52FC /* AlbumDetailViewController.m in Sources */,
+				26A4E0841DAB6FFE0037E544 /* DiscoverMiddleCollectionViewCell.m in Sources */,
+				263078DA1DAB88650065AB60 /* HeaderCollectionViewCell.m in Sources */,
 				2643BD741DA6810000B53A3E /* PicTitleBtn.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

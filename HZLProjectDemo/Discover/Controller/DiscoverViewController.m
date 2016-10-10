@@ -12,6 +12,10 @@
 #import "HZLNetManager.h"
 #import "DiscoveryFlowLayout.h"
 #import "DisccoverCollectionViewCellOne.h"
+#import "DiscoverMiddleCollectionViewCell.h"
+#import "HeaderCollectionViewCell.h"
+#import "MusicViewController.h"
+#import "AlbumViewController.h"
 @interface DiscoverViewController ()<UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource>
 
 
@@ -22,6 +26,7 @@
 @property (nonatomic, strong) NSMutableArray *refreshImages;
 
 @property (nonatomic, strong) NSMutableArray *normalImages;
+@property (nonatomic, strong) NSMutableArray *middleDataArray;
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @end
@@ -30,6 +35,19 @@
 {
     DiscoveryModel *_model;
     DiscoverViewHeader *_headerView;
+    
+}
+- (NSMutableArray *)middleDataArray
+{
+    if (!_middleDataArray) {
+        
+        
+        _middleDataArray = [[NSMutableArray alloc] init];
+        
+    }
+    return _middleDataArray;
+    
+    
     
 }
 - (NSMutableArray *)refreshImages
@@ -105,6 +123,7 @@
     __weak typeof(self) weakSelf = self;
     _gifHeader = [MJRefreshGifHeader headerWithRefreshingBlock:^{
         
+        weakSelf.start = @"";
         [weakSelf requestWithStart:weakSelf.start];
     
         weakSelf.collectionView.mj_footer.hidden = YES;
@@ -134,6 +153,23 @@
     return 10;
     
 }
+- (void)musicBtnClick
+{
+    MusicViewController *musicVC = [[MusicViewController alloc] init];
+    
+    [self.navigationController pushViewController:musicVC animated:YES];
+    
+}
+- (void)albumClick
+{
+    AlbumViewController *albumVC = [[AlbumViewController alloc] init];
+    
+    [self.navigationController pushViewController:albumVC animated:YES];
+    
+    
+    
+    
+}
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0 && indexPath.row == 0) {
@@ -142,9 +178,20 @@
         DiscoverViewHeader *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL" forIndexPath:indexPath];
         
         cell.headerScroll.imageArrays = _headerArr[0];
-        
+       
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(musicBtnClick)];
+        UITapGestureRecognizer *albumTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(albumClick)];
+        [cell.muiscBtn addGestureRecognizer:tap];
+        [cell.albumBtn addGestureRecognizer:albumTap];
         [cell bringSubviewToFront: cell.headerScroll];
         cell.userInteractionEnabled = YES;
+        [cell bringSubviewToFront:cell.muiscView];
+        [cell bringSubviewToFront:cell.posterView];
+        [cell bringSubviewToFront:cell.muiscBtn];
+        [cell bringSubviewToFront:cell.albumBtn];
+        [cell bringSubviewToFront:cell.videoBtn];
+        [cell bringSubviewToFront:cell.dayNoteBtn];
+        [cell bringSubviewToFront:cell.posterBtn];
         return cell;
     }else
     {
@@ -170,15 +217,18 @@
 
         }
     }
-   
+    if (indexPath.row == 5) {
+    
+        DiscoverMiddleCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"middleCell" forIndexPath:indexPath];
+        
+        cell.model = _middleDataArray[indexPath.section];
+        
+        return cell;
+    }
     
     
     
-     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL2" forIndexPath:indexPath];
-    
-    
-    
-    cell.backgroundColor = [UIColor colorWithRed:(arc4random() % 256) / 255.0f green:(arc4random() % 256) / 255.0f blue:(arc4random() % 256) / 255.0f alpha:1];
+    HeaderCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"headerCell" forIndexPath:indexPath];
     
     return cell;
     
@@ -210,6 +260,8 @@
     
     [_collectionView registerClass:[DiscoverViewHeader class] forCellWithReuseIdentifier:@"CELL"];
     [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"CELL2"];
+    [_collectionView registerNib:[UINib nibWithNibName:@"DiscoverMiddleCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"middleCell"];
+    [_collectionView registerNib:[UINib nibWithNibName:@"HeaderCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"headerCell"];
     
     [_collectionView registerNib:[UINib nibWithNibName:@"DisccoverCollectionViewCellOne" bundle:nil]forCellWithReuseIdentifier:@"Cell2"];
     
@@ -240,7 +292,7 @@
         if ([self.collectionView.mj_footer isHidden]) {
             
             [self.dataArray removeAllObjects];
-            self.start = @"";
+            [self.middleDataArray removeAllObjects];
             
         }
         self.start = _model.start;
@@ -252,6 +304,13 @@
         DiscoveryMod_List *model1 = array2[0];
         
         DiscoveryMod_List *model2 = array2[2];
+        
+        DiscoveryMod_List *middleModel = array2[1];
+        
+        NSDictionary *middleDic = middleModel.entity_list[0];
+        
+        [self.middleDataArray addObject:middleDic];
+        
         
         for (int i = 0 ; i < 4; i++) {
             

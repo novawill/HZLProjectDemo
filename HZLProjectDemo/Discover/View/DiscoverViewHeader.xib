@@ -191,20 +191,24 @@
                     <exclude reference="6C5-i3-zFB"/>
                     <exclude reference="cBG-8a-kTx"/>
                     <exclude reference="iVb-XN-vyl"/>
+                    <exclude reference="Pbe-Sz-0gM"/>
+                    <exclude reference="uJ3-vr-VXs"/>
                     <exclude reference="8Z3-Ty-ooW"/>
                     <exclude reference="Wcs-AG-ui1"/>
                     <exclude reference="oQm-eZ-u3y"/>
-                    <exclude reference="Pbe-Sz-0gM"/>
-                    <exclude reference="uJ3-vr-VXs"/>
                     <exclude reference="ZnB-8Q-jku"/>
                     <exclude reference="Jgt-Dq-aXR"/>
                 </mask>
             </variation>
             <connections>
-                <outlet property="albumBtn" destination="M2c-cI-fXI" id="7IG-Ke-Nia"/>
-                <outlet property="daynoteBtn" destination="BUd-yh-aEK" id="dIa-VC-iaz"/>
+                <outlet property="albumBtn" destination="M2c-cI-fXI" id="xTi-KQ-Q9V"/>
+                <outlet property="dayNoteBtn" destination="BUd-yh-aEK" id="F4x-1a-TNb"/>
                 <outlet property="headerScroll" destination="GjL-ST-yXg" id="vUM-fY-eyT"/>
-                <outlet property="videoBtn" destination="P73-YU-oaD" id="8XU-Cl-7l7"/>
+                <outlet property="muiscBtn" destination="tnW-iD-TNd" id="ALo-MW-yyk"/>
+                <outlet property="muiscView" destination="gYO-uP-UgM" id="c30-uw-SVQ"/>
+                <outlet property="posterBtn" destination="aNr-qF-cRm" id="HNU-Vk-ZX9"/>
+                <outlet property="posterView" destination="oCm-DW-5Ju" id="Ndk-Rh-VTh"/>
+                <outlet property="videoBtn" destination="P73-YU-oaD" id="sFr-Tl-hJC"/>
             </connections>
             <point key="canvasLocation" x="448.5" y="319.5"/>
         </view>
