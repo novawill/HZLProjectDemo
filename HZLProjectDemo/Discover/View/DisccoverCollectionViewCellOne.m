@@ -34,8 +34,21 @@
     
     NSString *imageStr = _model[@"group"][@"thumb"][@"raw"];
     
-    [_backImageView sd_setImageWithURL:[NSURL URLWithString:imageStr] placeholderImage:nil];
+    _descLabel.text = _model[@"group"][@"description"];
     
+    _leftTitleLabel.text = _model[@"group"][@"name"];
+    
+    NSNumber *peopleNum = _model[@"group"][@"member_num"];
+    
+    _rightCateLabel.text = @"热门推荐";
+    
+    _leftCateLabel.text = @"内容站";
+    _peopleNumLabel.text = [NSString stringWithFormat:@"%@人",peopleNum];
+    
+    NSString *logoUrlStr =  _model[@"group"][@"logo_url"];
+    
+    [_backImageView sd_setImageWithURL:[NSURL URLWithString:imageStr] placeholderImage:nil];
+    [_rightImageView sd_setImageWithURL:[NSURL URLWithString:logoUrlStr] placeholderImage:nil];
     
     
 }

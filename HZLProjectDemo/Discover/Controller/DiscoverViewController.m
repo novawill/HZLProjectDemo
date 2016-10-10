@@ -102,8 +102,6 @@
 - (void)createRefreshHeader
 {
     
-    
-    
     __weak typeof(self) weakSelf = self;
     _gifHeader = [MJRefreshGifHeader headerWithRefreshingBlock:^{
         
@@ -170,8 +168,6 @@
             
             return cell;
 
-            
-            
         }
     }
    
