@@ -43,16 +43,10 @@
 {
     
     DiscoverViewHeader * view = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:self options:nil] firstObject];
-        
+    
     return view;
 }
 
 
-- (IBAction)onClickMusicBtn:(UIButton *)sender {
-    
-    
 
-    
-    
-}
 @end

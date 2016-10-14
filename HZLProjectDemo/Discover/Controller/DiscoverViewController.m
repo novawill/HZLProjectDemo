@@ -16,6 +16,7 @@
 #import "HeaderCollectionViewCell.h"
 #import "MusicViewController.h"
 #import "AlbumViewController.h"
+#import "CheckInViewController.h"
 @interface DiscoverViewController ()<UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource>
 
 
@@ -123,6 +124,7 @@
     __weak typeof(self) weakSelf = self;
     _gifHeader = [MJRefreshGifHeader headerWithRefreshingBlock:^{
         
+    
         weakSelf.start = @"";
         [weakSelf requestWithStart:weakSelf.start];
     
@@ -170,6 +172,16 @@
     
     
 }
+- (void)dayNoteClick
+{
+    
+    CheckInViewController *checkInVC = [[CheckInViewController alloc] init];
+    
+    [self.navigationController pushViewController:checkInVC animated:YES];
+    
+    
+    
+}
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0 && indexPath.row == 0) {
@@ -181,6 +193,9 @@
        
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(musicBtnClick)];
         UITapGestureRecognizer *albumTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(albumClick)];
+        UITapGestureRecognizer *dayNoteTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dayNoteClick)];
+        [cell.dayNoteBtn addGestureRecognizer:dayNoteTap];
+        
         [cell.muiscBtn addGestureRecognizer:tap];
         [cell.albumBtn addGestureRecognizer:albumTap];
         [cell bringSubviewToFront: cell.headerScroll];
@@ -253,7 +268,7 @@
     _collectionView.backgroundColor = [UIColor clearColor];
    [self.view addSubview:_collectionView];
     
-        
+    
     _collectionView.delegate = self;
     
     _collectionView.dataSource = self;

@@ -38,7 +38,7 @@
     for (NSInteger i = 0; i < _imageArrays.count; i++) {
         
         
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(ScrollW * (i + 1), -64, ScrollW, ScrollH)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(ScrollW * (i + 1), 0, ScrollW, ScrollH)];
         
         NSString *imageStr = (NSString *)_imageArrays[i];
         [imageView sd_setImageWithURL:[NSURL URLWithString:imageStr] placeholderImage:nil];
@@ -61,7 +61,7 @@
     
     UIImageView *firstImageView = [[UIImageView alloc] init];
     
-    firstImageView.frame = CGRectMake(0, -64, ScrollW, ScrollH);
+    firstImageView.frame = CGRectMake(0, 0, ScrollW, ScrollH);
     
     [firstImageView sd_setImageWithURL:[NSURL URLWithString:[_imageArrays lastObject]] placeholderImage:nil];
     
@@ -69,7 +69,7 @@
     
     UIImageView *lastImageView = [[UIImageView alloc] init];;
     
-    lastImageView.frame = CGRectMake(ScrollW * (count + 1), -64, ScrollW, ScrollH);
+    lastImageView.frame = CGRectMake(ScrollW * (count + 1), 0, ScrollW, ScrollH);
     
     [lastImageView sd_setImageWithURL:[NSURL URLWithString:_imageArrays[0]] placeholderImage:nil];
     
@@ -78,7 +78,7 @@
     __weak typeof(self) weakSelf = self;
     
     self.delegate = weakSelf;
-    [self setContentOffset:CGPointMake(self.frame.size.width, -64)];
+    [self setContentOffset:CGPointMake(self.frame.size.width, 0)];
     _timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(changeContoffSet) userInfo:nil repeats:YES];
     [_timer setFireDate:[NSDate distantPast]];
 }
@@ -88,7 +88,7 @@
     offSetX += self.frame.size.width;
     [UIView animateWithDuration:1 animations:^{
         
-        [self setContentOffset:CGPointMake(offSetX, -64)];
+        [self setContentOffset:CGPointMake(offSetX, 0)];
 
     }];
     [self contentOffsetCheck];
@@ -108,12 +108,13 @@
     
     if (offSetX == self.frame.size.width * (count + 1)) {
         
-        [self setContentOffset:CGPointMake(self.frame.size.width, -64)];
+        [self setContentOffset:CGPointMake(self.frame.size.width,0)];
+        
         return;
     }else if (offSetX == 0)
     {
         
-        [self setContentOffset:CGPointMake(count * self.frame.size.width, -64)];
+        [self setContentOffset:CGPointMake(count * self.frame.size.width, 0)];
         return;
         
     }

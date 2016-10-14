@@ -56,12 +56,6 @@
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
 {
- 
-    
-    
- 
-    
-    
     UICollectionViewLayoutAttributes *attrs = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
     CGFloat height = 150;
     CGFloat deltaY = (indexPath.section - 1) * 1000 + 1200;

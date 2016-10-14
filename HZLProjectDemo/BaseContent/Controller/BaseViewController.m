@@ -18,8 +18,7 @@
     [super viewDidLoad];
     
     [self customNavigationItem];
-    [self RESideNavigationItemWithLeftTile:@"Left" RightTitle:@"Right" isShowRight:YES];
-   
+    
     
     self.view.backgroundColor = [UIColor whiteColor];
 }

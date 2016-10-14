@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		263078DA1DAB88650065AB60 /* HeaderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 263078D81DAB88650065AB60 /* HeaderCollectionViewCell.m */; };
 		263078DB1DAB88650065AB60 /* HeaderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 263078D91DAB88650065AB60 /* HeaderCollectionViewCell.xib */; };
+		263078EA1DAB934B0065AB60 /* CheckInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 263078DF1DAB934B0065AB60 /* CheckInViewController.m */; };
+		263078EB1DAB934B0065AB60 /* CheckInModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 263078E21DAB934B0065AB60 /* CheckInModel.m */; };
+		263078EC1DAB934B0065AB60 /* CheckInCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 263078E51DAB934B0065AB60 /* CheckInCell.m */; };
+		263078ED1DAB934B0065AB60 /* CheckInCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 263078E61DAB934B0065AB60 /* CheckInCell.xib */; };
+		263078EE1DAB934B0065AB60 /* CheckInHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 263078E81DAB934B0065AB60 /* CheckInHeadCell.m */; };
+		263078EF1DAB934B0065AB60 /* CheckInHeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 263078E91DAB934B0065AB60 /* CheckInHeadCell.xib */; };
 		263197561D955E7D009DF111 /* HZLScrollView2.m in Sources */ = {isa = PBXBuildFile; fileRef = 263197531D955E7D009DF111 /* HZLScrollView2.m */; };
 		263197571D955E7D009DF111 /* HZLSegment2.m in Sources */ = {isa = PBXBuildFile; fileRef = 263197551D955E7D009DF111 /* HZLSegment2.m */; };
 		2631975D1D956228009DF111 /* HZLFrame2.m in Sources */ = {isa = PBXBuildFile; fileRef = 2631975C1D956228009DF111 /* HZLFrame2.m */; };
@@ -66,6 +72,16 @@
 		263078D71DAB88650065AB60 /* HeaderCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderCollectionViewCell.h; sourceTree = "<group>"; };
 		263078D81DAB88650065AB60 /* HeaderCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderCollectionViewCell.m; sourceTree = "<group>"; };
 		263078D91DAB88650065AB60 /* HeaderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderCollectionViewCell.xib; sourceTree = "<group>"; };
+		263078DE1DAB934B0065AB60 /* CheckInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInViewController.h; sourceTree = "<group>"; };
+		263078DF1DAB934B0065AB60 /* CheckInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInViewController.m; sourceTree = "<group>"; };
+		263078E11DAB934B0065AB60 /* CheckInModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInModel.h; sourceTree = "<group>"; };
+		263078E21DAB934B0065AB60 /* CheckInModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInModel.m; sourceTree = "<group>"; };
+		263078E41DAB934B0065AB60 /* CheckInCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInCell.h; sourceTree = "<group>"; };
+		263078E51DAB934B0065AB60 /* CheckInCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInCell.m; sourceTree = "<group>"; };
+		263078E61DAB934B0065AB60 /* CheckInCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckInCell.xib; sourceTree = "<group>"; };
+		263078E71DAB934B0065AB60 /* CheckInHeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInHeadCell.h; sourceTree = "<group>"; };
+		263078E81DAB934B0065AB60 /* CheckInHeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInHeadCell.m; sourceTree = "<group>"; };
+		263078E91DAB934B0065AB60 /* CheckInHeadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckInHeadCell.xib; sourceTree = "<group>"; };
 		263197521D955E7D009DF111 /* HZLScrollView2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZLScrollView2.h; sourceTree = "<group>"; };
 		263197531D955E7D009DF111 /* HZLScrollView2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZLScrollView2.m; sourceTree = "<group>"; };
 		263197541D955E7D009DF111 /* HZLSegment2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZLSegment2.h; sourceTree = "<group>"; };
@@ -172,6 +188,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		263078DC1DAB934B0065AB60 /* CheckIn */ = {
+			isa = PBXGroup;
+			children = (
+				263078DD1DAB934B0065AB60 /* Controller */,
+				263078E01DAB934B0065AB60 /* Model */,
+				263078E31DAB934B0065AB60 /* View */,
+			);
+			path = CheckIn;
+			sourceTree = "<group>";
+		};
+		263078DD1DAB934B0065AB60 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				263078DE1DAB934B0065AB60 /* CheckInViewController.h */,
+				263078DF1DAB934B0065AB60 /* CheckInViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		263078E01DAB934B0065AB60 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				263078E11DAB934B0065AB60 /* CheckInModel.h */,
+				263078E21DAB934B0065AB60 /* CheckInModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		263078E31DAB934B0065AB60 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				263078E41DAB934B0065AB60 /* CheckInCell.h */,
+				263078E51DAB934B0065AB60 /* CheckInCell.m */,
+				263078E61DAB934B0065AB60 /* CheckInCell.xib */,
+				263078E71DAB934B0065AB60 /* CheckInHeadCell.h */,
+				263078E81DAB934B0065AB60 /* CheckInHeadCell.m */,
+				263078E91DAB934B0065AB60 /* CheckInHeadCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		263197661D95ADE1009DF111 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -386,6 +443,7 @@
 		26C8CE2E1D92ACFF008A3CD9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				263078DC1DAB934B0065AB60 /* CheckIn */,
 				2631979A1D97A3A7009DF111 /* Album */,
 				263197801D97A026009DF111 /* Music */,
 				26C8CE491D92AEF6008A3CD9 /* HZLTabBarViewController.h */,
@@ -627,11 +685,13 @@
 				26C8CE211D92A86B008A3CD9 /* LaunchScreen.storyboard in Resources */,
 				26C8CE1E1D92A86B008A3CD9 /* Assets.xcassets in Resources */,
 				26C8CE1C1D92A86B008A3CD9 /* Main.storyboard in Resources */,
+				263078ED1DAB934B0065AB60 /* CheckInCell.xib in Resources */,
 				26348B1E1D9BA0D200DC52FC /* headerView.xib in Resources */,
 				26348B141D9BA02700DC52FC /* AlbumDetailViewController.xib in Resources */,
 				2631976E1D95B632009DF111 /* AlbumCell.xib in Resources */,
 				26A4E05D1DAA70F20037E544 /* DisccoverCollectionViewCellOne.xib in Resources */,
 				2643BD711DA6686100B53A3E /* DiscoverViewHeader.xib in Resources */,
+				263078EF1DAB934B0065AB60 /* CheckInHeadCell.xib in Resources */,
 				26A4E0851DAB6FFE0037E544 /* DiscoverMiddleCollectionViewCell.xib in Resources */,
 				263197931D97A0D2009DF111 /* MusicCell.xib in Resources */,
 				263078DB1DAB88650065AB60 /* HeaderCollectionViewCell.xib in Resources */,
@@ -719,8 +779,10 @@
 				26A4E05C1DAA70F20037E544 /* DisccoverCollectionViewCellOne.m in Sources */,
 				2631975D1D956228009DF111 /* HZLFrame2.m in Sources */,
 				263197621D957C83009DF111 /* HZLScrollView.m in Sources */,
+				263078EA1DAB934B0065AB60 /* CheckInViewController.m in Sources */,
 				26348B4F1D9D2F0E00DC52FC /* RootViewController.m in Sources */,
 				26348B181D9BA0A900DC52FC /* AlbumDetailCell.m in Sources */,
+				263078EC1DAB934B0065AB60 /* CheckInCell.m in Sources */,
 				26C8CE161D92A86B008A3CD9 /* AppDelegate.m in Sources */,
 				263197631D957C83009DF111 /* HZLSegment.m in Sources */,
 				263197561D955E7D009DF111 /* HZLScrollView2.m in Sources */,
@@ -728,6 +790,8 @@
 				26C8CE4B1D92AEF6008A3CD9 /* HZLTabBarViewController.m in Sources */,
 				26348B131D9BA02700DC52FC /* AlbumDetailViewController.m in Sources */,
 				26A4E0841DAB6FFE0037E544 /* DiscoverMiddleCollectionViewCell.m in Sources */,
+				263078EE1DAB934B0065AB60 /* CheckInHeadCell.m in Sources */,
+				263078EB1DAB934B0065AB60 /* CheckInModel.m in Sources */,
 				263078DA1DAB88650065AB60 /* HeaderCollectionViewCell.m in Sources */,
 				2643BD741DA6810000B53A3E /* PicTitleBtn.m in Sources */,
 			);

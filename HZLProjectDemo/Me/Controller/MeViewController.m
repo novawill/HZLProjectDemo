@@ -13,11 +13,50 @@
 @end
 
 @implementation MeViewController
-
+{
+    
+    UIImageView *_backImageView;
+    UIButton *_loginBtn;
+    UIButton *_settingBtn;
+    UILabel *_descLabel;
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self createUI];
+    [self makeConstrains];
+    
 }
+- (void)createUI
+{
+    
+    
+    _backImageView = [[UIImageView alloc] init];
+    _backImageView.image = [UIImage imageNamed:@"IMG_8914.jpg"];
+    [self.view addSubview:_backImageView];
+    
+    _loginBtn = [[UIButton alloc] init];
+    _loginBtn.backgroundColor = [UIColor colorWithRed:0.14 green:0.64 blue:0.68 alpha:1.00];
+    _loginBtn.layer.masksToBounds = YES;
+    //_loginBtn.layer.cornerRadius =
+
+}
+- (void)makeConstrains
+{
+    
+    __weak typeof(self) weakSelf = self;
+    [_backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        
+        make.edges.equalTo(weakSelf.view);
+        
+        
+    }];
+    
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
