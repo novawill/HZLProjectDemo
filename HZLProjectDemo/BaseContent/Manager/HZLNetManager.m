@@ -55,10 +55,13 @@ static HZLNetManager *manager = nil;
 
 - (void)requestDataByGetWithURL:(NSString *)url success:(void (^)(id))response failure:(void (^)(NSError *))failure
 {
-    [_requestDataManager GET:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+   
+    [_requestDataManager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        
         response(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+
     }];
     
 }

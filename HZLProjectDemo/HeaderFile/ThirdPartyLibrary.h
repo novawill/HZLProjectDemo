@@ -20,6 +20,8 @@
 #import <FMDB.h>
 #import <POP.h>
 #import <TKit.h>
+#import <AVOSCloud/AVOSCloud.h>
+#import <AVOSCloudSNS.h>
 
 
 

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MeViewController : UIViewController
-
+@property (nonatomic, copy) void(^refreshUserInfo)();
 @end

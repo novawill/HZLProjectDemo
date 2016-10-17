@@ -12,6 +12,7 @@
  pod ‘pop’
  pod ‘FMDB’
  pod  ’TKit’
+ pod ‘LeanCloudSocial’
 target 'HZLProjectDemo' do
   # Uncomment this line if you're using Swift or would like to use dynamic frameworks
   # use_frameworks!
