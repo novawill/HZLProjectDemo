@@ -9,6 +9,8 @@
 #import "MeViewController.h"
 #import "BottomView.h"
 #import "LoginView.h"
+#import "LoginedModel.h"
+#import "LoginedView.h"
 @interface MeViewController ()
 
 @property (nonatomic, strong) UIView *settingView;
@@ -26,6 +28,7 @@
     UIButton *_settingCancelBtn;
     UIView *_settingBkView1;
     LoginView *_loginView;
+    LoginedModel *_model;
     
 }
 - (UIView *)settingView
@@ -241,57 +244,25 @@
             
         }else
         {
-            NSString *username = object[@"username"];
-            NSString *avatar = object[@"avatar"];
+            _model = [[LoginedModel alloc] init];
+            _model.userName = object[@"username"];
+           _model.avatarUrl = object[@"avatar"];
+            _model.desc = object[@"description"];
             
-            // 保存默认的用户名及用户头像到数据库
-            // 获取要保存的数据
-            UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:avatar]]];
-            NSData *data = UIImageJPEGRepresentation(image, 1.0);
-            //用数据创建文件
-            AVFile *file = [AVFile fileWithName:@"userDefaultIcon" data:data];
+            [self createLoginedView];
             
-            //保存文件
-            [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                if (succeeded) {
-                    
-                    AVObject *todo = [AVObject objectWithClassName:@"Todo"];
-                    [todo setObject:username forKey:@"phoneNum"];
-                    [todo setObject:username forKey:@"userName"];
-                    [todo setObject:file.objectId forKey:@"iconId"];
-                    [todo setObject:@"123456" forKey:@"password"];
-                    [todo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                        if (succeeded) {
-                            // 存储成功
-                            [todo setObject:todo.objectId forKey:@"selfID"];
-                            [todo saveInBackground];
-                            
-                            [KVNProgress showSuccessWithStatus:@"登录成功"];
-                            //                            [self dismissViewControllerAnimated:YES completion:nil];
-                            [self.navigationController popViewControllerAnimated:YES];
-                            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isOnline"];
-                            [[NSUserDefaults standardUserDefaults] setObject:username forKey:@"currentUserPhoneNum"];
-                            self.refreshUserInfo();
-                            
-                            
-                        }
-                        else {
-                            [KVNProgress showErrorWithStatus:@"登录失败"];
-                        }
-                    }];
-                    
-                }
-                else {
-                    
-                    [KVNProgress showErrorWithStatus:@"登录失败"];
-                }
-            }];
         }
         
     }toPlatform:AVOSCloudSNSSinaWeibo];
+}
+- (void)createLoginedView
+{
     
-    
-    
+    LoginedView *view = [LoginedView shareView];
+    view.model = _model;
+    view.frame = self.view.bounds;
+    [self.view addSubview:view];
+    [self.navigationController setNavigationBarHidden:YES];
     
 }
 - (void)cancelLoginView
