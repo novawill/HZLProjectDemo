@@ -42,7 +42,7 @@
         for (int i = 0; i < totalCount; i++) {
             
             
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:j];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:j];
             
             UICollectionViewLayoutAttributes *attr = [self layoutAttributesForItemAtIndexPath:indexPath];
             
@@ -62,7 +62,7 @@
     
     if (indexPath.section == 0) {
         
-        if (indexPath.row == 0) {
+        if (indexPath.item == 0) {
             
             CGFloat x = 0;
             CGFloat y = 0;
@@ -74,17 +74,17 @@
 
         }else
         {
-            if (indexPath.row != 5) {
+            if (indexPath.item != 5) {
                 
                 
                 
                 CGFloat w = self.collectionView.frame.size.width / 2;
                 
-                if (indexPath.row < 5) {
+                if (indexPath.item < 5) {
                     
-                    CGFloat x = ((indexPath.row - 1) % 2) * w;
+                    CGFloat x = ((indexPath.item - 1) % 2) * w;
                     
-                    if (indexPath.row > 2) {
+                    if (indexPath.item > 2) {
                         
                         CGFloat y = height + 400;
                         
@@ -102,9 +102,9 @@
                 }else
                 {
                     
-                    CGFloat x = (indexPath.row % 2) * w;
+                    CGFloat x = (indexPath.item % 2) * w;
                     
-                    if (indexPath.row > 7) {
+                    if (indexPath.item > 7) {
                         
                         CGFloat y = 3 * height + 600;
                         
@@ -133,23 +133,23 @@
         }
     }else
     {
-        if (indexPath.row == 0) {
+        if (indexPath.item == 0) {
             
             attrs.frame = CGRectMake(0, deltaY, self.collectionView.frame.size.width, 200);
             return attrs;
         }else
         {
-            if (indexPath.row != 5) {
+            if (indexPath.item != 5) {
                 
                 
                 
                 CGFloat w = self.collectionView.frame.size.width / 2;
                 
-                if (indexPath.row < 5) {
+                if (indexPath.item < 5) {
                     
-                    CGFloat x = ((indexPath.row - 1) % 2) * w;
+                    CGFloat x = ((indexPath.item - 1) % 2) * w;
                     
-                    if (indexPath.row > 2) {
+                    if (indexPath.item > 2) {
                         
                         CGFloat y = height + 200;
                         
@@ -167,9 +167,9 @@
                 }else
                 {
                     
-                    CGFloat x = (indexPath.row % 2) * w;
+                    CGFloat x = (indexPath.item % 2) * w;
                     
-                    if (indexPath.row > 7) {
+                    if (indexPath.item > 7) {
                         
                         CGFloat y = 3 * height + 400;
                         

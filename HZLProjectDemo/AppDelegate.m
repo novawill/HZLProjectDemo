@@ -26,7 +26,8 @@
     RootViewController *rootVC = [[RootViewController alloc] init];
     
     self.window.rootViewController = rootVC;
-    
+    UIUserNotificationSettings *setting = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound categories:nil];
+    [application registerUserNotificationSettings:setting];
     
     return YES;
 }

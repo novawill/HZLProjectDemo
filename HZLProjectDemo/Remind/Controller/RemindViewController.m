@@ -16,7 +16,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+//
+//    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(50, 80, 50, 50)];
+//    
+//    btn.backgroundColor = [UIColor redColor];
+//    
+//    [btn addTarget:self action:@selector(notif) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    [self.view addSubview:btn];
+    
+}
+- (void)notif
+{
+    
+    
+    
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

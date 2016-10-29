@@ -126,9 +126,10 @@
         
     
         weakSelf.start = @"";
+        weakSelf.collectionView.mj_footer.hidden = YES;
+
         [weakSelf requestWithStart:weakSelf.start];
     
-        weakSelf.collectionView.mj_footer.hidden = YES;
         
     }];
     [_gifHeader setImages:self.refreshImages forState:MJRefreshStateRefreshing];
@@ -184,7 +185,10 @@
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0 && indexPath.row == 0) {
+    
+    BOOL a = [self.collectionView.mj_footer isHidden];
+    if ((indexPath.section == 0  || [self.collectionView.mj_footer isHidden]
+         )&& indexPath.item == 0 ) {
         
         
         DiscoverViewHeader *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL" forIndexPath:indexPath];
@@ -210,21 +214,22 @@
         return cell;
     }else
     {
-        if (indexPath.row < 5 && indexPath.row != 0) {
+        
+        if (indexPath.item < 5 && indexPath.item != 0) {
             
             DisccoverCollectionViewCellOne *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell2" forIndexPath:indexPath];
-            NSLog(@"%ld %ld",(long)indexPath.row,(long)indexPath.section);
-            DiscoveryEntity_List *model = _dataArray[indexPath.section][indexPath.row - 1];
+            NSLog(@"%ld %ld",(long)indexPath.item,(long)indexPath.section);
+            DiscoveryEntity_List *model = _dataArray[indexPath.section][indexPath.item - 1];
             
             cell.model = model;
             
             return cell;
         }
-        if ( indexPath.row < 10 && indexPath.row > 5 ) {
+        if ( indexPath.item < 10 && indexPath.item > 5 ) {
             
             DisccoverCollectionViewCellOne *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell2" forIndexPath:indexPath];
-            NSLog(@"%ld %ld",(long)indexPath.row,(long)indexPath.section);
-            DiscoveryEntity_List *model = _dataArray[indexPath.section][indexPath.row - 2];
+            NSLog(@"%ld %ld",(long)indexPath.item,(long)indexPath.section);
+            DiscoveryEntity_List *model = _dataArray[indexPath.section][indexPath.item - 2];
             
             cell.model = model;
             
@@ -232,7 +237,7 @@
 
         }
     }
-    if (indexPath.row == 5) {
+    if (indexPath.item == 5) {
     
         DiscoverMiddleCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"middleCell" forIndexPath:indexPath];
         

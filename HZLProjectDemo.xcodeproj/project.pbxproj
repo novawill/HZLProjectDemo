@@ -60,8 +60,6 @@
 		26AB99311DB532B100A7E8B7 /* LoginedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26AB99301DB532B100A7E8B7 /* LoginedView.xib */; };
 		26AB99341DB5349C00A7E8B7 /* LoginedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AB99331DB5349C00A7E8B7 /* LoginedModel.m */; };
 		26AB993B1DB61B2D00A7E8B7 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AB993A1DB61B2D00A7E8B7 /* VideoViewController.m */; };
-		26AB993F1DB622EA00A7E8B7 /* VideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AB993D1DB622EA00A7E8B7 /* VideoCell.m */; };
-		26AB99401DB622EA00A7E8B7 /* VideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26AB993E1DB622EA00A7E8B7 /* VideoCell.xib */; };
 		26C8CE131D92A86B008A3CD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE121D92A86B008A3CD9 /* main.m */; };
 		26C8CE161D92A86B008A3CD9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE151D92A86B008A3CD9 /* AppDelegate.m */; };
 		26C8CE191D92A86B008A3CD9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CE181D92A86B008A3CD9 /* ViewController.m */; };
@@ -169,9 +167,6 @@
 		26AB99331DB5349C00A7E8B7 /* LoginedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginedModel.m; sourceTree = "<group>"; };
 		26AB99391DB61B2D00A7E8B7 /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
 		26AB993A1DB61B2D00A7E8B7 /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
-		26AB993C1DB622EA00A7E8B7 /* VideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCell.h; sourceTree = "<group>"; };
-		26AB993D1DB622EA00A7E8B7 /* VideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoCell.m; sourceTree = "<group>"; };
-		26AB993E1DB622EA00A7E8B7 /* VideoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoCell.xib; sourceTree = "<group>"; };
 		26C8CE0E1D92A86B008A3CD9 /* HZLProjectDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HZLProjectDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C8CE121D92A86B008A3CD9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		26C8CE141D92A86B008A3CD9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -374,9 +369,6 @@
 		26AB99371DB61A8100A7E8B7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				26AB993C1DB622EA00A7E8B7 /* VideoCell.h */,
-				26AB993D1DB622EA00A7E8B7 /* VideoCell.m */,
-				26AB993E1DB622EA00A7E8B7 /* VideoCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -769,7 +761,6 @@
 				263078EF1DAB934B0065AB60 /* CheckInHeadCell.xib in Resources */,
 				26A4E0851DAB6FFE0037E544 /* DiscoverMiddleCollectionViewCell.xib in Resources */,
 				263197931D97A0D2009DF111 /* MusicCell.xib in Resources */,
-				26AB99401DB622EA00A7E8B7 /* VideoCell.xib in Resources */,
 				26AB992C1DB4B6D000A7E8B7 /* LoginView.xib in Resources */,
 				263078DB1DAB88650065AB60 /* HeaderCollectionViewCell.xib in Resources */,
 				26AB99271DB3C73700A7E8B7 /* BottomView.xib in Resources */,
@@ -849,7 +840,6 @@
 				26AB99341DB5349C00A7E8B7 /* LoginedModel.m in Sources */,
 				263197A01D97A3F0009DF111 /* BaseViewController.m in Sources */,
 				26AB992A1DB4B6C400A7E8B7 /* LoginView.m in Sources */,
-				26AB993F1DB622EA00A7E8B7 /* VideoCell.m in Sources */,
 				263197861D97A05B009DF111 /* MusicViewController.m in Sources */,
 				26A4E02F1DA7A2B50037E544 /* DiscoveryModel.m in Sources */,
 				26A4E0321DA7FD9C0037E544 /* DiscoveryFlowLayout.m in Sources */,
