@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "RootViewController.h"
-@interface AppDelegate ()
+@interface AppDelegate ()<UITabBarControllerDelegate>
 
 @end
 

@@ -83,7 +83,16 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         
         _trendTableViews.selectedIndex = _trendScrollView.selectedIndex;
+        //当点击trendScrollView上的按钮时，使用setContOffset方法偏移trendTableViews，由于使用该方法偏移是瞬间完成的，速度不变，所以
+        //不会触发scrollViewDidEndDecelerating，要使得最后滑块停在正确位置 必须使用以下方法
+        CGFloat origin = _trendTableViews.x / _trendTableViews.size.width;
         
+        if (origin < 0) {
+            
+            origin = 0;
+        }
+        CGFloat floorValue = floor(origin);
+        _trendScrollView.selectedIndex2 = floorValue;
     });
 }
 - (void)creatTrendTableViews
@@ -117,7 +126,7 @@
     NSArray *array = @[vc.view,followingView,videoView,music.view,gallery.view,moringTeaView];
     
     
-   _trendTableViews = [[HZLScrollView2 alloc] initWithFrame:CGRectMake(0, 64, 100, 50) items:array];
+    _trendTableViews = [[HZLScrollView2 alloc] initWithFrame:CGRectMake(0, 64, 100, 50) items:array];
     _trendTableViews.delegate = self;
     _trendTableViews.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_trendTableViews];

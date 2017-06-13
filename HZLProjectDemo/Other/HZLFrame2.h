@@ -15,6 +15,7 @@ typedef struct ZLFrame{
     
 }HZLFrame;
 HZLFrame CGHZLFrameMake(CGFloat x, CGFloat y, CGFloat height);
+
 @interface HZLFrame2 : NSObject
 
 @end

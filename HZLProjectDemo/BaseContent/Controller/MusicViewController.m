@@ -204,7 +204,6 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
     
     cell.model = model;
     
-   
     if ([model.music_url isEqualToString:_rootVC.musicUrl]) {
         
         cell.isPlay = _rootVC.isPlay;
@@ -216,7 +215,6 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
             
             [cell.playBtn setImage:[UIImage imageNamed:@"btn-musicplay-pause"]
                           forState:UIControlStateNormal];
-            
             
         }else
         {
@@ -266,9 +264,6 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
 
 - (void)requestDataWithURLWithStart:(NSUInteger)start
 {
-    
-    
-    
     //Sets URL
     NSString *url;
     
@@ -278,7 +273,6 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
     {
        url = [musicAPI stringByAppendingString:[NSString stringWithFormat:@"&start=%lu",start]];
     }
-    
     //Requests datasource
     [self.httpManager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
@@ -292,6 +286,7 @@ NSString * const MusicCellIdentifier = @"MusicCellIdentifier";
         
         //Adding the parsed data array(i.e meows) to musicArray
         //which is the dataArray for tableView
+        
         [self.musicArray addObjectsFromArray:musicModel.meows];
         
         __weak typeof(self) weakSelf = self;

@@ -30,7 +30,6 @@
 - (void)showDetail
 {
     
-   
     __weak typeof(self) weakSelf = self;
     self.transModel = ^(Meows *model){
         

@@ -18,7 +18,7 @@ static HZLNetManager *manager = nil;
 
 + (instancetype)defaultManager
 {
-    
+        
         
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
